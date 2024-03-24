@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ronnie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-left">
+                <a href="index.html"><img src="RohanPandey.png" alt="RohanPandey"></a>
+            </div>
+            <div class="navbar-center">
+                <a href="#home">Home</a>
+                <a href="#works">Works</a>
+                <a href="#about">About</a>
+                <a href="#resume">Resume</a>
+            </div>
+            <div class="navbar-right">
+                <a href="#contact">Get in touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="about-card" onmouseenter="expandCard(this)" onmouseleave="shrinkCard(this)" onclick="window.location.href = 'https://example.com';">
+            <div class="expand-icon"></div>
+            <img src="me.JPG" alt="A picture of me" class="profile-image">
+            <div class="text-container">
+                <h1 class="name">Hey, I'm Rohan 👋</h1>
+                <h3 class="skills">MERN | Python | AIML</h3>
+            </div>
+        </div>
+        <div class="resume-card" onclick="window.location.href = 'https://example.com';">
+            <div class="additional-info">
+                <i class="fa fa-address-card-o" style="font-size:48px;color:#ffffe4"></i>
+                <p class="learn-more-about-me">LEARN MORE ABOUT ME</p>
+                <h2 class="see-my-resume">See my resume</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
