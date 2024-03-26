@@ -157,4 +157,5 @@ body {
 .resume-card:hover .learn-more-about-me,
 .resume-card:hover .see-my-resume {
     color: #000; /* Change text color to black on hover */
+    transition: transform 0.3s ease;
 }
