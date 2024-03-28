@@ -26,7 +26,7 @@ function shrinkCard(card) {
   const skillsElement = card.querySelector('.skills');
   if (skillsElement) {
     skillsElement.style.transform = 'translateY(0)';
-    skillsElement.textContent = 'MERN | Python | AIML';
+    skillsElement.textContent = 'Frontend | Python | AIML';
   }
   
   const bottomRightIcon = card.querySelector('.bottom-right-icon');
@@ -93,3 +93,99 @@ if (linkedinCards.length > 0) {
 } else {
   console.error("No card elements found with class 'linkedin-card'!");
 }
+
+const videoElement = document.getElementById('projectVideo');
+const projectOne = document.querySelector('.project-one');
+
+projectOne.addEventListener('mouseover', () => {
+  videoElement.play();
+});
+
+projectOne.addEventListener('mouseout', () => {
+  videoElement.pause();
+  videoElement.currentTime = 0;
+});
+
+const infoContainer = projectOne.querySelector('.additional-info-project-1');
+const h2 = infoContainer.querySelector('h2');
+const p = infoContainer.querySelector('p');
+
+projectOne.addEventListener('mouseover', () => {
+  h2.style.transition = 'transform 0.3s ease-in-out';
+  h2.style.transform = 'translateY(-20px)';
+  p.style.opacity = 0;
+  p.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+projectOne.addEventListener('mouseout', () => {
+  h2.style.transition = 'transform 0.3s ease-in-out';
+  h2.style.transform = 'translateY(0)';
+  p.style.opacity = 1;
+  p.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+function moveTitleUp() {
+  var title = document.querySelector('.project-two .title');
+  title.style.transition = 'margin-top 0.3s ease-in-out';
+  title.style.marginTop = '-20px';
+  
+  var tagline = document.querySelector('.project-two .tagline');
+  tagline.style.transition = 'opacity 0.3s ease-in-out';
+  tagline.style.opacity = '0';
+}
+
+function resetTitle() {
+  var title = document.querySelector('.project-two .title');
+  title.style.transition = 'margin-top 0.3s ease-in-out';
+  title.style.marginTop = '0';
+  
+  var tagline = document.querySelector('.project-two .tagline');
+  tagline.style.transition = 'opacity 0.3s ease-in-out';
+  tagline.style.opacity = '1';
+}
+
+const videoElement2 = document.getElementById('projectVideo2');
+const projectTwo = document.querySelector('.project-two');
+
+projectTwo.addEventListener('mouseover', () => {
+  videoElement2.play();
+  videoElement2.style.transition = 'transform 0.3s ease-in-out';
+  videoElement2.style.transform = 'translateY(-10px)';
+});
+
+projectTwo.addEventListener('mouseout', () => {
+  videoElement2.pause();
+  videoElement2.currentTime = 0;
+  videoElement2.style.transition = 'transform 0.3s ease-in-out';
+  videoElement2.style.transform = 'translateY(0)';
+});
+
+const videoElement3 = document.getElementById('projectVideo3');
+const projectThree = document.querySelector('.project-three');
+
+projectThree.addEventListener('mouseover', () => {
+  videoElement3.play();
+});
+
+projectThree.addEventListener('mouseout', () => {
+  videoElement3.pause();
+  videoElement3.currentTime = 0;
+});
+
+const infoContainer3 = projectThree.querySelector('.project-three .content');
+const threeTitle = infoContainer3.querySelector('.project-three .title');
+const threeTagline = infoContainer3.querySelector('.project-three .tagline');
+
+projectThree.addEventListener('mouseover', () => {
+  threeTitle.style.transition = 'transform 0.3s ease-in-out';
+  threeTitle.style.transform = 'translateY(-20px)';
+  threeTagline.style.opacity = 0;
+  threeTagline.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+projectThree.addEventListener('mouseout', () => {
+  threeTitle.style.transition = 'transform 0.3s ease-in-out';
+  threeTitle.style.transform = 'translateY(0)';
+  threeTagline.style.opacity = 1;
+  threeTagline.style.transition = 'opacity 0.3s ease-in-out';
+});
