@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    padding: 0;
+    padding-bottom: 10px;
     background-color: #000;
     font-family: Arial, sans-serif;
 }
@@ -381,4 +381,42 @@ h2 ,p {
 .project-six .content p,
 .project-six .content h2 {
     margin: 2% 10%;
+}
+
+.contact-card {
+    width: 637.5px;
+    height: 280px;
+    background-color: #333639;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+}
+
+.contact-card:hover {
+    background-color: #0f1a46;
+    transform: scale(1.05);
+}
+
+.contact-card .content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-align: left; 
+}
+
+.contact-card .tagline {
+    margin: 0;
+    color: #ffffe4;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contact-card .title {
+    margin: 5px 0;
+    color: #d9b061;
+    font-size: 42px;
+    font-weight: bold;
 }
