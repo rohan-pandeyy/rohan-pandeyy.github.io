@@ -474,3 +474,72 @@ h2 ,p {
 .achievement-card:hover .hover-image {
     opacity: 1;
 }
+
+.footer {
+    margin-top: 40px;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo {
+    width: 144px; /* Adjust as needed */
+    margin-right: 30px; /* Adjust as needed */
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer-nav a {
+    color: #ffffe4;
+    text-decoration: none;
+    margin-right: 30px; /* Adjust as needed */
+}
+
+.footer-nav a:hover {
+    color: #d9c4a9;
+}
+
+.footer-nav a:last-child {
+    margin-right: 0; /* Remove margin for the last link */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icon {
+    color: #ffffe4;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-left: 10px; /* Adjust as needed */
+    margin-right: 10px; /* Adjust as needed */
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #d9c4a9;
+}
+
+.footer-texts {
+    text-align: center;
+    margin-top: 20px; /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+}
+
+.footer-texts p {
+    color: #ffffe4;
+    margin: 5px 20px;
+}
