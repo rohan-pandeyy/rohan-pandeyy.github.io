@@ -189,3 +189,62 @@ projectThree.addEventListener('mouseout', () => {
   threeTagline.style.opacity = 1;
   threeTagline.style.transition = 'opacity 0.3s ease-in-out';
 });
+
+const projectFour = document.querySelector('.project-four');
+const infoContainer4 = projectFour.querySelector('.project-four .content');
+const fourTitle = infoContainer4.querySelector('.project-four h2');
+const fourTagline = infoContainer4.querySelector('.project-four p');
+
+projectFour.addEventListener('mouseover', () => {
+  fourTitle.style.transition = 'transform 0.3s ease-in-out';
+  fourTitle.style.transform = 'translateY(-20px)';
+  fourTagline.style.opacity = 0;
+  fourTagline.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+projectFour.addEventListener('mouseout', () => {
+  fourTitle.style.transition = 'transform 0.3s ease-in-out';
+  fourTitle.style.transform = 'translateY(0)';
+  fourTagline.style.opacity = 1;
+  fourTagline.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+const projectFive = document.querySelector('.project-five');
+const infoContainer5 = projectFive.querySelector('.project-five .content');
+const fiveTitle = infoContainer5.querySelector('.project-five h2');
+const fiveTagline = infoContainer5.querySelector('.project-five p');
+
+projectFive.addEventListener('mouseover', () => {
+  fiveTitle.style.transition = 'transform 0.3s ease-in-out';
+  fiveTitle.style.transform = 'translateY(-20px)';
+  fiveTagline.style.opacity = 0;
+  fiveTagline.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+projectFive.addEventListener('mouseout', () => {
+  fiveTitle.style.transition = 'transform 0.3s ease-in-out';
+  fiveTitle.style.transform = 'translateY(0)';
+  fiveTagline.style.opacity = 1;
+  fiveTagline.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+const projectSix = document.querySelector('.project-six');
+const infoContainer6 = projectSix.querySelector('.project-six .content');
+const sixTitle = infoContainer6.querySelector('.project-six h2');
+const sixTagline = infoContainer6.querySelector('.project-six p');
+
+projectSix.addEventListener('mouseover', () => {
+  sixTitle.style.transition = 'transform 0.3s ease-in-out';
+  sixTitle.style.transform = 'translateY(-20px)';
+  sixTagline.style.opacity = 0;
+  sixTagline.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+projectSix.addEventListener('mouseout', () => {
+  sixTitle.style.transition = 'transform 0.3s ease-in-out';
+  sixTitle.style.transform = 'translateY(0)';
+  sixTagline.style.opacity = 1;
+  sixTagline.style.transition = 'opacity 0.3s ease-in-out';
+});
+
+
