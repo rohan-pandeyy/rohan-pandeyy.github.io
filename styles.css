@@ -14,7 +14,8 @@ p {
 }
 
 .navbar {
-    position: relative;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     background-color: #000;
@@ -62,6 +63,10 @@ p {
 .navbar-right a:hover {
     background-color: #d9c4a9;
     transition: background-color 0.3s, transform 0.3s;
+}
+
+.all-content {
+    padding-top: 65px;
 }
 
 .content-wrapper {

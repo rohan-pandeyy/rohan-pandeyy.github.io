@@ -31,130 +31,131 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-left">
-                <a href="index.html"><img src="assets/RohanPandey.png" alt="RohanPandey"></a>
+                <a href="./index.html"><img src="assets/RohanPandey.png" alt="RohanPandey"></a>
             </div>
             <div class="navbar-center">
-                <a href="#home">Home</a>
-                <a href="#works">Works</a>
-                <a href="#about">About</a>
-                <a href="#resume">Resume</a>
+                <a href="./index.html">Home</a>
+                <a href="./works.html">Works</a>
+                <a href="./about.html">About</a>
+                <a href="./resume.html">Resume</a>
             </div>
             <div class="navbar-right">
                 <a href="#contact">Get in touch</a>
             </div>
         </div>
     </nav>
-
-    <div class="content-wrapper">
-        <div class="about-card" onmouseenter="expandCard(this)" onmouseleave="shrinkCard(this)" onclick="window.location.href = 'https://example.com';">
-            <div class="expand-icon"></div>
-            <img src="assets/me.JPG" alt="A picture of me" class="profile-image">
-            <div class="text-container">
-                <h1 class="name">Hey, I'm Rohan 👋</h1>
-                <h3 class="skills">Frontend | Python | AIML</h3>
+    <div class="all-content">
+        <div class="content-wrapper">
+            <div class="about-card" onmouseenter="expandCard(this)" onmouseleave="shrinkCard(this)" onclick="window.location.href = 'https://example.com';">
+                <div class="expand-icon"></div>
+                <img src="assets/me.JPG" alt="A picture of me" class="profile-image">
+                <div class="text-container">
+                    <h1 class="name">Hey, I'm Rohan 👋</h1>
+                    <h3 class="skills">Frontend | Python | AIML</h3>
+                </div>
+            </div>
+            <div class="resume-card" onclick="window.location.href = 'https://example.com';">
+                <div class="additional-info-resume">
+                    <i class="fa fa-address-card-o" style="font-size:48px;color:#ffffe4"></i>
+                    <p>LEARN MORE ABOUT ME</p>
+                    <h2>See my resume</h2>
+                </div>
+            </div>
+            <div class="linkedin-card" onclick="window.location.href = 'https://www.linkedin.com/in/rohan-pandey-a9a50b270';">
+                <i class="fa fa-linkedin" style="font-size: 48px;color:#ffffe4;"></i>
             </div>
         </div>
-        <div class="resume-card" onclick="window.location.href = 'https://example.com';">
-            <div class="additional-info-resume">
-                <i class="fa fa-address-card-o" style="font-size:48px;color:#ffffe4"></i>
-                <p>LEARN MORE ABOUT ME</p>
-                <h2>See my resume</h2>
+        <div class="content-wrapper">
+            <div class="project-one" onclick="window.location.href = 'https://example.com';">
+                <video id="projectVideo" muted playsinline loop>
+                    <source src="assets/iphone-sim.mp4" type="video/mp4">
+                </video>
+                <div class="additional-info-project-1">
+                    <p>— Recreation</p>
+                    <h2>iPhone Simulator</h2>
+                </div>
+            </div>
+            <div class="project-two" onclick="window.location.href = 'https://example.com';" onmouseover="moveTitleUp()" onmouseout="resetTitle()">
+                <video id="projectVideo2" muted playsinline loop>
+                    <source src="assets/robocar.mp4" type="video/mp4">
+                </video>
+                <div class="content">
+                    <p class="tagline">— Autonomous RoboCar</p>
+                    <h2 class="title">Drive Guardian</h2>
+                </div>
+            </div>
+            <div class="project-three" onclick="window.location.href = 'https://example.com';">
+                <video id="projectVideo3" muted playsinline loop>
+                    <source src="assets/cloaked-authority.mp4" type="video/mp4">
+                </video>
+                <div class="content">
+                    <p class="tagline">— Threejs based Freeroam</p>
+                    <h2 class="title">Cloaked Authority</h2>
+                </div>
             </div>
         </div>
-        <div class="linkedin-card" onclick="window.location.href = 'https://www.linkedin.com/in/rohan-pandey-a9a50b270';">
-            <i class="fa fa-linkedin" style="font-size: 48px;color:#ffffe4;"></i>
-        </div>
-    </div>
-    <div class="content-wrapper">
-        <div class="project-one" onclick="window.location.href = 'https://example.com';">
-            <video id="projectVideo" muted playsinline loop>
-                <source src="assets/iphone-sim.mp4" type="video/mp4">
-            </video>
-            <div class="additional-info-project-1">
-                <p>— Recreation</p>
-                <h2>iPhone Simulator</h2>
+        <div class="content-wrapper">
+            <div class="project-four" onclick="window.location.href = 'https://example.com';">
+                <img src="assets/DermAI.png" alt="DermAI" class="DermAI">
+                <div class="content">
+                    <p>— Healthcare using GenAI</p>
+                    <h2>DermAI</h2>
+                </div>
+            </div>
+            <div class="project-five" onclick="window.location.href = 'https://example.com';">
+                <img src="assets/image-classifier.png" alt="LadybugVsShark">
+                <div class="content">
+                    <p >— (Binary) Image Classifier</p>
+                    <h2 class="title">Insect or Shark?</h2>
+                </div>
+            </div>
+            <div class="project-six" onclick="window.location.href = 'https://example.com';">
+                <img src="assets/snookers.png" alt="Snookerz">
+                <img src="assets/snookers-hover.png" alt="Snookerz" class="hover-image">
+                <div class="content">
+                    <p>— Product Showcase</p>
+                    <h2>Snookerz</h2>
+                </div>
             </div>
         </div>
-        <div class="project-two" onclick="window.location.href = 'https://example.com';" onmouseover="moveTitleUp()" onmouseout="resetTitle()">
-            <video id="projectVideo2" muted playsinline loop>
-                <source src="assets/robocar.mp4" type="video/mp4">
-            </video>
-            <div class="content">
-                <p class="tagline">— Autonomous RoboCar</p>
-                <h2 class="title">Drive Guardian</h2>
-            </div>
-        </div>
-        <div class="project-three" onclick="window.location.href = 'https://example.com';">
-            <video id="projectVideo3" muted playsinline loop>
-                <source src="assets/cloaked-authority.mp4" type="video/mp4">
-            </video>
-            <div class="content">
-                <p class="tagline">— Threejs based Freeroam</p>
-                <h2 class="title">Cloaked Authority</h2>
-            </div>
-        </div>
-    </div>
-    <div class="content-wrapper">
-        <div class="project-four" onclick="window.location.href = 'https://example.com';">
-            <img src="assets/DermAI.png" alt="DermAI" class="DermAI">
-            <div class="content">
-                <p>— Healthcare using GenAI</p>
-                <h2>DermAI</h2>
-            </div>
-        </div>
-        <div class="project-five" onclick="window.location.href = 'https://example.com';">
-            <img src="assets/image-classifier.png" alt="LadybugVsShark">
-            <div class="content">
-                <p >— (Binary) Image Classifier</p>
-                <h2 class="title">Insect or Shark?</h2>
-            </div>
-        </div>
-        <div class="project-six" onclick="window.location.href = 'https://example.com';">
-            <img src="assets/snookers.png" alt="Snookerz">
-            <img src="assets/snookers-hover.png" alt="Snookerz" class="hover-image">
-            <div class="content">
-                <p>— Product Showcase</p>
-                <h2>Snookerz</h2>
-            </div>
-        </div>
-    </div>
-    <div class="content-wrapper">
-        <div class="contact-card">
-            <div class="content">
-                <p class="tagline">Let's work together ✨</p>
-                <h2 class="title">Get in touch now</h2>
-            </div>
-        </div>        
-        <div class="achievement-card">
-            <img src="assets/achievement.png" alt="achievement">
-            <img src="assets/achievement-hover.png" alt="achievement" class="hover-image">
-            <div class="content">
-                <p class="tagline">Achievements</p>
+        <div class="content-wrapper">
+            <div class="contact-card">
+                <div class="content">
+                    <p class="tagline">Let's work together ✨</p>
+                    <h2 class="title">Get in touch now</h2>
+                </div>
+            </div>        
+            <div class="achievement-card">
+                <img src="assets/achievement.png" alt="achievement">
+                <img src="assets/achievement-hover.png" alt="achievement" class="hover-image">
+                <div class="content">
+                    <p class="tagline">Achievements</p>
+                </div>
             </div>
         </div>
     </div>
     <footer class="footer">
         <div class="footer-content">
-            <a href="index.html"><img src="assets/RohanPandey.png" alt="Rohan Pandey" class="footer-logo"></a>
+            <a href="./index.html"><img src="assets/RohanPandey.png" alt="Rohan Pandey" class="footer-logo"></a>
             <nav class="footer-nav">
-                <a href="#home">Home</a>
-                <a href="#work">Work</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <a href="./index.html">Home</a>
+                <a href="./work.html">Work</a>
+                <a href="./about.html">About</a>
+                <a href="./contact.html">Contact</a>
             </nav>
         </div>
         <div class="footer-content">
             <div class="social-icons">
-                <a href="#" class="social-icon">
+                <a href="https://www.linkedin.com/in/rohan-pandey-a9a50b270" class="social-icon">
                     <i class="fa fa-linkedin"></i>
                 </a>
-                <a href="#" class="social-icon">
+                <a href="https://github.com/rohan-pandeyy/" class="social-icon">
                     <i class="fa fa-github"></i>
                 </a>
-                <a href="#" class="social-icon">
+                <a href="https://x.com/aboongalakaka?s=21" class="social-icon">
                     <i class="fa fa-close"></i>
                 </a>
-                <a href="#" class="social-icon">
+                <a href="https://www.youtube.com/channel/UCXD7SMuYj6Ppf4FbeD7OE1A" class="social-icon">
                     <i class="fa fa-youtube"></i>
                 </a>
             </div>
