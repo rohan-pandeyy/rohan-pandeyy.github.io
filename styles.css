@@ -420,3 +420,57 @@ h2 ,p {
     font-size: 42px;
     font-weight: bold;
 }
+
+.achievement-card {
+    margin-left: 20px;
+    width: 637.5px;
+    height: 280px;
+    background-color: #333639;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative; /* Ensure the content is positioned relative to this */
+}
+
+.achievement-card:hover {
+    background-color: #2e86af;
+    transform: scale(1.05);
+}
+
+.achievement-card .content {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    text-align: right; /* Align text to the right */
+}
+
+.achievement-card .tagline {
+    margin: 0;
+    color: #ffffe4;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.achievement-card img {
+    position: absolute;
+    top: 15%;
+    left: 29%;
+    height: 70%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.achievement-card:hover img {
+    opacity: 0; 
+}
+
+.achievement-card .hover-image {
+    opacity: 0;
+    transform: translateY(10px) scale(1.05);
+}
+
+.achievement-card:hover .hover-image {
+    opacity: 1;
+}
