@@ -90,8 +90,14 @@ p {
     width: 925px;
     height: 280px;
     border-radius: 10px;
-    background-color: #333639;
+    background-color: #3b3b40;
     overflow: hidden;
+}
+
+.welcome-card video{
+    width: 835px;
+    display: block;
+    margin: 0 auto; 
 }
 
 .info-card {
