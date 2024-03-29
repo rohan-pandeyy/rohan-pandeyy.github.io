@@ -71,6 +71,13 @@ p {
     padding-right: 15%;
 }
 
+.content-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 1%;
+}
+
 .title {
     color: #d9b061;
     font-size: 17.64em;
@@ -85,4 +92,53 @@ p {
     border-radius: 10px;
     background-color: #333639;
     overflow: hidden;
+}
+
+.info-card {
+    width: 350px;
+    height: 280px;
+    background-color: #333639;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.info-card .content {
+    padding: 20px;
+}
+
+.info-card .tagline,
+.about-me .content .message{
+    margin: 0;
+    font-size: 20px;
+    color: #ffffe4;
+}
+
+.info-card .title {
+    margin: 50px 0 20px 0;
+    font-size: 40px;
+    color: #e7ce5c;
+    font-weight: bold;
+    text-align: left;
+}
+
+.about-me {
+    width: 637.5px;
+    height: 280px;
+    background-color: #333639;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.about-me .content {
+    margin: 12% 5% 6% 5%;
+}
+
+.about-me .content .title {
+    margin: 0;
+    font-size: xx-large;
+    text-align: left;
+    color: #e7ce5c;
+    padding-bottom: 2%;
 }
