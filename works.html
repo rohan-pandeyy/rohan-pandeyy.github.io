@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Works</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    ::-webkit-scrollbar {
+      width: 13px;
+    }
+
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: grey;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6e6e6e;
+    }
+
+    .all-works {
+    color: #d9b061;
+    font-size: 17.6em;
+    font-weight: bold;
+    text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+      <div class="container">
+          <div class="navbar-left">
+              <a href="./index.html"><img src="assets/RohanPandey.png" alt="RohanPandey"></a>
+          </div>
+          <div class="navbar-center">
+              <a href="./index.html">Home</a>
+              <a href="./works.html">Works</a>
+              <a href="./about.html">About</a>
+              <a href="./resume.html">Resume</a>
+          </div>
+          <div class="navbar-right">
+              <a href="./contact.html">Get in touch</a>
+          </div>
+      </div>
+  </nav>
+  <div class="all-content">
+    <div class="all-works">All Works</div>
+    <div class="content-wrapper">
+      <a href="https://example.com" target="_blank"><div class="project-one">
+          <video id="projectVideo" muted playsinline loop>
+              <source src="assets/iphone-sim.mp4" type="video/mp4">
+          </video>
+          <div class="additional-info-project-1">
+              <p>— Recreation</p>
+              <h2>iPhone Simulator</h2>
+          </div>
+      </div></a>
+      <div class="project-two" onclick="window.location.href = 'https://example.com';" onmouseover="moveTitleUp()" onmouseout="resetTitle()">
+          <video id="projectVideo2" muted playsinline loop>
+              <source src="assets/robocar.mp4" type="video/mp4">
+          </video>
+          <div class="content">
+              <p class="tagline">— Autonomous RoboCar</p>
+              <h2 class="title">Drive Guardian</h2>
+          </div>
+      </div>
+      <a href="https://example.com" target="_blank"><div class="project-three">
+          <video id="projectVideo3" muted playsinline loop>
+              <source src="assets/cloaked-authority.mp4" type="video/mp4">
+          </video>
+          <div class="content">
+              <p class="tagline">— Threejs based Freeroam</p>
+              <h2 class="title">Cloaked Authority</h2>
+          </div>
+      </div>
+    </div></a>
+    <div class="content-wrapper">
+      <a href="https://youtu.be/82kw3KnznU4" target="_blank"><div class="project-four">
+            <img src="assets/DermAI.png" alt="DermAI" class="DermAI">
+            <div class="content">
+                <p>— Healthcare using GenAI</p>
+                <h2>DermAI</h2>
+            </div>
+        </div></a>
+        <a href="https://example.com" target="_blank"><div class="project-five">
+        <img src="assets/image-classifier.png" alt="LadybugVsShark">
+        <div class="content">
+          <p >— (Binary) Image Classifier</p>
+          <h2 class="title">Insect or Shark?</h2>
+        </div>
+      </div></a>
+      <a href="https://example.com" target="_blank"><div class="project-six">
+        <img src="assets/snookers.png" alt="Snookerz">
+        <img src="assets/snookers-hover.png" alt="Snookerz" class="hover-image">
+        <div class="content">
+          <p>— Product Showcase</p>
+          <h2>Snookerz</h2>
+        </div>
+      </div>
+    </div></a>
+  </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+          <a href="./index.html"><img src="assets/RohanPandey.png" alt="Rohan Pandey" class="footer-logo"></a>
+          <nav class="footer-nav">
+              <a href="./index.html">Home</a>
+              <a href="./works.html">Work</a>
+              <a href="./about.html">About</a>
+              <a href="./contact.html">Contact</a>
+          </nav>
+      </div>
+      <div class="footer-content">
+          <div class="social-icons">
+              <a href="https://www.linkedin.com/in/rohan-pandey-a9a50b270" class="social-icon">
+                  <i class="fa fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/rohan-pandeyy/" class="social-icon">
+                  <i class="fa fa-github"></i>
+              </a>
+              <a href="https://x.com/aboongalakaka?s=21" class="social-icon">
+                  <i class="fa fa-close"></i>
+              </a>
+              <a href="https://www.youtube.com/channel/UCXD7SMuYj6Ppf4FbeD7OE1A" class="social-icon">
+                  <i class="fa fa-youtube"></i>
+              </a>
+          </div>
+      </div>
+      <div class="footer-texts">
+          <p>Design by JamesChugh</p>
+          <p>Website by Rohan with ❤️</p>
+          <p>Personal Portfolio</p>
+      </div>
+  </footer> 
+    <script src="script.js"></script>
+</body> 
+</html>

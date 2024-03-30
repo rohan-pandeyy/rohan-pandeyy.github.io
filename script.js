@@ -247,4 +247,6 @@ projectSix.addEventListener('mouseout', () => {
   sixTagline.style.transition = 'opacity 0.3s ease-in-out';
 });
 
-
+window.onload = function() {
+  document.querySelector('.all-content').classList.add('move-up');
+};

@@ -61,3 +61,7 @@ if (cardElement) {
 } else {
   console.error("Card element not found!");
 }
+
+window.onload = function() {
+  document.querySelector('.all-content').classList.add('move-up');
+};
