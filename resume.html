@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="navbarfooter.css">
+    <link rel="stylesheet" href="resume.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    ::-webkit-scrollbar {
+      width: 13px;
+    }
+
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: grey;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6e6e6e;
+    }
+
+    .all-works {
+    color: #d9b061;
+    font-size: 17.6em;
+    font-weight: bold;
+    text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-left">
+                <a href="./index.html"><img src="assets/RohanPandey.png" alt="RohanPandey"></a>
+            </div>
+            <div class="navbar-center">
+                <a href="./index.html">Home</a>
+                <a href="./works.html">Works</a>
+                <a href="./about.html">About</a>
+                <a href="./resume.html">Resume</a>
+            </div>
+            <div class="navbar-right">
+                <a href="./contact.html">Get in touch</a>
+            </div>
+        </div>
+    </nav>
+    <div class="all-content">
+        <div class="content-wrapper">
+            <div class="left-resume-container">
+                <div class="left-column">
+                    <div class="profile-card">
+                        <img src="assets/me.JPG" alt="Profile Picture">
+                        <h2>Rohan Pandey</h2>
+                        <h3>Frontend & ML enthusiast</h3>
+                        <p>rohan1706pandey@gmail.com</p>
+                        <a href="./contact.html"><button>Contact Me</button></a>
+                    </div>
+                </div>
+                <div class="left-column">
+                    <div class="social-card">
+                        <a href="https://www.linkedin.com/in/rohan-pandey-a9a50b270" target="_blank" class="social-link">
+                            <span>LinkedIn</span>
+                            <i class="fa fa-linkedin" style="font-size:20px"></i>
+                        </a>
+                        <hr>
+                        <a href="https://github.com/rohan-pandeyy/" target="_blank" class="social-link">
+                            <span>GitHub</span>
+                            <i class="fa fa-github" style="font-size:20px"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <h2>About Me</h2>
+                <p>Hello, I'm a Frontend Developer with a growing passion for learning how machines learn and interact with real life scenarios.</p>
+                
+                <h2>Experiences</h2>
+                <h3>Frontend Dev intern at a startup</h3>
+                <div class="timeline">
+                    <p>May 2023-Aug 2023</p>
+                </div>
+                <p>description.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            document.querySelector('.all-content').classList.add('move-up');
+        };
+    </script>
+</body>
+</html>
