@@ -9,15 +9,15 @@ h1 {
     color: #d9d5c9;
 }
 
-h2 {
+.contact-info h2 {
     font-size: 40px;
 }
 
-p {
+.contact-info p {
     font-size: 22px;
 }
 
-a {
+.contact-info a {
     text-decoration: none;
 }
 
