@@ -38,6 +38,11 @@ function shrinkCard(card) {
 
 var cardElement = document.querySelector(".resume-card");
 
+function openInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
+
 if (cardElement) {
   cardElement.addEventListener("mouseenter", function() {
     var iconElement = this.querySelector(".fa.fa-address-card-o");
