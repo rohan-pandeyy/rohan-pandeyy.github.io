@@ -156,7 +156,7 @@ h2 ,p {
     width: 350px;
     height: 280px;
     border-radius: 10px;
-    background-color: #d96e5d;
+    background-color: #D07560;
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.3s;
@@ -187,7 +187,7 @@ h2 ,p {
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 10px;
-    background-color: #a39089;
+    background-color: #A1918A;
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.3s;
@@ -228,7 +228,7 @@ h2 ,p {
 .project-three {
     width: 350px;
     height: 280px;
-    background-color: #091e49;
+    background-color: #0F1A48;
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
