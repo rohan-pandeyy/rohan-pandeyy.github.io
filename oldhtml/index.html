@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronnie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbarfooter.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    ::-webkit-scrollbar {
+      width: 13px;
+    }
+
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: grey;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6e6e6e;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-left">
+                <a href="./"><img src="assets/RohanPandey.png" alt="RohanPandey"></a>
+            </div>
+            <div class="navbar-center">
+                <a href="./">Home</a>
+                <a href="./works.html">Works</a>
+                <a href="./about.html">About</a>
+                <a href="./resume.html">Resume</a>
+            </div>
+            <div class="navbar-right">
+                <a href="./contact.html">Get in touch</a>
+            </div>
+        </div>
+    </nav>
+    <div class="all-content">
+        <div class="content-wrapper">
+            <div class="about-card" onmouseenter="expandCard(this)" onmouseleave="shrinkCard(this)" onclick="window.location.href = './about.html';">
+                <div class="expand-icon"></div>
+                <img src="assets/me.JPG" alt="A picture of me" class="profile-image">
+                <div class="text-container">
+                    <h1 class="name">Hey, I'm Rohan 👋</h1>
+                    <h3 class="skills">Frontend | Python | AIML</h3>
+                </div>
+            </div>
+            <div class="resume-card" onclick="window.location.href = './resume.html';">
+                <div class="additional-info-resume">
+                    <i class="fa fa-address-card-o" style="font-size:48px;color:#ffffe4"></i>
+                    <p>LEARN MORE ABOUT ME</p>
+                    <h2>See my resume</h2>
+                </div>
+            </div>
+            <div class="linkedin-card" onclick="openInNewTab('https://www.linkedin.com/in/rohan-pandey-a9a50b270')">
+                <i class="fa fa-linkedin" style="font-size: 48px;color:#ffffe4;"></i>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="project-one" onclick="openInNewTab('https://rohan-pandeyy.github.io/iphone-sim/')">
+                <video id="projectVideo" muted playsinline loop>
+                    <source src="assets/iphone-sim.mp4" type="video/mp4">
+                </video>
+                <div class="additional-info-project-1">
+                    <p>— Recreation</p>
+                    <h2>iPhone Simulator</h2>
+                </div>
+            </div>
+            <div class="project-two" onclick="window.location.href = 'https://example.com';" onmouseover="moveTitleUp()" onmouseout="resetTitle()">
+                <video id="projectVideo2" muted playsinline loop>
+                    <source src="assets/robocar.mp4" type="video/mp4">
+                </video>
+                <div class="content">
+                    <p class="tagline">— Autonomous RoboCar</p>
+                    <h2 class="title">Drive Guardian</h2>
+                </div>
+            </div>
+            <div class="project-three" onclick="openInNewTab('https://rohan-pandeyy.github.io/Cloaked-Authority/')">
+                <video id="projectVideo3" muted playsinline loop>
+                    <source src="assets/cloaked-authority.mp4" type="video/mp4">
+                </video>
+                <div class="content">
+                    <p class="tagline">— Threejs based Freeroam</p>
+                    <h2 class="title">Cloaked Authority</h2>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="project-four" onclick="openInNewTab('https://youtu.be/82kw3KnznU4')">
+                <img src="assets/DermAI.png" alt="DermAI" class="DermAI">
+                <div class="content">
+                    <p>— Healthcare using GenAI</p>
+                    <h2>DermAI</h2>
+                </div>
+            </div>
+            <div class="project-five" onclick="window.location.href = 'https://example.com';">
+                <img src="assets/image-classifier.png" alt="LadybugVsShark">
+                <div class="content">
+                    <p >— (Binary) Image Classifier</p>
+                    <h2 class="title">Insect or Shark?</h2>
+                </div>
+            </div>
+            <div class="project-six" onclick="window.location.href = 'https://example.com';">
+                <img src="assets/snookers.png" alt="Snookerz">
+                <img src="assets/snookers-hover.png" alt="Snookerz" class="hover-image">
+                <div class="content">
+                    <p>— Product Showcase</p>
+                    <h2>Snookerz</h2>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="contact-card" onclick="window.location.href = './contact.html';">
+                <div class="content">
+                    <p class="tagline">Let's work together ✨</p>
+                    <h2 class="title">Get in touch now</h2>
+                </div>
+            </div>        
+            <div class="achievement-card">
+                <img src="assets/achievement.png" alt="achievement">
+                <img src="assets/achievement-hover.png" alt="achievement" class="hover-image">
+                <div class="content">
+                    <p class="tagline">Achievements</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="./"><img src="assets/RohanPandey.png" alt="Rohan Pandey" class="footer-logo"></a>
+            <nav class="footer-nav">
+                <a href="./">Home</a>
+                <a href="./works.html">Work</a>
+                <a href="./about.html">About</a>
+                <a href="./contact.html">Contact</a>
+            </nav>
+        </div>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/rohan-pandey-a9a50b270" target="_blank" class="social-icon">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/rohan-pandeyy/" target="_blank" class="social-icon">
+                    <i class="fa fa-github"></i>
+                </a>
+                <a href="https://x.com/aboongalakaka?s=21" target="_blank" class="social-icon">
+                    <i class="fa fa-close"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCXD7SMuYj6Ppf4FbeD7OE1A" target="_blank" class="social-icon">
+                    <i class="fa fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-texts">
+            <p>Design by JamesChugh</p>
+            <p>Website by Rohan with ❤️</p>
+            <p>Personal Portfolio</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -3,171 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ronnie</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="navbarfooter.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Rohan Pandey</title>
     <style>
-    ::-webkit-scrollbar {
-      width: 13px;
-    }
+        :root {
+            --color-bg1: #000000;
+            --color-bg2: #000000;
+            --color1: 255, 255, 255;
+            --color2: 113, 121, 126;
+            --color3: 169, 169, 169;
+            --color4: 132, 136, 132;
+            --color5: 211, 211, 211;
+            --color-interactive: 255, 255, 255;
+            --circle-size: 80%;
+            --blending: hard-light;
+        }
 
-    ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey;
-      border-radius: 10px;
-    }
+        @keyframes moveInCircle {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-    ::-webkit-scrollbar-thumb {
-      background: grey;
-      border-radius: 10px;
-    }
+        @keyframes moveVertical {
+            0% {
+                transform: translateY(-50%);
+            }
+            50% {
+                transform: translateY(50%);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
 
-    ::-webkit-scrollbar-thumb:hover {
-      background: #6e6e6e;
-    }
-  </style>
+        @keyframes moveHorizontal {
+            0% {
+                transform: translateX(-50%) translateY(-10%);
+            }
+            50% {
+                transform: translateX(50%) translateY(10%);
+            }
+            100% {
+                transform: translateX(-50%) translateY(-10%);
+            }
+        }
+
+        .gradient-bg {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .gradient-bg svg {
+            display: none;
+        }
+
+        .gradients-container {
+            position: absolute;
+            filter: url(#goo) blur(40px);
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .g1, .g2, .g3, .g4, .g5 {
+            position: absolute;
+            mix-blend-mode: var(--blending);
+            width: var(--circle-size);
+            height: var(--circle-size);
+        }
+
+        .g1 {
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0) 50%) no-repeat;
+            animation: moveVertical 30s ease infinite;
+            top: calc(50% - (var(--circle-size) * 0.5));
+            left: calc(50% - (var(--circle-size) * 0.5));
+        }
+
+        .g2 {
+            background: radial-gradient(circle at center, rgba(113, 121, 126, 0.8) 0, rgba(113, 121, 126, 0) 50%) no-repeat;
+            animation: moveInCircle 20s reverse infinite;
+            transform-origin: calc(50% - 400px);
+        }
+
+        .g3 {
+            background: radial-gradient(circle at center, rgba(169, 169, 169, 0.8) 0, rgba(169, 169, 169, 0) 50%) no-repeat;
+            animation: moveInCircle 40s linear infinite;
+            top: calc(50% - (var(--circle-size) * 0.5 + 200px));
+            left: calc(50% - (var(--circle-size) * 0.5 - 500px));
+            transform-origin: calc(50% + 400px);
+        }
+
+        .g4 {
+            background: radial-gradient(circle at center, rgba(132, 136, 132, 0.8) 0, rgba(132, 136, 132, 0) 50%) no-repeat;
+            animation: moveHorizontal 40s ease infinite;
+        }
+
+        .g5 {
+            background: radial-gradient(circle at center, rgba(211, 211, 211, 0.8) 0, rgba(211, 211, 211, 0) 50%) no-repeat;
+            width: calc(var(--circle-size) * 2);
+            height: calc(var(--circle-size) * 2);
+            animation: moveInCircle 20s ease infinite;
+            transform-origin: calc(50% - 800px) calc(50% + 200px);
+        }
+
+        .interactive {
+            position: absolute;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0) 50%) no-repeat;
+            mix-blend-mode: var(--blending);
+            width: 100%;
+            height: 100%;
+            top: -50%;
+            left: -50%;
+            opacity: 0.7;
+        }
+
+        /* Centered text styling */
+        .centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+
+        .centered-text h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        .centered-text p {
+            font-size: 1.2em;
+        }
+
+        h1 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-left">
-                <a href="./"><img src="assets/RohanPandey.png" alt="RohanPandey"></a>
-            </div>
-            <div class="navbar-center">
-                <a href="./">Home</a>
-                <a href="./works.html">Works</a>
-                <a href="./about.html">About</a>
-                <a href="./resume.html">Resume</a>
-            </div>
-            <div class="navbar-right">
-                <a href="./contact.html">Get in touch</a>
-            </div>
-        </div>
-    </nav>
-    <div class="all-content">
-        <div class="content-wrapper">
-            <div class="about-card" onmouseenter="expandCard(this)" onmouseleave="shrinkCard(this)" onclick="window.location.href = './about.html';">
-                <div class="expand-icon"></div>
-                <img src="assets/me.JPG" alt="A picture of me" class="profile-image">
-                <div class="text-container">
-                    <h1 class="name">Hey, I'm Rohan 👋</h1>
-                    <h3 class="skills">Frontend | Python | AIML</h3>
-                </div>
-            </div>
-            <div class="resume-card" onclick="window.location.href = './resume.html';">
-                <div class="additional-info-resume">
-                    <i class="fa fa-address-card-o" style="font-size:48px;color:#ffffe4"></i>
-                    <p>LEARN MORE ABOUT ME</p>
-                    <h2>See my resume</h2>
-                </div>
-            </div>
-            <div class="linkedin-card" onclick="openInNewTab('https://www.linkedin.com/in/rohan-pandey-a9a50b270')">
-                <i class="fa fa-linkedin" style="font-size: 48px;color:#ffffe4;"></i>
-            </div>
-        </div>
-        <div class="content-wrapper">
-            <div class="project-one" onclick="openInNewTab('https://rohan-pandeyy.github.io/iphone-sim/')">
-                <video id="projectVideo" muted playsinline loop>
-                    <source src="assets/iphone-sim.mp4" type="video/mp4">
-                </video>
-                <div class="additional-info-project-1">
-                    <p>— Recreation</p>
-                    <h2>iPhone Simulator</h2>
-                </div>
-            </div>
-            <div class="project-two" onclick="window.location.href = 'https://example.com';" onmouseover="moveTitleUp()" onmouseout="resetTitle()">
-                <video id="projectVideo2" muted playsinline loop>
-                    <source src="assets/robocar.mp4" type="video/mp4">
-                </video>
-                <div class="content">
-                    <p class="tagline">— Autonomous RoboCar</p>
-                    <h2 class="title">Drive Guardian</h2>
-                </div>
-            </div>
-            <div class="project-three" onclick="openInNewTab('https://rohan-pandeyy.github.io/Cloaked-Authority/')">
-                <video id="projectVideo3" muted playsinline loop>
-                    <source src="assets/cloaked-authority.mp4" type="video/mp4">
-                </video>
-                <div class="content">
-                    <p class="tagline">— Threejs based Freeroam</p>
-                    <h2 class="title">Cloaked Authority</h2>
-                </div>
-            </div>
-        </div>
-        <div class="content-wrapper">
-            <div class="project-four" onclick="openInNewTab('https://youtu.be/82kw3KnznU4')">
-                <img src="assets/DermAI.png" alt="DermAI" class="DermAI">
-                <div class="content">
-                    <p>— Healthcare using GenAI</p>
-                    <h2>DermAI</h2>
-                </div>
-            </div>
-            <div class="project-five" onclick="window.location.href = 'https://example.com';">
-                <img src="assets/image-classifier.png" alt="LadybugVsShark">
-                <div class="content">
-                    <p >— (Binary) Image Classifier</p>
-                    <h2 class="title">Insect or Shark?</h2>
-                </div>
-            </div>
-            <div class="project-six" onclick="window.location.href = 'https://example.com';">
-                <img src="assets/snookers.png" alt="Snookerz">
-                <img src="assets/snookers-hover.png" alt="Snookerz" class="hover-image">
-                <div class="content">
-                    <p>— Product Showcase</p>
-                    <h2>Snookerz</h2>
-                </div>
-            </div>
-        </div>
-        <div class="content-wrapper">
-            <div class="contact-card" onclick="window.location.href = './contact.html';">
-                <div class="content">
-                    <p class="tagline">Let's work together ✨</p>
-                    <h2 class="title">Get in touch now</h2>
-                </div>
-            </div>        
-            <div class="achievement-card">
-                <img src="assets/achievement.png" alt="achievement">
-                <img src="assets/achievement-hover.png" alt="achievement" class="hover-image">
-                <div class="content">
-                    <p class="tagline">Achievements</p>
-                </div>
-            </div>
+    <div class="gradient-bg">
+        <div class="gradients-container">
+            <div class="g1"></div>
+            <div class="g2"></div>
+            <div class="g3"></div>
+            <div class="g4"></div>
+            <div class="g5"></div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="footer-content">
-            <a href="./"><img src="assets/RohanPandey.png" alt="Rohan Pandey" class="footer-logo"></a>
-            <nav class="footer-nav">
-                <a href="./">Home</a>
-                <a href="./works.html">Work</a>
-                <a href="./about.html">About</a>
-                <a href="./contact.html">Contact</a>
-            </nav>
-        </div>
-        <div class="footer-content">
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/rohan-pandey-a9a50b270" target="_blank" class="social-icon">
-                    <i class="fa fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/rohan-pandeyy/" target="_blank" class="social-icon">
-                    <i class="fa fa-github"></i>
-                </a>
-                <a href="https://x.com/aboongalakaka?s=21" target="_blank" class="social-icon">
-                    <i class="fa fa-close"></i>
-                </a>
-                <a href="https://www.youtube.com/channel/UCXD7SMuYj6Ppf4FbeD7OE1A" target="_blank" class="social-icon">
-                    <i class="fa fa-youtube"></i>
-                </a>
-            </div>
-        </div>
-        <div class="footer-texts">
-            <p>Design by JamesChugh</p>
-            <p>Website by Rohan with ❤️</p>
-            <p>Personal Portfolio</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    
+    <!-- Centered "Under Maintenance" text -->
+    <div class="centered-text">
+        <h1>Under Maintenance</h1>
+        <p>I'm currently refining the website, check back soon :)</p>
+    </div>
 </body>
 </html>

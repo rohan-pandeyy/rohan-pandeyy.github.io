@@ -65,3 +65,8 @@ if (cardElement) {
 window.onload = function() {
   document.querySelector('.all-content').classList.add('move-up');
 };
+
+function openInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
