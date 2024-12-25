@@ -31,7 +31,6 @@
     &-center,
     &-right {
         display: flex;
-        flex-grow: 1;
         justify-content: center;
         text-align: center;
         @media (max-width: 872px) {
@@ -45,10 +44,6 @@
             padding: 10px;
             border-top: 1px solid #333;
             gap: 10px;
-
-            &[data-open="true"] {
-                display: flex;
-            }
         }
     }
     
