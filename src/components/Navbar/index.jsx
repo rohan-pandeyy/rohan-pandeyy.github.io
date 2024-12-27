@@ -27,7 +27,6 @@ const Navbar = () => {
     
     return (
         <nav className="navbar">
-            <div className="container">
                 <div className="navbar-left">
                     <Link to="/">
                         <img src={rohanPandey} alt="RohanPandey" />
@@ -56,7 +55,6 @@ const Navbar = () => {
                     <span></span>
                     <span></span>
                 </button>
-            </div>
         </nav>
     );
 };

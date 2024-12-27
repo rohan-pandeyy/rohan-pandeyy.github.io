@@ -1,24 +1,20 @@
-@import '../shared.scss';
-
 .navbar {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 15vw;
+    right: 15vw;
     background-color: #000;
-    padding: 20px 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 20px 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-weight: bold;
     @media (max-width: 872px) {
-        padding: 30px 5%;
-    }
-   
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
+        padding: 20px 0;
+        left: 5vw;
+        right: 5vw;
     }
     
     &-left {
@@ -32,7 +28,6 @@
     &-right {
         display: flex;
         justify-content: center;
-        text-align: center;
         @media (max-width: 872px) {
             display: none;
             flex-direction: column;
@@ -133,8 +128,7 @@
         height: 15px;
         width: 30px;
         position: absolute;
-        top: 0;
-        right: 20px;
+        right: 0;
         background-color: transparent;
         border: none;
 

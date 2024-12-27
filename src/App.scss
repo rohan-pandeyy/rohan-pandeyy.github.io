@@ -27,3 +27,26 @@ input,
 textarea {
   font-family: 'Helvetica Neue', sans-serif;
 }
+
+.container {
+  position: relative;
+  margin: 0 15vw;
+  width: 70vw;
+
+  @media (max-width: 872px) {
+    margin: 0 5vw;
+    width: 90vw;
+  }
+}
+
+// .row {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   gap: 20px;
+//   padding: 20px 0;
+//   max-height: 500px;
+//   @media (max-width: 872px) {
+//     max-height: fit-content;
+//   }
+// }
