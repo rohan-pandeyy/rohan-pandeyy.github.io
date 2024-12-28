@@ -1,0 +1,73 @@
+.rectangle-card {
+    width: 50%;
+    height: 280px;
+    background-color: #333639;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s;
+    position: relative;
+    box-sizing: border-box; // added for about
+  
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &.no-hover {
+        &:hover {
+            transform: none;
+            cursor: auto;
+        }
+    }
+
+    @media (max-width: 872px) {
+     width: 95%;
+    }
+}
+
+.square-card {
+    width: 25%;
+    height: 280px;
+    background-color: #333639;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s;
+    position: relative;
+    box-sizing: border-box; // added for about
+  
+    &:hover {
+        transform: scale(1.05);
+    }
+    
+    &.no-hover {
+        &:hover {
+            transform: none;
+            cursor: auto;
+        }
+    }
+    
+    @media (max-width: 872px) {
+     width: 95%;
+    }
+}
+
+.welcome-card {
+    width: 75%;
+    height: 280px;
+    border-radius: 10px;
+    background-color: #3b3b40;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 872px) {
+        width: 95%;
+    }
+
+    .welcome-video {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}

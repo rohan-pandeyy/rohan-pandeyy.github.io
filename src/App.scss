@@ -1,4 +1,4 @@
-$primary-color: #d9b061;
+$primary-color: #ffc552;
 
 @font-face {
   font-family: 'Helvetica Neue';
@@ -50,3 +50,65 @@ textarea {
 //     max-height: fit-content;
 //   }
 // }
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.zoom-load {
+  animation: scale-in 0.5s ease-out;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.upwards-load {
+  animation: slide-up 0.5s ease-out;
+}
+
+h1 {
+  color: #ffc552;
+  font-family: "DM Sans", serif;
+  font-weight: 800;
+  font-size: 35px;
+  @media (max-width: 1330px) { // for about page
+    font-size: 30px;
+  }
+  @media (max-width: 1140px) {
+    font-size: 28px;
+  }
+  @media (max-width: 872px) {
+    font-size: 35px;
+  }
+}
+
+p {
+  color: #ffffe4;
+  font-family: "DM Sans", serif;
+  font-weight: 500;
+  font-size: 20px;
+  @media (max-width: 1330px) {
+    font-size: 18px;
+  }
+  @media (max-width: 1140px) {
+    font-size: 15px;
+  }
+  @media (max-width: 872px) {
+    font-size: 20px;
+  }
+}
