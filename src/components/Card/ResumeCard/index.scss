@@ -1,0 +1,33 @@
+.Resume-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    &:hover {
+        background-color: #e1526a;
+        h2 {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .User-icon {
+        width: 15%;
+        height: auto;
+        transition: content 0.3s;
+        
+        @media (max-width: 872px) {
+            width: 10vw;
+            content: url('../../../assets/icons/UserIconWhite.png');
+        }
+    }
+
+    &:hover .User-icon {
+        content: url('../../../assets/icons/UserIconFill.png');
+        @media (max-width: 872px) {
+            content: url('../../../assets/icons/UserIconWhite.png');
+        }
+        
+    }
+}

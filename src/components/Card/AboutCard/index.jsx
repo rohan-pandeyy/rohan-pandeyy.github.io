@@ -2,7 +2,7 @@ import { RectangleCard } from '../cardSizes';
 import './index.scss';
 import me from '../../../assets/images/me.png';
 
-const AboutPage = () => {
+const AboutCard = () => {
     return (
         <>
             <RectangleCard style={{ padding: '20px' }} onClick={() => {console.log('Card clicked!');}}>
@@ -14,4 +14,4 @@ const AboutPage = () => {
     );
 };
 
-export default AboutPage;
+export default AboutCard;

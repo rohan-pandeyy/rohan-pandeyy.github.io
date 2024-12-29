@@ -2,7 +2,7 @@
     width: 50%;
     height: 280px;
     background-color: #333639;
-    border-radius: 10px;
+    border-radius: 24px;
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.5s, border 0s, background-color 0.3s;
@@ -28,6 +28,7 @@
     
         &:hover {
             border: 1px solid transparent;
+            transform: none;
         }
     }
 }
@@ -36,7 +37,7 @@
     width: 25%;
     height: 280px;
     background-color: #333639;
-    border-radius: 10px;
+    border-radius: 24px;
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.5s, border 0s, background-color 0.3s;
@@ -62,6 +63,7 @@
 
         &:hover {
             border: 1px solid transparent;
+            transform: none;
         }
     }
 }
