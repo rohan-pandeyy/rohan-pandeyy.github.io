@@ -1,0 +1,23 @@
+.linkedin-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: #2875b1;
+    }
+
+    .linkedin-icon {
+        width: 40%;
+        height: auto;
+        transition: content 0.3s;
+        
+        @media (max-width: 872px) {
+            width: 30vw;
+            content: url('../../../assets/icons/LinkedInIconFill.png');
+        }
+    }
+    &:hover .linkedin-icon {
+        content: url('../../../assets/icons/LinkedInIconFill.png');
+    }
+}

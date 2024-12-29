@@ -5,23 +5,30 @@
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.5s, border 0s, background-color 0.3s;
     position: relative;
     box-sizing: border-box; // added for about
+    border: 1px solid transparent;
   
     &:hover {
         transform: scale(1.05);
+        border: 1px solid #fff;
     }
 
     &.no-hover {
         &:hover {
             transform: none;
             cursor: auto;
+            border: 1px solid transparent;
         }
     }
 
     @media (max-width: 872px) {
-     width: 95%;
+        width: 95%;
+    
+        &:hover {
+            border: 1px solid transparent;
+        }
     }
 }
 
@@ -32,23 +39,30 @@
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.5s, border 0s, background-color 0.3s;
     position: relative;
     box-sizing: border-box; // added for about
+    border: 1px solid transparent;
   
     &:hover {
         transform: scale(1.05);
+        border: 1px solid #fff;
     }
     
     &.no-hover {
         &:hover {
             transform: none;
             cursor: auto;
+            border: 1px solid transparent;
         }
     }
     
     @media (max-width: 872px) {
-     width: 95%;
+        width: 95%;
+
+        &:hover {
+            border: 1px solid transparent;
+        }
     }
 }
 
