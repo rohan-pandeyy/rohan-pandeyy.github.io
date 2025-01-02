@@ -3,6 +3,9 @@ import Navbar from '../../components/Navbar';
 import { WelcomeCard } from '../../components/Card/cardSizes';
 import { RectangleCard, SquareCard } from '../../components/Card/cardSizes';
 import welcomemp4 from '../../assets/videos/welcome.mp4';
+import LinkedInCard from '../../components/Card/LinkedInCard'
+import ContactCard from '../../components/Card/ContactCard'
+import ResumeCard from '../../components/Card/ResumeCard'
 import './index.scss';
 
 const AboutPage = () => {
@@ -45,7 +48,9 @@ const AboutPage = () => {
                     </RectangleCard>
                 </div>
                 <div style={{marginTop: '20px', display: 'flex', gap: '20px', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'center' : 'flex-start',}}>
-                    
+                    <LinkedInCard />
+                    <ContactCard />
+                    <ResumeCard />
                 </div>
             </div>
         </>

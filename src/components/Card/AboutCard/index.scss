@@ -1,4 +1,23 @@
-.profile-image {
-    width: 90px;
-    height: 90px;
+.About-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &:hover {
+        background-color: #926bf5;
+    }
+
+    .profile-image {
+        width: 90px;
+        height: 90px;
+        transition: content;
+    }
+
+    &:hover .profile-image {
+        content: url('../../../assets/images/IamDev.png');
+        @media (max-width: 872px) {
+            content: url('../../../assets/images/me.png');
+        }
+    }
+
 }

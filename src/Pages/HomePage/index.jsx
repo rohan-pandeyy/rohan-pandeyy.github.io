@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
-import { SquareCard } from '../../components/Card/cardSizes';
 import AboutCard from '../../components/Card/AboutCard'
 import LinkedInCard from '../../components/Card/LinkedInCard'
 import ResumeCard from '../../components/Card/ResumeCard'
+import ContactCard from '../../components/Card/ContactCard'
+import AchievementsCard from '../../components/Card/AchievementsCard'
 
 const HomePage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
@@ -24,6 +25,10 @@ const HomePage = () => {
                     <AboutCard />
                     <ResumeCard />
                     <LinkedInCard />
+                </div>
+                <div style={{marginTop: '20px', display: 'flex', gap: '20px', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'center' : 'flex-start',}}>
+                    <AchievementsCard />
+                    <ContactCard />
                 </div>
             </div>
         </>

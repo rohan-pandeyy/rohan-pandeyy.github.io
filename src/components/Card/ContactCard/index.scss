@@ -1,0 +1,24 @@
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    &:hover {
+        background-color: #050127;
+        h2 {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+    }
+
+    p {
+        font-weight: bold;
+    }
+
+    h2 {
+        font-weight: 800;
+        color: #ffc552;
+    }
+}
+

@@ -1,0 +1,23 @@
+.achievements-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &:hover {
+        background-color: #39cef7;
+    }
+
+    .trophy {
+        margin: 0 auto;
+        height: 60%;
+        transition: content;
+    }
+
+    &:hover .trophy {
+        content: url('../../../assets/images/trophyShine.png');
+        @media (max-width: 872px) {
+            content: url('../../../assets/images/trophy.png');
+        }
+    }
+}
