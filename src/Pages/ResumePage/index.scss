@@ -1,0 +1,142 @@
+$primary-color: #d9d5c9;
+$secondary-color: #ffc552;
+$accent-color: #fff;
+
+.resume-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    max-width: 1200px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media (max-width: 768px) {
+    margin: 0 5vw;
+    width: 90vw;
+  }
+  
+  .profile-image {
+    width: 90px;
+    height: 90px;
+    transition: content;
+  }
+  
+  
+  .contact-info {
+    margin-bottom: 2rem;
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: $accent-color;
+    color: #000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background-color: $secondary-color;
+  }
+  
+  h1 {
+      font-size: 30px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: $accent-color;
+  }
+  
+  h2 {
+      font-size: 26px;
+      font-weight: normal;
+      color: $secondary-color;
+      margin-top: 0;
+      margin-bottom: 20px;
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: $primary-color;
+      font-size: large;
+      font-weight: bold;
+      text-decoration: none;
+    }
+   
+    .social-link:hover {
+      color: $secondary-color;
+      text-decoration: none;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #d9d5c925;
+      margin: 10px 0;
+    }
+  }
+}
+
+.right-column {
+  @media (max-width: 768px) {
+    margin: 0 5vw;
+    width: 90vw;
+  }
+
+  .experience {
+    margin-bottom: 2.5rem;
+    
+    h3 {
+      margin: 0;
+      font-size: 26px;
+      color: $secondary-color;
+    }
+
+    .date {
+      color: $primary-color;
+      font-size: 16px;
+      margin: 1rem 0;
+    }
+    
+    .description {
+      font-size: 24px;
+      color: $primary-color;
+      line-height: -1.5;
+    }
+  }
+
+  .skills-interests-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+
+    .description {
+      font-size: 24px;
+      color: $primary-color;
+      line-height: -1.5;
+    }
+  }
+}
