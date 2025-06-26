@@ -10,6 +10,12 @@ const Experience = ({ title, company, date, children }) => (
   const RightColumn = () => (
     <div className="right-column">
         <h2>Experience</h2>
+        
+        <Experience title="Machine Learning Intern" date="June 2025 – Aug 2025">
+        Creation and optimization of custom Convolutional Model for low-energy consuming edge devices<br />
+        Achieved 94.84% model compression on LeNet architecture while maintaining minimal accuracy degradation.<br />
+        Created custom low-level C based model and optimized it to run on microchips.
+        </Experience>
 
         <Experience title="Data Science Intern" date="Aug 2024 – Sept 2024">
         Converted raw dataset into meaningful insights using Data Cleaning and Wrangling methods.<br />
