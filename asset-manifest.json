@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a08cd5d5.css",
+    "main.js": "/static/js/main.1fb7038d.js",
+    "static/js/453.96453769.chunk.js": "/static/js/453.96453769.chunk.js",
+    "static/media/me.png": "/static/media/me.8974572ca4a69482472c.png",
+    "static/media/welcome.mp4": "/static/media/welcome.7f52ed351624c03ff94a.mp4",
+    "static/media/trophyShine.png": "/static/media/trophyShine.143f8dce752019ed7f27.png",
+    "static/media/trophy.png": "/static/media/trophy.d390e19a7c16679c0ecf.png",
+    "static/media/IamDev.png": "/static/media/IamDev.0b1127215686aeb90b82.png",
+    "static/media/helvetica-neu.ttf": "/static/media/helvetica-neu.8a19678078a6b21c8057.ttf",
+    "static/media/LaBelleAurore.woff": "/static/media/LaBelleAurore.9c5433c64baa43d1d274.woff",
+    "static/media/LaBelleAurore.woff2": "/static/media/LaBelleAurore.a83c1c58fd7e43972e4a.woff2",
+    "static/media/CoolveticaRg-Regular.woff": "/static/media/CoolveticaRg-Regular.8307bfa187bccdc55f4d.woff",
+    "static/media/RohanPandey.png": "/static/media/RohanPandey.de76e2d53d8a2c5a7aac.png",
+    "static/media/CoolveticaRg-Regular.woff2": "/static/media/CoolveticaRg-Regular.7d1f3b1dd46ad6557a17.woff2",
+    "static/media/brain.svg": "/static/media/brain.ff95dd408a6835928152be004c656041.svg",
+    "static/media/pen.svg": "/static/media/pen.47cb6b39330edef3dd2d70dbcb24efd7.svg",
+    "index.html": "/index.html",
+    "static/media/webpage.svg": "/static/media/webpage.6ec79dc1902ab512d697dcb08b4ecac4.svg",
+    "main.a08cd5d5.css.map": "/static/css/main.a08cd5d5.css.map",
+    "main.1fb7038d.js.map": "/static/js/main.1fb7038d.js.map",
+    "453.96453769.chunk.js.map": "/static/js/453.96453769.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a08cd5d5.css",
+    "static/js/main.1fb7038d.js"
+  ]
+}
