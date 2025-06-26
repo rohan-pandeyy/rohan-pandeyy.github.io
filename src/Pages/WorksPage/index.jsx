@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../components/Navbar';
 import './index.scss';
 import { RectangleCard, SquareCard } from '../../components/Card/cardSizes';
 import Footer from '../../components/Footer';
@@ -17,7 +16,6 @@ const WorkPage = () => {
 
     return (
         <>
-            <Navbar />
             <div className="upwards-load">
                 <div style={{marginTop: '85px'}}>
                     <div className="title">All Works</div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../components/Navbar';
 import { WelcomeCard } from '../../components/Card/cardSizes';
 import { RectangleCard, SquareCard } from '../../components/Card/cardSizes';
 import welcomemp4 from '../../assets/videos/welcome.mp4';
@@ -22,7 +21,6 @@ const AboutPage = () => {
 
     return (
         <>
-            <Navbar />
             <div className="upwards-load">
                 <div style={{marginTop: '85px'}}>
                     <div className="title">About Me</div>

@@ -1,6 +1,5 @@
 import './index.scss';
 import React, { useEffect, useState } from 'react';
-import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { SquareCard } from '../../components/Card/cardSizes';
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
@@ -20,7 +19,6 @@ const ContactPage = () => {
 
     return (
         <>
-            <Navbar />
             <div className="upwards-load">
                 <div style={{marginTop: '85px', display: 'flex', gap: '20px', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'center' : 'flex-start',}}>
                     <div className="contact-page">

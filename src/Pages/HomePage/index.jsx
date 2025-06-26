@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../components/Navbar';
 import AboutCard from '../../components/Card/AboutCard'
 import LinkedInCard from '../../components/Card/LinkedInCard'
 import ResumeCard from '../../components/Card/ResumeCard'
@@ -20,7 +19,6 @@ const HomePage = () => {
 
     return (
         <>
-            <Navbar />
             <div className="zoom-load">
                 <div style={{marginTop: '85px', display: 'flex', gap: '20px', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'center' : 'flex-start',}}>
                     <AboutCard />

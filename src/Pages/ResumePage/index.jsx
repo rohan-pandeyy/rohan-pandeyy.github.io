@@ -1,5 +1,4 @@
 import React, { useEffect, useState }  from 'react';
-import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import LeftColumn from './leftColumn';
 import RightColumn from './rightColumn';
@@ -16,7 +15,6 @@ const ResumePage = () => {
     
     return (
         <>
-            <Navbar />
             <div style={{marginTop: '85px', display: 'flex', gap: '20px', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'center' : 'flex-start',}}>
                 <div className="resume-container">
                     <div className="zoom-load">
