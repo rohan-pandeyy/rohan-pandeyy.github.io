@@ -9,6 +9,37 @@ import pen from '../../assets/icons/pen.svg';
 
 const ContactPage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
+    const [loading, setLoading] = useState(false);
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      setLoading(true);
+    
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+    
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        setLoading(false);
+        return;
+      }
+    
+      window.Email.send({
+        SecureToken: "4386201d-00c7-4814-a432-c0dcb0285ce0",
+        To: "rohan1706pandey@gmail.com",
+        From: "rohan1706pandey@gmail.com",
+        Subject: `New message from Portfolio Contact Form`,
+        Body: `<b>Name:</b> ${name}<br/><b>Email:</b> ${email}<br/><b>Message:</b><br/>${message}`
+      }).then((msg) => {
+        setLoading(false);
+        if (msg === "OK") {
+          alert("Message sent successfully!");
+          document.querySelector(".contact-form").reset();
+        } else {
+          alert("Failed to send message: " + msg);
+        }
+      });
+    };
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 872);
@@ -39,8 +70,8 @@ const ContactPage = () => {
                                 <a href="https://www.youtube.com/@rushwithronnie/" target="_blank" rel="noopener noreferrer"><AiFillYoutube /></a>
                             </div>
                         </div>
-                        <form className="contact-form">
-                            <h1 className="mobile-only" style={{margin: '0'}}>Or Just Fill 👇</h1>
+                        <form className="contact-form" onSubmit={handleSubmit}>
+                            <h1 className="mobile-only" style={{ margin: "0" }}>Or Just Fill 👇</h1>
                             <div className="form-group">
                                 <input type="text" id="name" placeholder="Name" />
                             </div>
@@ -50,7 +81,9 @@ const ContactPage = () => {
                             <div className="form-group">
                                 <textarea id="message" rows="4" placeholder="Message"></textarea>
                             </div>
-                            <button type="submit">Send Message</button>
+                            <button type="submit" disabled={loading}>
+                            {loading ? <span className="spinner"></span> : "Send Message"}
+                            </button>
                         </form>
                     </div>
                 </div>
