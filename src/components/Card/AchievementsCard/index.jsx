@@ -6,7 +6,7 @@ import trophy from '../../../assets/images/trophy.png';
 const AchievementsCard = () => {
     const navigate = useNavigate();
     const handleCardClick = () => {
-        navigate('/acheivements');
+        navigate('/achievements');
     };
     const isMobile = window.innerWidth <= 872;
     return (

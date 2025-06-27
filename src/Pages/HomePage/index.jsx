@@ -4,7 +4,6 @@ import LinkedInCard from '../../components/Card/LinkedInCard'
 import ResumeCard from '../../components/Card/ResumeCard'
 import ContactCard from '../../components/Card/ContactCard'
 import AchievementsCard from '../../components/Card/AchievementsCard'
-import Footer from '../../components/Footer';
 
 const HomePage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
@@ -30,7 +29,6 @@ const HomePage = () => {
                     <ContactCard />
                 </div>
             </div>
-            <Footer />
         </>
     );
 };

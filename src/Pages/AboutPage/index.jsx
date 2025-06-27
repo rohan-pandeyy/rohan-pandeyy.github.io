@@ -5,7 +5,6 @@ import welcomemp4 from '../../assets/videos/welcome.mp4';
 import LinkedInCard from '../../components/Card/LinkedInCard'
 import ContactCard from '../../components/Card/ContactCard'
 import ResumeCard from '../../components/Card/ResumeCard'
-import Footer from '../../components/Footer';
 import './index.scss';
 
 const AboutPage = () => {
@@ -52,7 +51,6 @@ const AboutPage = () => {
                     <ResumeCard />
                 </div>
             </div>
-            <Footer />
         </>
     )
 };

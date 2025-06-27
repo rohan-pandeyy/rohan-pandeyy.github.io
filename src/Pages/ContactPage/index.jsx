@@ -1,6 +1,5 @@
 import './index.scss';
 import React, { useEffect, useState } from 'react';
-import Footer from '../../components/Footer';
 import { SquareCard } from '../../components/Card/cardSizes';
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import { AiOutlineLinkedin, AiFillYoutube } from "react-icons/ai";
@@ -75,7 +74,6 @@ const ContactPage = () => {
                     </SquareCard>
                 </div>
             </div>
-            <Footer />
         </>
     );
 };

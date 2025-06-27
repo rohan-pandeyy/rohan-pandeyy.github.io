@@ -1,5 +1,4 @@
 import React, { useEffect, useState }  from 'react';
-import Footer from '../../components/Footer';
 import LeftColumn from './leftColumn';
 import RightColumn from './rightColumn';
 import './index.scss';
@@ -25,7 +24,6 @@ const ResumePage = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 };

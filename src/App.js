@@ -5,7 +5,9 @@ import WorksPage from './Pages/WorksPage';
 import AboutPage from './Pages/AboutPage';
 import ResumePage from './Pages/ResumePage';
 import ContactPage from './Pages/ContactPage';
+import AchievementsPage from './Pages/AchievementsPage';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -18,8 +20,10 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/resume" element={<ResumePage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/achievements" element={<AchievementsPage />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }

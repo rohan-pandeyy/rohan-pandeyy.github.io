@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
 import { RectangleCard, SquareCard } from '../../components/Card/cardSizes';
-import Footer from '../../components/Footer';
 
 const WorkPage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
@@ -37,7 +36,6 @@ const WorkPage = () => {
                     </SquareCard>
                 </div>
             </div>
-            <Footer />
         </>
     )
 };
