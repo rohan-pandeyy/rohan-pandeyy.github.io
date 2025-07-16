@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
-import { RectangleCard, SquareCard } from '../../components/Card/cardSizes';
+import { RectangleCard } from '../../components/Card/cardSizes';
+import { IPhoneSimulator } from './AllWorkCards/IPhoneSimulator';
+import { CloakedAuthority } from '../WorksPage/AllWorkCards/CloakedAuthority';
 
 const WorkPage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
@@ -22,18 +24,12 @@ const WorkPage = () => {
             </div>
             <div className="zoom-load">
                 <div style={{marginTop: '20px', display: 'flex', gap: '20px', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'center' : 'flex-start',}}>
-                    <SquareCard style={{ backgroundColor: '#D07560' }} onClick={() => {console.log('Card clicked!');}}>
-                        <h1>My Card</h1>
-                        <p>Some content here.</p>
-                    </SquareCard>
+                    <IPhoneSimulator />
                     <RectangleCard style={{ backgroundColor: '#A1918A' }} onClick={() => {console.log('Card clicked!');}}>
                         <h1>My Card</h1>
                         <p>Some content here.</p>
                     </RectangleCard>
-                    <SquareCard style={{ backgroundColor: '#0F1A48' }} onClick={() => {console.log('Card clicked!');}}>
-                        <h1>My Card</h1>
-                        <p>Some content here.</p>
-                    </SquareCard>
+                    <CloakedAuthority />
                 </div>
             </div>
         </>

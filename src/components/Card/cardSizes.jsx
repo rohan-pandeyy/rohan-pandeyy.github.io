@@ -22,7 +22,7 @@ const RectangleCard = ({ children, style, onClick, disableHover, mobileBackgroun
 
 export { RectangleCard };
 
-const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, className }) => {
+const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     
     useEffect(() => {
@@ -35,7 +35,7 @@ const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, 
     const dynamicStyle = {...style, backgroundColor: isMobile && mobileBackground ? mobileBackground : style?.backgroundColor,};
     
     return (
-        <div className={cardClass} style={dynamicStyle} onClick={onClick}>
+        <div className={cardClass} style={dynamicStyle} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             {children}
         </div>
     );
