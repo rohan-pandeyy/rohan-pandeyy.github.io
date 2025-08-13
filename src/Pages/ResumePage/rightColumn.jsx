@@ -11,7 +11,7 @@ const Experience = ({ title, company, date, children }) => (
     <div className="right-column">
         <h2>Experience</h2>
         
-        <Experience title="Machine Learning Intern at KeenHead Technologies" date="June 2025 – Aug 2025">
+        <Experience title="Machine Learning Intern at KeenHeads Semiconductors" date="June 2025 – Aug 2025">
         Creation and optimization of custom Convolutional Model for low-energy consuming edge devices<br />
         Achieved 94.84% model compression on LeNet architecture while maintaining minimal accuracy degradation.<br />
         Created custom low-level C based model and optimized it to run on microchips.
@@ -48,7 +48,7 @@ const Experience = ({ title, company, date, children }) => (
                 Python
             </div>
             <div className="description">
-                C++
+                FastAPI
             </div>
             <div className="description">
                 ReactJS
@@ -60,13 +60,13 @@ const Experience = ({ title, company, date, children }) => (
                 Pandas
             </div>
             <div className="description">
-                Numpy
+                NumPy
             </div>
             <div className="description">
                 AWS
             </div>
             <div className="description">
-                Figma
+                C++
             </div>
         </div>
 
