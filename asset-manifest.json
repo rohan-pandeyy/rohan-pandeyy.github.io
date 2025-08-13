@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.f1fb0d66.css",
-    "main.js": "/static/js/main.4ce3a95d.js",
+    "main.css": "/static/css/main.1f6636c2.css",
+    "main.js": "/static/js/main.a3e28e8e.js",
     "static/js/453.96453769.chunk.js": "/static/js/453.96453769.chunk.js",
     "static/media/me.png": "/static/media/me.8974572ca4a69482472c.png",
     "static/media/welcome.mp4": "/static/media/welcome.7f52ed351624c03ff94a.mp4",
+    "static/media/iphone-sim.mp4": "/static/media/iphone-sim.b6dfb09b9758a7e1063a.mp4",
+    "static/media/cloaked-authority.mp4": "/static/media/cloaked-authority.c30d9871844c954bd964.mp4",
     "static/media/trophyShine.png": "/static/media/trophyShine.143f8dce752019ed7f27.png",
     "static/media/trophy.png": "/static/media/trophy.d390e19a7c16679c0ecf.png",
     "static/media/IamDev.png": "/static/media/IamDev.0b1127215686aeb90b82.png",
@@ -18,12 +20,12 @@
     "index.html": "/index.html",
     "static/media/pen.svg": "/static/media/pen.47cb6b39330edef3dd2d70dbcb24efd7.svg",
     "static/media/webpage.svg": "/static/media/webpage.6ec79dc1902ab512d697dcb08b4ecac4.svg",
-    "main.f1fb0d66.css.map": "/static/css/main.f1fb0d66.css.map",
-    "main.4ce3a95d.js.map": "/static/js/main.4ce3a95d.js.map",
+    "main.1f6636c2.css.map": "/static/css/main.1f6636c2.css.map",
+    "main.a3e28e8e.js.map": "/static/js/main.a3e28e8e.js.map",
     "453.96453769.chunk.js.map": "/static/js/453.96453769.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1fb0d66.css",
-    "static/js/main.4ce3a95d.js"
+    "static/css/main.1f6636c2.css",
+    "static/js/main.a3e28e8e.js"
   ]
 }
