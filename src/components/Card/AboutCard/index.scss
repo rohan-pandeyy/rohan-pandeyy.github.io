@@ -1,23 +1,53 @@
-.About-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.About-card { 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
 
-    &:hover {
-        background-color: #926bf5;
-    }
+  &:hover {
+    background-color: #926bf5;
+  }
 
-    .profile-image {
-        width: 90px;
-        height: 90px;
-        transition: content;
-    }
+  .about-title { color: #fff; }
 
+  .tagline-swap {
+    position: relative;
+    height: 1.4em;
+    line-height: 1.4em;
+    width: 100%;
+  }
+
+  .tagline {
+    position: absolute;
+    inset: 0 auto auto 0;
+    margin: 0;
+    transition: opacity .18s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tagline--hover { opacity: 0; pointer-events: none; }
+  &:hover .tagline--default,
+  &:focus-within .tagline--default { opacity: 0; }
+  &:hover .tagline--hover,
+  &:focus-within .tagline--hover { opacity: 1; pointer-events: auto; }
+
+  .keenheads-link { color: #fff; text-decoration: underline; }
+
+  .profile-image {
+    width: 90px;
+    height: 90px;
+    transition: content;
+  }
+
+  &:hover .profile-image {
+    content: url('../../../assets/images/IamDev.png');
+  }
+
+  @media (max-width: 872px) {
     &:hover .profile-image {
-        content: url('../../../assets/images/IamDev.png');
-        @media (max-width: 872px) {
-            content: url('../../../assets/images/me.png');
-        }
+      content: url('../../../assets/images/me.png');
     }
-
+  }
 }
