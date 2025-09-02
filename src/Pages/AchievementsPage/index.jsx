@@ -5,7 +5,12 @@ import certificateIcon from '../../assets/icons/icons_certificate.png';
 const achievements = [
   // add here when needed
   {
-    title: 'Second Runner Up - Dubai Institute of Design and Innovation',
+    title: 'Hackground India 2k25',
+    image: certificateIcon,
+    pdf: 'https://drive.google.com/file/d/1j2GGaxYnzKAznPTMYVJ-GIVlx26lbPGW/preview',
+  },
+  {
+    title: 'First Runner Up - Dubai Institute of Design and Innovation',
     image: certificateIcon,
     pdf: 'https://drive.google.com/file/d/1k4COQj02fT8oj-B9m9NYIifIABazQ1fi/preview',
   },
