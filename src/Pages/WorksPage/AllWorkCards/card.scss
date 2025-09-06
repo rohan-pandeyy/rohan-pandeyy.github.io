@@ -42,3 +42,48 @@
     // border: 1px solid transparent;
   }
 }
+
+.project-rectangle-card {
+  .project-video {
+    display: block;
+    width: 90%;
+    margin: -7px auto 0 auto;
+    height: 160px;
+    object-fit: contain; // Ensures the whole video fits without cropping
+  }
+
+  // --- Text Info Styling ---
+  .project-info {
+    p, h1 {
+      margin: 2% 10%;
+      text-align: left;
+      color: #fff;
+    }
+    p {
+      opacity: 0.8; // Start visible
+      transition: opacity 0.3s ease-in-out; // Add transition for opacity
+    }
+    h1 {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 0;
+      transform: translateY(0); // Start at normal position
+      transition: transform 0.3s ease-in-out; // Add transition for transform
+    }
+  }
+
+  &:hover {
+    // Styles for elements *inside* the card when the card is hovered
+    .project-info {
+      h1 {
+        transform: translateY(-25px);
+      }
+      p {
+        opacity: 0; // Fade out p on hover
+      }
+    }
+
+    // Optional: override SquareCard hover border if needed
+    // border: 1px solid transparent;
+  }
+}

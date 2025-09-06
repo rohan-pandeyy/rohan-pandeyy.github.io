@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './cardSizes.scss';
 
-const RectangleCard = ({ children, style, onClick, disableHover, mobileBackground, className }) => {
+const RectangleCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter,  onMouseLeave, }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     
     useEffect(() => {
@@ -14,7 +14,7 @@ const RectangleCard = ({ children, style, onClick, disableHover, mobileBackgroun
     const dynamicStyle = {...style, backgroundColor: isMobile && mobileBackground ? mobileBackground : style?.backgroundColor,};
     
     return (
-        <div className={cardClass} style={dynamicStyle} onClick={onClick}>
+        <div className={cardClass} style={dynamicStyle} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             {children}
         </div>
     );
