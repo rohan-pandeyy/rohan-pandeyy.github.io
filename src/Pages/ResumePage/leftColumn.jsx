@@ -19,7 +19,7 @@ const LeftColumn = () => {
                 <p>www.bennett.edu.in</p>
             </div>
 
-            <a href="https://drive.google.com/file/d/1vHpkA1R2ofYpeQPmIJmGtmXh4XVg5hXo/view?usp=sharing"><button>Download Resume</button></a>
+            <a href="https://drive.google.com/file/d/1bCO085XTB8vYv_zAgGC9XVgc7UzXUztY/view?usp=sharing"><button>Download Resume</button></a>
         </SquareCard>
   
         <SquareCard style={{ width: '100%', height: '100%', padding: '32px' }} disableHover>
