@@ -27,6 +27,7 @@ export const DriveGuardian = () => {
             <div className="project-info">
                 <p>— Autonomous Vehicle</p>
                 <h1>Drive Guardian</h1>
+                <p className="description">Click to expand</p>
             </div>
         </RectangleCard>
     );

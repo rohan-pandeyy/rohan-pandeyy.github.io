@@ -27,6 +27,7 @@ export const IPhoneSimulator = () => {
             <div className="project-info">
                 <p>— Recreation</p>
                 <h1>iPhone Simulator</h1>
+                <p className="description">Click to expand</p>
             </div>
         </SquareCard>
     );

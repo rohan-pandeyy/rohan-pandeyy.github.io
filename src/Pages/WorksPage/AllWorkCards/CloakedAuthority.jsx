@@ -27,6 +27,7 @@ export const CloakedAuthority = () => {
             <div className="project-info">
                 <p>— ThreeJS freeroam</p>
                 <h1>Cloaked Authority</h1>
+                <p className="description">Click to expand</p>
             </div>
         </SquareCard>
     );
