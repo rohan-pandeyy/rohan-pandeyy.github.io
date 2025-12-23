@@ -1,5 +1,6 @@
+import React, { useEffect } from 'react';
 import './App.scss';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import WorksPage from './Pages/WorksPage';
 import AboutPage from './Pages/AboutPage';
@@ -9,9 +10,26 @@ import AchievementsPage from './Pages/AchievementsPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <div className="container">
         <Routes>

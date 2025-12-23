@@ -2,7 +2,7 @@ import './index.scss';
 import React, { useState, useEffect, useRef } from 'react';
 import rohanPandey from '../../assets/images/RohanPandey.png';
 import { Link, useLocation } from 'react-router-dom';
-import { AiFillHome, AiFillInfoCircle, AiFillTool, AiFillFile, AiFillPhone } from 'react-icons/ai';
+import { LuHouse, LuUser, LuBriefcase, LuFileText, LuPhone } from 'react-icons/lu';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -10,6 +10,22 @@ const Navbar = () => {
     const dropdownRef = useRef(null);
     const hamburgerRef = useRef(null);
     const toggleMenu = () => setMenuOpen((open) => !open);
+
+    const linksRef = useRef({});
+    const [activeStyle, setActiveStyle] = useState({ left: 0, width: 0, opacity: 0 });
+
+    useEffect(() => {
+        const activeLink = linksRef.current[location.pathname];
+        if (activeLink) {
+            setActiveStyle({
+                left: activeLink.offsetLeft,
+                width: activeLink.offsetWidth,
+                opacity: 1,
+            });
+        } else {
+            setActiveStyle(prev => ({ ...prev, opacity: 0 }));
+        }
+    }, [location.pathname]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -41,10 +57,18 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar-center">
-                <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-                <Link to="/works" className={location.pathname === '/works' ? 'active' : ''}>Works</Link>
-                <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About</Link>
-                <Link to="/resume" className={location.pathname === '/resume' ? 'active' : ''}>Resume</Link>
+                <div
+                    className="active-capsule"
+                    style={{
+                        left: activeStyle.left,
+                        width: activeStyle.width,
+                        opacity: activeStyle.opacity,
+                    }}
+                ></div>
+                <Link to="/" ref={el => linksRef.current['/'] = el} className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+                <Link to="/works" ref={el => linksRef.current['/works'] = el} className={location.pathname === '/works' ? 'active' : ''}>Works</Link>
+                <Link to="/about" ref={el => linksRef.current['/about'] = el} className={location.pathname === '/about' ? 'active' : ''}>About</Link>
+                <Link to="/resume" ref={el => linksRef.current['/resume'] = el} className={location.pathname === '/resume' ? 'active' : ''}>Resume</Link>
             </div>
             <div className="navbar-right">
                 <Link to="/contact">Get in touch</Link>
@@ -55,13 +79,14 @@ const Navbar = () => {
                 className={`navbar-dropdown${menuOpen ? ' navbar-dropdown-open' : ''}`}
                 ref={dropdownRef}
                 style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
+                onClick={() => setMenuOpen(false)}
             >
-                <div className={`navbar-dropdown-content${menuOpen ? ' show' : ''}`}>
-                    <Link to="/" className={location.pathname === '/' ? 'active' : ''} style={{ '--i': 0 }}><AiFillHome style={{marginRight:"8px"}}/>Home</Link>
-                    <Link to="/works" className={location.pathname === '/works' ? 'active' : ''} style={{ '--i': 1 }}><AiFillTool style={{marginRight:"8px"}}/>Works</Link>
-                    <Link to="/about" className={location.pathname === '/about' ? 'active' : ''} style={{ '--i': 2 }}><AiFillInfoCircle style={{marginRight:"8px"}}/>About</Link>
-                    <Link to="/resume" className={location.pathname === '/resume' ? 'active' : ''} style={{ '--i': 3 }}><AiFillFile style={{marginRight:"8px"}}/>Resume</Link>
-                    <Link to="/contact" style={{ '--i': 4 }}><AiFillPhone style={{marginRight:"8px"}}/>Get in touch</Link>
+                <div className={`navbar-dropdown-content${menuOpen ? ' show' : ''}`} onClick={(e) => e.stopPropagation()}>
+                    <Link to="/" className={location.pathname === '/' ? 'active' : ''} style={{ '--i': 0 }} onClick={() => setMenuOpen(false)}><LuHouse style={{marginRight:"8px"}}/>Home</Link>
+                    <Link to="/works" className={location.pathname === '/works' ? 'active' : ''} style={{ '--i': 1 }} onClick={() => setMenuOpen(false)}><LuBriefcase style={{marginRight:"8px"}}/>Works</Link>
+                    <Link to="/about" className={location.pathname === '/about' ? 'active' : ''} style={{ '--i': 2 }} onClick={() => setMenuOpen(false)}><LuUser style={{marginRight:"8px"}}/>About</Link>
+                    <Link to="/resume" className={location.pathname === '/resume' ? 'active' : ''} style={{ '--i': 3 }} onClick={() => setMenuOpen(false)}><LuFileText style={{marginRight:"8px"}}/>Resume</Link>
+                    <Link to="/contact" style={{ '--i': 4 }} onClick={() => setMenuOpen(false)}><LuPhone style={{marginRight:"8px"}}/>Get in touch</Link>
                 </div>
             </div>
             <button

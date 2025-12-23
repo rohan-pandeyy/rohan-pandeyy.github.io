@@ -31,6 +31,7 @@
     &-right {
         display: flex;
         justify-content: center;
+        align-items: center;
         @media (max-width: 872px) {
             display: none;
             flex-direction: column;
@@ -48,10 +49,25 @@
     
     
     &-center {
+        position: relative; /* Context for absolute capsule */
+
+        .active-capsule {
+            position: absolute;
+            height: 40px; /* Adjust height as needed */
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 0; 
+        }
+
         a {
-            margin: 0 20px;
+            position: relative; /* Sit above capsule */
+            z-index: 1;
+            margin: 0 5px; /* Reduced margin */
+            padding: 10px 20px; /* Added padding for touch target */
             text-decoration: none;
             color: #fff;
+            transition: color 0.3s ease;
     
             &:hover {
                 color: #d9c4a9;
@@ -59,7 +75,7 @@
     
             &.active {
                 color: #d9c4a9;
-                text-shadow: 0 0 20px  #d9c4a9, 0 0 30px #ff4da6, 0 0 40px #ea4dff, 0 0 50px #7c4dff;
+                /* text-shadow removed */
             }
         }
         
@@ -87,16 +103,25 @@
         height: calc(100vh - 64px);
         align-items: center;
         background: rgba(0,0,0,0.7);
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(12px); /* Increased blur */
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
         &-open {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+        }
+        
+        /* Modifiers for content when open */
+        .show {
+            a {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: calc(0.05s * var(--i));
+            }
         }
 
         &-content {
@@ -106,6 +131,11 @@
             width: 100%;
             text-align: center;  
             a {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.4s ease, transform 0.4s ease;
+                /* Staggered delay handled in .show modifier below */
+                
                 margin: 0;
                 text-decoration: none;
                 color: #fff;
@@ -130,14 +160,15 @@
 
     .hamburger {
         display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 15px;
-        width: 30px;
+        width: 25px;
+        height: 20px;
         position: absolute;
         right: 5vw;
         background-color: transparent;
         border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 2000; /* Ensure above dropdown */
 
         span {
             display: block;
@@ -145,25 +176,41 @@
             height: 3px;
             background: #f5a904;
             border-radius: 3px;
-            transition: 0.3s;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+            transform-origin: center;
+
+            &:nth-child(1) {
+                top: 0;
+            }
+            &:nth-child(2) {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            &:nth-child(3) {
+                bottom: 0;
+            }
         }
 
         &[aria-expanded="true"] {
             span {
                 &:nth-child(1) {
-                    transform: translateY(10px) rotate(45deg);
+                    top: 50%;
+                    transform: translateY(-50%) rotate(45deg);
                 }
                 &:nth-child(2) {
                     opacity: 0;
                 }
                 &:nth-child(3) {
-                    transform: translateY(-10px) rotate(-45deg);
+                    bottom: 50%;
+                    transform: translateY(50%) rotate(-45deg);
                 }
             }
         }
 
         @media (max-width: 872px) {
-            display: flex;
+            display: block; /* changed from flex to block for absolute spans */
         }
     }
 }
