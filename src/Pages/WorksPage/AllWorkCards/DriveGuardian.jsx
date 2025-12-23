@@ -1,46 +1,31 @@
-import react, { useState } from 'react';
+import React, { useRef } from 'react';
 import { RectangleCard } from '../../../components/Card/cardSizes';
-import DriveGuardianGif from '../../../assets/videos/Drive-Guardian-Video.gif';
-import DriveGuardianStatic from '../../../assets/videos/Drive-Guardian-Static.png';
+import DriveGuardianVideo from '../../../assets/videos/Drive-Guardian.mp4';
 import './card.scss';
 
 export const DriveGuardian = () => {
-    const [gifKey, setGifKey] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
+    const videoRef = useRef(null);
 
     const handleMouseEnter = () => {
-        // bump key so browser reloads GIF fresh each time
-        setGifKey(prev => prev + 1);
-        setIsHovered(true);
+        if (videoRef.current) {
+            videoRef.current.play();
+        }
     };
 
     const handleMouseLeave = () => {
-        setIsHovered(false);
+        if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+        }
     };
-
     return (
-        <RectangleCard
-            style={{ backgroundColor: '#A1918A' }}
-            className="project-rectangle-card"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
-            {isHovered ? (
-                <img
-                    key={gifKey} // forces reload
-                    className="project-video"
-                    src={`${DriveGuardianGif}?${gifKey}`}
-                    alt="Drive Guardian Demo"
-                />
-            ) : (
-                <img
-                    className="project-video"
-                    src={DriveGuardianStatic}
-                    alt="Drive Guardian Static"
-                />
-            )}
+        <RectangleCard style={{ backgroundColor: '#9C918A' }} className="project-square-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <video ref={videoRef} className="project-video" muted playsInline loop>
+                <source src={DriveGuardianVideo} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
             <div className="project-info">
-                <p>— Automatic Braking System</p>
+                <p>— Autonomous Vehicle</p>
                 <h1>Drive Guardian</h1>
             </div>
         </RectangleCard>
