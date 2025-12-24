@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.scss';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import WorksPage from './Pages/WorksPage';
 import AboutPage from './Pages/AboutPage';
