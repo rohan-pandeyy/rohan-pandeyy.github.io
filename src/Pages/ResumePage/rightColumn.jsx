@@ -29,8 +29,13 @@ const Experience = ({ title, company, date, children }) => (
         </Experience>
 
         <h2>Position Of Responsibility</h2>
+        
+        <Experience title="Vice Chairperson - Data Science Society" date="Oct 2025 – Present">
+        Organizing events and hackathons, along with talk shows and info sessions. <br />
+        Check us out at <a href="https://dss-bu.vercel.app/" target="_blank" rel="noopener noreferrer" style={{color: '#fffaecff', fontStyle: 'italic', textDecoration: 'underline'}}>our website</a>.
+        </Experience>
 
-        <Experience title="Head of Research Department - Data Science Society" date="Aug 2024 – Present">
+        <Experience title="Head of Research Department - Data Science Society" date="Aug 2024 – Sept 2025">
         Overseeing a team of Data Science Enthusiasts, curating huge datasets and hosting Workshops about data science and How to Write your first research paper.<br />
         Hosting hackathons and events, along with talk shows and info sessions.
         </Experience>

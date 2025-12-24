@@ -147,6 +147,35 @@
         }
         }
 
+        .status-message {
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+
+            &.success {
+                background-color: rgba(76, 175, 80, 0.15);
+                color: #66bb6a; // Brighter green for dark mode
+                border: 1px solid rgba(76, 175, 80, 0.3);
+            }
+
+            &.error {
+                background-color: rgba(244, 67, 54, 0.15);
+                color: #ef5350; // Brighter red for dark mode
+                border: 1px solid rgba(244, 67, 54, 0.3);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
     }
 }
 

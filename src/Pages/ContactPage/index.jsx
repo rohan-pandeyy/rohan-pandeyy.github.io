@@ -1,5 +1,6 @@
 import './index.scss';
-import React, { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import React, { useEffect, useState, useRef } from 'react';
 import { SquareCard } from '../../components/Card/cardSizes';
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import { AiOutlineLinkedin, AiFillYoutube } from "react-icons/ai";
@@ -10,34 +11,57 @@ import pen from '../../assets/icons/pen.svg';
 const ContactPage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({ type: '', message: '' });
+    const form = useRef();
+
     const handleSubmit = (e) => {
       e.preventDefault();
       setLoading(true);
-    
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-    
+      setStatus({ type: '', message: '' });
+
+      const name = document.getElementById("user_name")?.value;
+      const email = document.getElementById("user_email")?.value;
+      const message = document.getElementById("message")?.value;
+
       if (!name || !email || !message) {
-        alert("Please fill in all fields.");
+        setStatus({ type: 'error', message: 'Please fill in all fields.' });
         setLoading(false);
         return;
       }
-    
-      window.Email.send({
-        SecureToken: "4386201d-00c7-4814-a432-c0dcb0285ce0",
-        To: "rohan1706pandey@gmail.com",
-        From: "rohan1706pandey@gmail.com",
-        Subject: `New message from Portfolio Contact Form`,
-        Body: `<b>Name:</b> ${name}<br/><b>Email:</b> ${email}<br/><b>Message:</b><br/>${message}`
-      }).then((msg) => {
+
+      // Regex for strict email validation: 
+      // 1. Text/numbers before @
+      // 2. Domain name
+      // 3. Extension (at least 2 characters)
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      if (!emailRegex.test(email)) {
+        setStatus({ type: 'error', message: 'Please enter a valid email address (e.g., user@domain.com).' });
         setLoading(false);
-        if (msg === "OK") {
-          alert("Message sent successfully!");
-          document.querySelector(".contact-form").reset();
-        } else {
-          alert("Failed to send message: " + msg);
-        }
+        return;
+      }
+
+      const templateParams = {
+          name: name,
+          email: email,
+          message: message,
+          time: new Date().toLocaleString(),
+      };
+      
+      emailjs.send(
+        'service_ew2ukfy', 
+        'template_anom1lx', 
+        templateParams,
+        'joPSbbxKhvlC9uUNt'
+      )
+      .then((result) => {
+          setLoading(false);
+          setStatus({ type: 'success', message: 'Message sent successfully!' });
+          e.target.reset();
+      }, (error) => {
+          setLoading(false);
+          setStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
+          console.log(error.text);
       });
     };
 
@@ -70,20 +94,25 @@ const ContactPage = () => {
                                 <a href="https://www.youtube.com/@rushwithronnie/" target="_blank" rel="noopener noreferrer"><AiFillYoutube /></a>
                             </div>
                         </div>
-                        <form className="contact-form" onSubmit={handleSubmit}>
+                        <form className="contact-form" ref={form} onSubmit={handleSubmit}>
                             <h1 className="mobile-only" style={{ margin: "0" }}>Or Just Fill 👇</h1>
                             <div className="form-group">
-                                <input type="text" id="name" placeholder="Name" />
+                                <input type="text" id="user_name" name="user_name" placeholder="Name" />
                             </div>
                             <div className="form-group">
-                                <input type="email" id="email" placeholder="Email" />
+                                <input type="email" id="user_email" name="user_email" placeholder="Email" />
                             </div>
                             <div className="form-group">
-                                <textarea id="message" rows="4" placeholder="Message"></textarea>
+                                <textarea id="message" name="message" rows="4" placeholder="Message"></textarea>
                             </div>
                             <button type="submit" disabled={loading}>
                             {loading ? <span className="spinner"></span> : "Send Message"}
                             </button>
+                            {status.message && (
+                                <div className={`status-message ${status.type}`}>
+                                    {status.message}
+                                </div>
+                            )}
                         </form>
                     </div>
                 </div>
