@@ -3,14 +3,14 @@ $secondary-color: #ffc552;
 $accent-color: #fff;
 
 .resume-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  max-width: 1200px;
 
-    @media (max-width: 768px) {
-        grid-template-columns: 1fr;
-    }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .left-column {
@@ -21,21 +21,27 @@ $accent-color: #fff;
     margin: 0 5vw;
     width: 90vw;
   }
-  
+
+  /* Sticky behavior for desktop */
+  @media (min-width: 873px) {
+    position: sticky;
+    top: 100px; /* Adjust based on navbar height + spacing */
+    height: fit-content; /* Ensure it doesn't stretch to full height if flex column */
+  }
+
   .profile-image {
     width: 90px;
     height: 90px;
     transition: content;
   }
-  
-  
+
   .contact-info {
     margin-bottom: 2rem;
     p {
       margin: 0.5rem 0;
     }
   }
-  
+
   button {
     padding: 10px 20px;
     background-color: $accent-color;
@@ -46,24 +52,24 @@ $accent-color: #fff;
     font-size: 14px;
     font-weight: bold;
   }
-  
+
   button:hover {
     background-color: $secondary-color;
   }
-  
+
   h1 {
-      font-size: 30px;
-      margin-top: 10px;
-      margin-bottom: 5px;
-      color: $accent-color;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: $accent-color;
   }
-  
+
   h2 {
-      font-size: 26px;
-      font-weight: normal;
-      color: $secondary-color;
-      margin-top: 0;
-      margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: normal;
+    color: $secondary-color;
+    margin-top: 0;
+    margin-bottom: 20px;
   }
   .links {
     display: flex;
@@ -86,7 +92,7 @@ $accent-color: #fff;
       font-weight: bold;
       text-decoration: none;
     }
-   
+
     .social-link:hover {
       color: $secondary-color;
       text-decoration: none;
@@ -108,7 +114,7 @@ $accent-color: #fff;
 
   .experience {
     margin-bottom: 2.5rem;
-    
+
     h3 {
       margin: 0;
       font-size: 26px;
@@ -120,7 +126,7 @@ $accent-color: #fff;
       font-size: 16px;
       margin: 1rem 0;
     }
-    
+
     .description {
       font-size: 24px;
       color: $primary-color;
