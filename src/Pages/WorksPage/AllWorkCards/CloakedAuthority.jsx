@@ -8,6 +8,7 @@ import WorkModal from '../../../components/WorkModal/WorkModal';
 export const CloakedAuthority = () => {
     const videoRef = useRef(null);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [zIndex, setZIndex] = useState(1);
 
     const handleMouseEnter = () => {
         if (videoRef.current) {
@@ -24,12 +25,14 @@ export const CloakedAuthority = () => {
     return (
         <React.Fragment>
             <SquareCard 
-                style={{ backgroundColor: '#0F1A48', opacity: isExpanded ? 0 : 1 }} 
+                style={{ backgroundColor: '#0F1A48', opacity: isExpanded ? 0 : 1, zIndex }} 
                 className="project-square-card" 
                 onMouseEnter={handleMouseEnter} 
                 onMouseLeave={handleMouseLeave}
                 onClick={() => setIsExpanded(true)}
                 layoutId="cloaked-authority-card"
+                onLayoutAnimationStart={() => setZIndex(10)}
+                onLayoutAnimationComplete={() => setZIndex(1)}
             >
                 <video ref={videoRef} className="project-video" muted playsInline loop>
                     <source src={CloakedAuthorityVideo} type="video/mp4" />

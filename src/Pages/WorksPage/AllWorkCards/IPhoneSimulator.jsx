@@ -8,6 +8,7 @@ import WorkModal from '../../../components/WorkModal/WorkModal';
 export const IPhoneSimulator = () => {
     const videoRef = useRef(null);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [zIndex, setZIndex] = useState(1);
 
     const handleMouseEnter = () => {
         if (videoRef.current) {
@@ -24,12 +25,14 @@ export const IPhoneSimulator = () => {
     return (
         <React.Fragment>
             <SquareCard 
-                style={{ backgroundColor: '#D07560', opacity: isExpanded ? 0 : 1 }} 
+                style={{ backgroundColor: '#D07560', opacity: isExpanded ? 0 : 1, zIndex }} 
                 className="project-square-card" 
                 onMouseEnter={handleMouseEnter} 
                 onMouseLeave={handleMouseLeave}
                 onClick={() => setIsExpanded(true)}
                 layoutId="iphone-sim-card"
+                onLayoutAnimationStart={() => setZIndex(10)}
+                onLayoutAnimationComplete={() => setZIndex(1)}
             >
                 <video ref={videoRef} className="project-video" muted playsInline loop>
                     <source src={iphoneSimVideo} type="video/mp4" />

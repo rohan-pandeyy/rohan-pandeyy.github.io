@@ -30,6 +30,10 @@ const adjustColor = (hex, percent) => {
 
 const WorkModal = ({ layoutId, onClose, bgColor, children }) => {
     useEffect(() => {
+        // Prevent background scrolling
+        const originalStyle = window.getComputedStyle(document.body).overflow;
+        document.body.style.overflow = 'hidden';
+
         const handleKeyDown = (event) => {
             if (event.key === 'Escape') {
                 onClose();
@@ -37,7 +41,10 @@ const WorkModal = ({ layoutId, onClose, bgColor, children }) => {
         };
 
         window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
+        return () => {
+            document.body.style.overflow = originalStyle;
+            window.removeEventListener('keydown', handleKeyDown);
+        };
     }, [onClose]);
 
     const scrollbarColor = adjustColor(bgColor || '#ffffff', 40); // Lighten by 40%

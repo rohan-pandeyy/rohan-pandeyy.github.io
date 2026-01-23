@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './cardSizes.scss';
 import { motion } from 'framer-motion';
 
-const RectangleCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave, layoutId }) => {
+const RectangleCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave, layoutId, ...props }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     
     useEffect(() => {
@@ -22,6 +22,7 @@ const RectangleCard = ({ children, style, onClick, disableHover, mobileBackgroun
             onMouseEnter={onMouseEnter} 
             onMouseLeave={onMouseLeave}
             layoutId={layoutId}
+            {...props}
         >
             {children}
         </motion.div>
@@ -30,7 +31,7 @@ const RectangleCard = ({ children, style, onClick, disableHover, mobileBackgroun
 
 export { RectangleCard };
 
-const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave, layoutId }) => {
+const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave, layoutId, ...props }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     
     useEffect(() => {
@@ -50,6 +51,7 @@ const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, 
             onMouseEnter={onMouseEnter} 
             onMouseLeave={onMouseLeave}
             layoutId={layoutId}
+            {...props}
         >
             {children}
         </motion.div>

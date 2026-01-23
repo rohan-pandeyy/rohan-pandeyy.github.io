@@ -8,6 +8,7 @@ import WorkModal from '../../../components/WorkModal/WorkModal';
 export const DriveGuardian = () => {
     const videoRef = useRef(null);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [zIndex, setZIndex] = useState(1);
 
     const handleMouseEnter = () => {
         if (videoRef.current) {
@@ -24,12 +25,14 @@ export const DriveGuardian = () => {
     return (
         <React.Fragment>
             <RectangleCard 
-                style={{ backgroundColor: '#9C918A', opacity: isExpanded ? 0 : 1 }} 
+                style={{ backgroundColor: '#9C918A', opacity: isExpanded ? 0 : 1, zIndex }} 
                 className="project-square-card" 
                 onMouseEnter={handleMouseEnter} 
                 onMouseLeave={handleMouseLeave}
                 onClick={() => setIsExpanded(true)}
                 layoutId="drive-guardian-card"
+                onLayoutAnimationStart={() => setZIndex(10)}
+                onLayoutAnimationComplete={() => setZIndex(1)}
             >
                 <video ref={videoRef} className="project-video" muted playsInline loop>
                     <source src={DriveGuardianVideo} type="video/mp4" />
