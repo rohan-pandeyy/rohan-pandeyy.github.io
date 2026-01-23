@@ -31,7 +31,7 @@ const adjustColor = (hex, percent) => {
 const WorkModal = ({ layoutId, onClose, bgColor, children }) => {
     useEffect(() => {
         // Prevent background scrolling
-        const originalStyle = window.getComputedStyle(document.body).overflow;
+        const originalStyle = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
 
         const handleKeyDown = (event) => {
@@ -62,12 +62,15 @@ const WorkModal = ({ layoutId, onClose, bgColor, children }) => {
                 layoutId={layoutId}
                 className="work-modal"
                 style={{ backgroundColor: bgColor }}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Work details dialog"
             >
                 <div 
                     className="modal-content"
                     style={{ '--scrollbar-color': scrollbarColor }}
                 >
-                    <button className="close-button" onClick={onClose}>
+                    <button type="button" className="close-button" onClick={onClose} aria-label="Close">
                         &times;
                     </button>
                     <div className="modal-body">

@@ -34,10 +34,12 @@ export const IPhoneSimulator = () => {
                 onLayoutAnimationStart={() => setZIndex(10)}
                 onLayoutAnimationComplete={() => setZIndex(1)}
             >
-                <video ref={videoRef} className="project-video" muted playsInline loop>
-                    <source src={iphoneSimVideo} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                {!isExpanded && (
+                    <video ref={videoRef} className="project-video" muted playsInline loop>
+                        <source src={iphoneSimVideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                )}
                 <div className="project-info">
                     <p>— Recreation</p>
                     <h1>iPhone Simulator</h1>

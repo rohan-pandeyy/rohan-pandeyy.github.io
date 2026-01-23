@@ -26,7 +26,7 @@ export const DriveGuardian = () => {
         <React.Fragment>
             <RectangleCard 
                 style={{ backgroundColor: '#9C918A', opacity: isExpanded ? 0 : 1, zIndex }} 
-                className="project-square-card" 
+                className="project-rectangle-card" 
                 onMouseEnter={handleMouseEnter} 
                 onMouseLeave={handleMouseLeave}
                 onClick={() => setIsExpanded(true)}
@@ -34,10 +34,12 @@ export const DriveGuardian = () => {
                 onLayoutAnimationStart={() => setZIndex(10)}
                 onLayoutAnimationComplete={() => setZIndex(1)}
             >
-                <video ref={videoRef} className="project-video" muted playsInline loop>
-                    <source src={DriveGuardianVideo} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                {!isExpanded && (
+                    <video ref={videoRef} className="project-video" muted playsInline loop>
+                        <source src={DriveGuardianVideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                )}
                 <div className="project-info">
                     <p>— Autonomous Vehicle</p>
                     <h1>Drive Guardian</h1>

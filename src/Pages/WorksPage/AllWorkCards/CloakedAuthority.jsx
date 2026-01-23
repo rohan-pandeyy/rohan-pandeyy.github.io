@@ -34,10 +34,12 @@ export const CloakedAuthority = () => {
                 onLayoutAnimationStart={() => setZIndex(10)}
                 onLayoutAnimationComplete={() => setZIndex(1)}
             >
-                <video ref={videoRef} className="project-video" muted playsInline loop>
-                    <source src={CloakedAuthorityVideo} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                {!isExpanded && (
+                    <video ref={videoRef} className="project-video" muted playsInline loop>
+                        <source src={CloakedAuthorityVideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                )}
                 <div className="project-info">
                     <p>— ThreeJS freeroam</p>
                     <h1>Cloaked Authority</h1>
