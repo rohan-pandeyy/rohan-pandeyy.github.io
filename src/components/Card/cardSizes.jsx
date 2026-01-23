@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import './cardSizes.scss';
+import { motion } from 'framer-motion';
 
-const RectangleCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter,  onMouseLeave, }) => {
+const RectangleCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave, layoutId, ...props }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     
     useEffect(() => {
@@ -14,15 +15,23 @@ const RectangleCard = ({ children, style, onClick, disableHover, mobileBackgroun
     const dynamicStyle = {...style, backgroundColor: isMobile && mobileBackground ? mobileBackground : style?.backgroundColor,};
     
     return (
-        <div className={cardClass} style={dynamicStyle} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <motion.div 
+            className={cardClass} 
+            style={dynamicStyle} 
+            onClick={onClick} 
+            onMouseEnter={onMouseEnter} 
+            onMouseLeave={onMouseLeave}
+            layoutId={layoutId}
+            {...props}
+        >
             {children}
-        </div>
+        </motion.div>
     );
 };
 
 export { RectangleCard };
 
-const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave }) => {
+const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave, layoutId, ...props }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     
     useEffect(() => {
@@ -35,9 +44,17 @@ const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, 
     const dynamicStyle = {...style, backgroundColor: isMobile && mobileBackground ? mobileBackground : style?.backgroundColor,};
     
     return (
-        <div className={cardClass} style={dynamicStyle} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <motion.div 
+            className={cardClass} 
+            style={dynamicStyle} 
+            onClick={onClick} 
+            onMouseEnter={onMouseEnter} 
+            onMouseLeave={onMouseLeave}
+            layoutId={layoutId}
+            {...props}
+        >
             {children}
-        </div>
+        </motion.div>
     );
 };
 
