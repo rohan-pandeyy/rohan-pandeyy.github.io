@@ -64,21 +64,19 @@ export const CloakedAuthority = () => {
                         bgColor="#0F1A48"
                     >
                          <img src={CoverPicture} alt="Cloaked Authority Cover" className="modal-cover-image" />
-                        <div style={{ color: 'white', maxWidth: '1000px', margin: '0 auto' }}>
+                        <div className="work-modal-container">
                             {/* Header Section */}
-                            <div style={{ marginBottom: '60px', textAlign: 'center' }}>
-                                <p style={{ opacity: 0.7, textTransform: 'uppercase', fontSize: '1.5rem', marginBottom: '10px', letterSpacing: '2px' }}>ThreeJS Freeroam Experience</p>
-                                <h1 style={{ fontSize: '5rem', marginBottom: '20px', fontWeight: '800' }}>Cloaked Authority</h1>
+                            <div className="work-modal-header">
+                                <p className="work-tagline">— ThreeJS Freeroam Experience</p>
+                                <h1 className="work-title">Cloaked Authority</h1>
                                 
                                 {/* Project Links */}
-                                <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '40px' }}>
+                                <div className="work-project-links">
                                     <a 
                                         href="https://github.com/rohan-pandeyy/cloaked-authority" 
                                         target="_blank" 
                                         rel="noreferrer" 
-                                        style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 30px', borderRadius: '50px', backgroundColor: '#ffc552ce', border: '1px solid #97742eff', color: '#0F1A48', textDecoration: 'none', fontSize: '1.7rem', fontWeight: 'bold', transition: 'all 0.3s ease', cursor: 'pointer' }}
-                                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#ffcf6fff'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#ffc552'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                                        className="work-link-button github"
                                     >
                                         <FaGithub /> GitHub
                                     </a>
@@ -86,43 +84,41 @@ export const CloakedAuthority = () => {
                                         href="https://rohan-pandeyy.github.io/Cloaked-Authority/" 
                                         target="_blank" 
                                         rel="noreferrer" 
-                                        style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 30px', borderRadius: '50px', backgroundColor: '#ffffffe5', border: '1px solid white', color: '#0F1A48', textDecoration: 'none', fontSize: '1.7rem', fontWeight: 'bold', transition: 'all 0.3s ease', cursor: 'pointer' }}
-                                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 5px 15px #ffc552'; }}
-                                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                                        className="work-link-button demo"
                                     >
                                         <FaExternalLinkAlt /> Live Demo
                                     </a>
                                 </div>
 
-                                <p style={{ fontSize: '1.9rem', lineHeight: '1.6', opacity: 0.9, maxWidth: '900px', margin: '0 auto' }}>
+                                <p className="work-intro">
                                     Set in a cyberpunk future dominated by the mega-corporation "Silent Dynamics," players uncover a global conspiracy involving mind control and a rogue hacker named Gargi.
                                 </p>
 
                                 {/* Tech Stack */}
-                                <div style={{ marginBottom: '40px' }}>
-                                    <p style={{ opacity: 0.6, fontSize: '1rem', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Powered By</p>
-                                    <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', alignItems: 'center' }}>
-                                        <div title="Three.js" style={{ color: 'white', fontSize: '3rem' }}><SiThreedotjs /></div>
-                                        <div title="JavaScript" style={{ color: '#F7DF1E', fontSize: '3rem' }}><SiJavascript /></div>
-                                        <div title="HTML5" style={{ color: '#E34F26', fontSize: '3rem' }}><SiHtml5 /></div>
-                                        <div title="CSS3" style={{ color: '#1572B6', fontSize: '3rem' }}><SiCss3 /></div>
+                                <div className="work-tech-stack">
+                                    <p className="work-tech-label">Powered By</p>
+                                    <div className="work-tech-icons">
+                                        <div title="Three.js" className="tech-icon-white"><SiThreedotjs /></div>
+                                        <div title="JavaScript" className="tech-icon-yellow"><SiJavascript /></div>
+                                        <div title="HTML5" className="tech-icon-orange"><SiHtml5 /></div>
+                                        <div title="CSS3" className="tech-icon-blue"><SiCss3 /></div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Story Section */}
-                            <div style={{ marginBottom: '60px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
+                            <div className="work-grid-section">
                                 <div>
-                                    <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', borderBottom: '2px solid rgba(255,255,255,0.1)', paddingBottom: '10px' }}>The Story</h2>
-                                    <p style={{ fontSize: '1.7rem', lineHeight: '1.8', opacity: 0.85 }}>
+                                    <h2 className="work-section-title">The Story</h2>
+                                    <p className="work-text">
                                         The world is controlled by Director Ronnie, a puppet master orchestrating mind-control experiments to increase power. 
                                         Players take on the role of <strong>Gargi</strong>, a former high-ranking operative turned rogue hacker. 
                                         Gargi discovers the corporation's connection to a global conspiracy involving a mysterious organization known as "The Nexus."
                                     </p>
                                 </div>
                                 <div>
-                                    <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', borderBottom: '2px solid rgba(255,255,255,0.1)', paddingBottom: '10px' }}>Backstory</h2>
-                                    <p style={{ fontSize: '1.7rem', lineHeight: '1.8', opacity: 0.85 }}>
+                                    <h2 className="work-section-title">Backstory</h2>
+                                    <p className="work-text">
                                         Gargi, once an elite cyber security expert within Silent Dynamics, uncovers evidence of the corporation's collaboration with The Nexus. 
                                         Now aligned with the resistance led by Commander Wires, Gargi aims to expose the truth, dismantle The Nexus, and liberate the world from mind control.
                                     </p>
@@ -130,21 +126,21 @@ export const CloakedAuthority = () => {
                             </div>
 
                             {/* Characters & Gameplay */}
-                            <div style={{ marginBottom: '80px', background: 'rgba(255,255,255,0.05)', borderRadius: '24px', padding: '40px' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'center' }}>
+                            <div className="work-highlight-box">
+                                <div className="highlight-grid">
                                     <div>
-                                        <h2 style={{ fontSize: '2.8rem', marginBottom: '30px' }}>Protagonist: Gargi</h2>
-                                        <p style={{ fontSize: '1.7rem', lineHeight: '1.8', marginBottom: '20px', opacity: 0.9 }}>
+                                        <h2 className="work-highlight-title">Protagonist: Gargi</h2>
+                                        <p className="work-text" style={{ marginBottom: '20px', opacity: 0.9 }}>
                                             <strong>Role:</strong> Former Elite Operative / Rogue Hacker<br/>
                                             <strong>Motivation:</strong> Exposing Silent Dynamics & The Nexus
                                         </p>
-                                        <p style={{ fontSize: '1.7rem', lineHeight: '1.8', opacity: 0.85 }}>
+                                        <p className="work-text">
                                             Equipped with cutting-edge gadgets and cybernetic enhancements, Gargi specializes in stealth, hacking, and combat. 
                                             Players utilize these skills to infiltrate facilities and engage in corporate espionage.
                                         </p>
                                     </div>
-                                    <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 30px rgba(0,0,0,0.3)' }}>
-                                        <video style={{ width: '100%', display: 'block' }} muted playsInline loop autoPlay>
+                                    <div className="work-video-container">
+                                        <video muted playsInline loop autoPlay>
                                             <source src={GargiModelVideo} type="video/mp4" />
                                         </video>
                                     </div>
@@ -152,43 +148,51 @@ export const CloakedAuthority = () => {
                             </div>
 
                             {/* Development Journey */}
-                            <div style={{ marginBottom: '40px' }}>
-                                <h2 style={{ fontSize: '3.5rem', marginBottom: '40px', textAlign: 'center' }}>Development Journey</h2>
+                            <div className="work-development-section">
+                                <h2 className="dev-title">Development Journey</h2>
                                 
                                 {/* Section 1: Locomotion */}
-                                <div style={{ marginBottom: '60px' }}>
-                                    <h3 style={{ fontSize: '2rem', marginBottom: '20px', opacity: 0.9 }}>Locomotion & Physics</h3>
-                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '20px' }}>
+                                <div className="dev-subsection">
+                                    <h3 className="subsection-title">Locomotion & Physics</h3>
+                                    <div className="video-grid">
                                         <div>
-                                            <video style={{ width: '100%', borderRadius: '12px' }} muted playsInline loop autoPlay>
-                                                <source src={GargiWalkRunVideo} type="video/mp4" />
-                                            </video>
-                                            <p style={{ marginTop: '10px', fontSize: '1.1rem', opacity: 0.6, textAlign: 'center' }}>Base Loco-motion testing</p>
+                                            <div className="dev-video-wrapper">
+                                                <video muted playsInline loop autoPlay>
+                                                    <source src={GargiWalkRunVideo} type="video/mp4" />
+                                                </video>
+                                            </div>
+                                            <p className="video-caption">Base Loco-motion testing</p>
                                         </div>
                                         <div>
-                                            <video style={{ width: '100%', borderRadius: '12px' }} muted playsInline loop autoPlay>
-                                                <source src={RunningJumpingRiggedVideo} type="video/mp4" />
-                                            </video>
-                                            <p style={{ marginTop: '10px', fontSize: '1.1rem', opacity: 0.6, textAlign: 'center' }}>Rigged Running & Jumping</p>
+                                            <div className="dev-video-wrapper">
+                                                <video muted playsInline loop autoPlay>
+                                                    <source src={RunningJumpingRiggedVideo} type="video/mp4" />
+                                                </video>
+                                            </div>
+                                            <p className="video-caption">Rigged Running & Jumping</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Section 2: Environment & Camera */}
-                                <div style={{ marginBottom: '60px' }}>
-                                    <h3 style={{ fontSize: '2rem', marginBottom: '20px', opacity: 0.9 }}>Environment & Camera Systems</h3>
-                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '20px' }}>
+                                <div className="dev-subsection">
+                                    <h3 className="subsection-title">Environment & Camera Systems</h3>
+                                    <div className="video-grid">
                                         <div>
-                                            <video style={{ width: '100%', borderRadius: '12px' }} muted playsInline loop autoPlay>
-                                                <source src={EnvironmentVideo} type="video/mp4" />
-                                            </video>
-                                            <p style={{ marginTop: '10px', fontSize: '1.1rem', opacity: 0.6, textAlign: 'center' }}>Environment Rendering</p>
+                                            <div className="dev-video-wrapper">
+                                                <video muted playsInline loop autoPlay>
+                                                    <source src={EnvironmentVideo} type="video/mp4" />
+                                                </video>
+                                            </div>
+                                            <p className="video-caption">Environment Rendering</p>
                                         </div>
                                         <div>
-                                            <video style={{ width: '100%', borderRadius: '12px' }} muted playsInline loop autoPlay>
-                                                <source src={CameraRiggedVideo} type="video/mp4" />
-                                            </video>
-                                            <p style={{ marginTop: '10px', fontSize: '1.1rem', opacity: 0.6, textAlign: 'center' }}>3rd Person Camera System</p>
+                                            <div className="dev-video-wrapper">
+                                                <video muted playsInline loop autoPlay>
+                                                    <source src={CameraRiggedVideo} type="video/mp4" />
+                                                </video>
+                                            </div>
+                                            <p className="video-caption">(Broken lol) 3rd Person Camera System</p>
                                         </div>
                                     </div>
                                 </div>
