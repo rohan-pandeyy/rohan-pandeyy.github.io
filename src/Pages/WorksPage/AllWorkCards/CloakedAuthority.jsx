@@ -5,6 +5,7 @@ import './card.scss';
 import { AnimatePresence } from 'framer-motion';
 import WorkModal from '../../../components/WorkModal/WorkModal';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { SiThreedotjs, SiJavascript, SiHtml5, SiCss3 } from 'react-icons/si';
 
 // Development Assets
 import GargiModelVideo from '../../../assets/images/CloakedAuthorities/gargi - model.mp4';
@@ -70,7 +71,7 @@ export const CloakedAuthority = () => {
                                 <h1 style={{ fontSize: '5rem', marginBottom: '20px', fontWeight: '800' }}>Cloaked Authority</h1>
                                 
                                 {/* Project Links */}
-                                <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '30px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '40px' }}>
                                     <a 
                                         href="https://github.com/rohan-pandeyy/cloaked-authority" 
                                         target="_blank" 
@@ -96,6 +97,17 @@ export const CloakedAuthority = () => {
                                 <p style={{ fontSize: '1.9rem', lineHeight: '1.6', opacity: 0.9, maxWidth: '900px', margin: '0 auto' }}>
                                     Set in a cyberpunk future dominated by the mega-corporation "Silent Dynamics," players uncover a global conspiracy involving mind control and a rogue hacker named Gargi.
                                 </p>
+
+                                {/* Tech Stack */}
+                                <div style={{ marginBottom: '40px' }}>
+                                    <p style={{ opacity: 0.6, fontSize: '1rem', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Powered By</p>
+                                    <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', alignItems: 'center' }}>
+                                        <div title="Three.js" style={{ color: 'white', fontSize: '3rem' }}><SiThreedotjs /></div>
+                                        <div title="JavaScript" style={{ color: '#F7DF1E', fontSize: '3rem' }}><SiJavascript /></div>
+                                        <div title="HTML5" style={{ color: '#E34F26', fontSize: '3rem' }}><SiHtml5 /></div>
+                                        <div title="CSS3" style={{ color: '#1572B6', fontSize: '3rem' }}><SiCss3 /></div>
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Story Section */}

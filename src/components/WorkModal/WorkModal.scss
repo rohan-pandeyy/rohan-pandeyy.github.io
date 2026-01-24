@@ -58,9 +58,11 @@
         }
         
         .close-button {
-            position: absolute;
+            position: sticky;
             top: 20px;
-            right: 20px;
+            float: right; // Float right to keep it on the right side while sticky
+            margin-right: 20px; // Add right margin since right: 20px won't work with sticky as expected for alignment without float or flex
+            margin-bottom: -60px; // Negative margin to pull content up so it doesn't take up layout space
             background: rgba(0, 0, 0, 0.2);
             color: white;
             border: none;
@@ -80,7 +82,8 @@
             }
 
             @media (max-width: 872px) {
-                top: 80px; /* Push down below navbar */
+                top: 75px; 
+                margin-top: 20px;
             }
         }
 
