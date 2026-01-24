@@ -67,7 +67,7 @@ export const CloakedAuthority = () => {
                         <div className="work-modal-container">
                             {/* Header Section */}
                             <div className="work-modal-header">
-                                <p className="work-tagline">— ThreeJS Freeroam Experience</p>
+                                <p className="work-tagline">ThreeJS Freeroam Experience</p>
                                 <h1 className="work-title">Cloaked Authority</h1>
                                 
                                 {/* Project Links */}
