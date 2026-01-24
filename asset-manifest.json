@@ -1,16 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.4bee9fea.css",
-    "main.js": "/static/js/main.f1f27b5f.js",
+    "main.css": "/static/css/main.533b87f4.css",
+    "main.js": "/static/js/main.793d8f1a.js",
     "static/js/453.96453769.chunk.js": "/static/js/453.96453769.chunk.js",
+    "static/media/environment rendered.mp4": "/static/media/environment rendered.f6b8e500fddf63a94ca8.mp4",
+    "static/media/Sample Video.mp4": "/static/media/Sample Video.1e7c18e0808c50109326.mp4",
+    "static/media/Third Person Camera that follows mouse (rigged).mp4": "/static/media/Third Person Camera that follows mouse (rigged).ccb81e8ea91c001bb5f2.mp4",
+    "static/media/running + jumping (rigged).mp4": "/static/media/running + jumping (rigged).0154f067e800b82c3d67.mp4",
+    "static/media/gargi - walk and run.mp4": "/static/media/gargi - walk and run.8a72750f98e25068d53f.mp4",
     "static/media/Drive-Guardian.mp4": "/static/media/Drive-Guardian.7feb54f6897ba62f3de4.mp4",
+    "static/media/gargi - model.mp4": "/static/media/gargi - model.c69a1aeae7340cbfb0f2.mp4",
     "static/media/me.png": "/static/media/me.8974572ca4a69482472c.png",
     "static/media/welcome.mp4": "/static/media/welcome.7f52ed351624c03ff94a.mp4",
     "static/media/iphone-sim.mp4": "/static/media/iphone-sim.b6dfb09b9758a7e1063a.mp4",
     "static/media/cloaked-authority.mp4": "/static/media/cloaked-authority.c30d9871844c954bd964.mp4",
+    "static/media/LaneObjectDetection.jpeg": "/static/media/LaneObjectDetection.21f495f095ccf51a4c11.jpeg",
+    "static/media/Preprocessing_data_&_extracting_features.jpeg": "/static/media/Preprocessing_data_&_extracting_features.29a741331d5937d358d0.jpeg",
+    "static/media/Sobel-FeldmanFilter.jpeg": "/static/media/Sobel-FeldmanFilter.be5e887875755327c972.jpeg",
     "static/media/trophyShine.png": "/static/media/trophyShine.143f8dce752019ed7f27.png",
+    "static/media/cover_picture.png": "/static/media/cover_picture.80bfe5aa79f186c08a76.png",
+    "static/media/cover_picture.jpeg": "/static/media/cover_picture.ec48d0b34e466e790c36.jpeg",
     "static/media/trophy.png": "/static/media/trophy.d390e19a7c16679c0ecf.png",
     "static/media/IamDev.png": "/static/media/IamDev.0b1127215686aeb90b82.png",
+    "static/media/Estimating_the_polynomials.jpeg": "/static/media/Estimating_the_polynomials.7be245d83eb0f504f2b7.jpeg",
     "static/media/helvetica-neu.ttf": "/static/media/helvetica-neu.8a19678078a6b21c8057.ttf",
     "static/media/LaBelleAurore.woff": "/static/media/LaBelleAurore.9c5433c64baa43d1d274.woff",
     "static/media/LaBelleAurore.woff2": "/static/media/LaBelleAurore.a83c1c58fd7e43972e4a.woff2",
@@ -21,12 +33,12 @@
     "index.html": "/index.html",
     "static/media/pen.svg": "/static/media/pen.47cb6b39330edef3dd2d70dbcb24efd7.svg",
     "static/media/webpage.svg": "/static/media/webpage.6ec79dc1902ab512d697dcb08b4ecac4.svg",
-    "main.4bee9fea.css.map": "/static/css/main.4bee9fea.css.map",
-    "main.f1f27b5f.js.map": "/static/js/main.f1f27b5f.js.map",
+    "main.533b87f4.css.map": "/static/css/main.533b87f4.css.map",
+    "main.793d8f1a.js.map": "/static/js/main.793d8f1a.js.map",
     "453.96453769.chunk.js.map": "/static/js/453.96453769.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4bee9fea.css",
-    "static/js/main.f1f27b5f.js"
+    "static/css/main.533b87f4.css",
+    "static/js/main.793d8f1a.js"
   ]
 }
