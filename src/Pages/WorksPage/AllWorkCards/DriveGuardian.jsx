@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { RectangleCard } from '../../../components/Card/cardSizes';
+import ImageWithSkeleton from '../../../components/ImageWithSkeleton/ImageWithSkeleton';
 import DriveGuardianVideo from '../../../assets/videos/Drive-Guardian.mp4';
 import './card.scss';
 import { AnimatePresence } from 'framer-motion';
@@ -64,7 +65,7 @@ export const DriveGuardian = () => {
                         onClose={() => setIsExpanded(false)} 
                         bgColor="#9C918A"
                     >
-                         <img src={CoverPicture} alt="Drive Guardian Cover" className="modal-cover-image" />
+                        <ImageWithSkeleton src={CoverPicture} alt="Drive Guardian Cover" className="modal-cover-image" />
                         
                         <div className="work-modal-container">
                             {/* Header Section */}
@@ -165,11 +166,11 @@ export const DriveGuardian = () => {
                                     </p>
                                     <div className="video-grid">
                                         <div>
-                                            <img src={PreprocessingImg} alt="Preprocessing" className="work-grid-image" />
+                                            <ImageWithSkeleton src={PreprocessingImg} alt="Preprocessing" className="work-grid-image" style={{ height: "300px" }} />
                                             <p className="video-caption">Preprocessing Data & Extracting Features</p>
                                         </div>
                                         <div>
-                                            <img src={SobelFilterImg} alt="Sobel Filter" className="work-grid-image" />
+                                            <ImageWithSkeleton src={SobelFilterImg} alt="Sobel Filter" className="work-grid-image" style={{ height: "300px" }} />
                                             <p className="video-caption">Sobel-Feldman Filter Application</p>
                                         </div>
                                     </div>
@@ -182,11 +183,11 @@ export const DriveGuardian = () => {
                                     </p>
                                     <div className="video-grid">
                                         <div>
-                                            <img src={PolynomialsImg} alt="Polynomial Estimation" className="work-grid-image" />
+                                            <ImageWithSkeleton src={PolynomialsImg} alt="Polynomial Estimation" className="work-grid-image" style={{ height: "300px" }} />
                                             <p className="video-caption">Estimating Lane Polynomials</p>
                                         </div>
                                         <div>
-                                            <img src={LaneDetectionImg} alt="Lane Detection" className="work-grid-image" />
+                                            <ImageWithSkeleton src={LaneDetectionImg} alt="Lane Detection" className="work-grid-image" style={{ height: "300px" }} />
                                             <p className="video-caption">Final Lane & Object Detection Output</p>
                                         </div>
                                     </div>

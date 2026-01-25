@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { SquareCard } from '../../../components/Card/cardSizes';
+import ImageWithSkeleton from '../../../components/ImageWithSkeleton/ImageWithSkeleton';
 import CloakedAuthorityVideo from '../../../assets/videos/cloaked-authority.mp4';
 import './card.scss';
 import { AnimatePresence } from 'framer-motion';
@@ -63,7 +64,7 @@ export const CloakedAuthority = () => {
                         onClose={() => setIsExpanded(false)} 
                         bgColor="#0F1A48"
                     >
-                         <img src={CoverPicture} alt="Cloaked Authority Cover" className="modal-cover-image" />
+                         <ImageWithSkeleton src={CoverPicture} alt="Cloaked Authority Cover" className="modal-cover-image" />
                         <div className="work-modal-container">
                             {/* Header Section */}
                             <div className="work-modal-header">
