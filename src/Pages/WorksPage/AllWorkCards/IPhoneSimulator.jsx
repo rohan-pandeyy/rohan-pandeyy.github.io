@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { SquareCard } from '../../../components/Card/cardSizes';
+import ImageWithSkeleton from '../../../components/ImageWithSkeleton/ImageWithSkeleton';
 import iphoneSimVideo from '../../../assets/videos/iphone-sim.mp4';
 import './card.scss';
 import { AnimatePresence } from 'framer-motion';
@@ -64,7 +65,7 @@ export const IPhoneSimulator = () => {
                         onClose={() => setIsExpanded(false)} 
                         bgColor="#D07560"
                     >
-                         <img src={CoverPicture} alt="iPhone Simulator Cover" className="modal-cover-image" />
+                        <ImageWithSkeleton src={CoverPicture} alt="iPhone Simulator Cover" className="modal-cover-image" />
                         
                         <div className="work-modal-container">
                             {/* Header Section */}
@@ -121,7 +122,7 @@ export const IPhoneSimulator = () => {
                                     </ul>
                                 </div>
                                 <div>
-                                    <img src={LockScreenImg} alt="Lock Screen" className="work-grid-image" />
+                                    <ImageWithSkeleton src={LockScreenImg} alt="Lock Screen" className="work-grid-image" />
                                 </div>
                             </div>
 
@@ -150,15 +151,15 @@ export const IPhoneSimulator = () => {
                                 <h2 className="dev-title">Visual Fidelity</h2>
                                 <div className="video-grid">
                                     <div>
-                                        <img src={HomeScreenImg} alt="Home Screen" className="work-grid-image" />
+                                        <ImageWithSkeleton src={HomeScreenImg} alt="Home Screen" className="work-grid-image" style={{ height: "500px" }} />
                                         <p className="video-caption">Home Screen Layout</p>
                                     </div>
                                     <div>
-                                        <img src={PasswordScreenImg} alt="Password Screen" className="work-grid-image" />
+                                        <ImageWithSkeleton src={PasswordScreenImg} alt="Password Screen" className="work-grid-image" style={{ height: "500px" }} />
                                         <p className="video-caption">Security Interface</p>
                                     </div>
                                     <div>
-                                        <img src={CameraScreenImg} alt="Camera App" className="work-grid-image" />
+                                        <ImageWithSkeleton src={CameraScreenImg} alt="Camera App" className="work-grid-image" style={{ height: "500px" }} />
                                         <p className="video-caption">Camera Application</p>
                                     </div>
                                 </div>
