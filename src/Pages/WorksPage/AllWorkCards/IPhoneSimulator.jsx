@@ -4,6 +4,17 @@ import iphoneSimVideo from '../../../assets/videos/iphone-sim.mp4';
 import './card.scss';
 import { AnimatePresence } from 'framer-motion';
 import WorkModal from '../../../components/WorkModal/WorkModal';
+import { SiHtml5, SiCss3, SiJavascript } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+
+// Project Assets
+import CoverPicture from '../../../assets/images/IphoneSimulator/cover_picture.png';
+import DemoVideo from '../../../assets/images/IphoneSimulator/iPhoneSim_Demo.mp4';
+import LockScreenImg from '../../../assets/images/IphoneSimulator/LockScreen.png';
+import HomeScreenImg from '../../../assets/images/IphoneSimulator/HomeScreen.png';
+import PasswordScreenImg from '../../../assets/images/IphoneSimulator/PasswordScreen.png';
+import CameraScreenImg from '../../../assets/images/IphoneSimulator/CameraScreen.png';
+
 
 export const IPhoneSimulator = () => {
     const videoRef = useRef(null);
@@ -53,16 +64,106 @@ export const IPhoneSimulator = () => {
                         onClose={() => setIsExpanded(false)} 
                         bgColor="#D07560"
                     >
-                         <video className="project-video" muted playsInline loop autoPlay style={{ width: '100%', borderRadius: '12px', marginBottom: '20px' }}>
-                            <source src={iphoneSimVideo} type="video/mp4" />
-                        </video>
-                        <div style={{ color: 'white' }}>
-                            <p style={{ opacity: 0.7, textTransform: 'uppercase', fontSize: '0.9rem', marginBottom: '10px' }}>— Recreation</p>
-                            <h1 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>iPhone Simulator</h1>
-                            <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
-                                A faithful recreation of the iPhone interface using web technologies. 
-                                This project mimics the smooth animations, gestures, and visual style of iOS.
-                            </p>
+                         <img src={CoverPicture} alt="iPhone Simulator Cover" className="modal-cover-image" />
+                        
+                        <div className="work-modal-container">
+                            {/* Header Section */}
+                            <div className="work-modal-header">
+                                <p className="work-tagline">Project Recreation</p>
+                                <h1 className="work-title">iPhone Simulator</h1>
+                                
+                                {/* Project Links */}
+                                <div className="work-project-links">
+                                    <a 
+                                        href="https://github.com/rohan-pandeyy/iphone-sim" 
+                                        target="_blank" 
+                                        rel="noreferrer" 
+                                        className="work-link-button github"
+                                    >
+                                        <FaGithub /> GitHub
+                                    </a>
+                                    <a 
+                                        href="https://rohan-pandeyy.github.io/iphone-sim/" 
+                                        target="_blank" 
+                                        rel="noreferrer" 
+                                        className="work-link-button demo"
+                                    >
+                                        <FaExternalLinkAlt /> Live Demo
+                                    </a>
+                                </div>
+
+                                <p className="work-intro">
+                                    A sort of interactive iPhone 12 made in HTML, CSS, and a lil bit of JS! Includes a lock screen, passcode, camera app, calculator and home screen. Is as realistic and looks virtually the same as the actual iPhone.
+                                </p>
+
+                                {/* Tech Stack */}
+                                <div className="work-tech-stack mt-40">
+                                    <p className="work-tech-label">Powered By</p>
+                                    <div className="work-tech-icons">
+                                        <div title="HTML5" className="tech-icon-orange"><SiHtml5 /></div>
+                                        <div title="CSS3" className="tech-icon-blue"><SiCss3 /></div>
+                                        <div title="JavaScript" className="tech-icon-yellow"><SiJavascript /></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Features Section */}
+                            <div className="work-grid-section">
+                                <div>
+                                    <h2 className="work-section-title">Authentic Experience</h2>
+                                    <p className="work-text mb-30">
+                                        Experience the look and feel of iOS right in your browser. From the slide-to-unlock gesture to the smooth transitions between apps, every detail has been crafted to mimic the actual device.
+                                    </p>
+                                    <ul className="work-text work-feature-list">
+                                        <li><strong>Lock Screen:</strong> Realistic time and date display with slide unlock.</li>
+                                        <li><strong>Passcode:</strong> Functional security screen simulation.</li>
+                                        <li><strong>Home Screen:</strong> Grid layout with recognizable app icons.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <img src={LockScreenImg} alt="Lock Screen" className="work-grid-image" />
+                                </div>
+                            </div>
+
+                            <div className="work-highlight-box">
+                                <h2 className="work-highlight-title text-center">Interactive Apps</h2>
+                                <div className="highlight-grid">
+                                    <div className="work-video-container">
+                                        <video muted playsInline loop autoPlay>
+                                            <source src={DemoVideo} type="video/mp4" />
+                                        </video>
+                                    </div>
+                                    <div>
+                                        <p className="work-text mb-20">
+                                            Beyond just visual replication, the simulator includes functional mini-apps:
+                                        </p>
+                                        <ul className="work-text work-feature-list">
+                                            <li><strong>Camera:</strong> Access your webcam to take photos within the sim.</li>
+                                            <li><strong>Calculator:</strong> Fully functional distinct iOS calculator logic.</li>
+                                            <li><strong>Clock & Settings:</strong> Interactive UI elements that respond to your touch.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="work-development-section">
+                                <h2 className="dev-title">Visual Fidelity</h2>
+                                <div className="video-grid">
+                                    <div>
+                                        <img src={HomeScreenImg} alt="Home Screen" className="work-grid-image" />
+                                        <p className="video-caption">Home Screen Layout</p>
+                                    </div>
+                                    <div>
+                                        <img src={PasswordScreenImg} alt="Password Screen" className="work-grid-image" />
+                                        <p className="video-caption">Security Interface</p>
+                                    </div>
+                                    <div>
+                                        <img src={CameraScreenImg} alt="Camera App" className="work-grid-image" />
+                                        <p className="video-caption">Camera Application</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </WorkModal>
                 )}
