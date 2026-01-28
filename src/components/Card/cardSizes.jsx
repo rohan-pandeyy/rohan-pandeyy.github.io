@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import './cardSizes.scss';
 import { motion } from 'framer-motion';
 
-const RectangleCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave, layoutId, ...props }) => {
+const RectangleCard = ({ children, style, onClick, disableHover, mobileBackground, className = '', onMouseEnter, onMouseLeave, layoutId, ...props }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     
     useEffect(() => {
@@ -11,7 +10,11 @@ const RectangleCard = ({ children, style, onClick, disableHover, mobileBackgroun
         return () => window.removeEventListener('resize', handleResize);
     }, []);
     
-    const cardClass = `rectangle-card ${disableHover ? 'no-hover' : ''} ${className}`;
+    const baseClasses = "h-[280px] bg-[#333639] rounded-[24px] cursor-pointer overflow-hidden relative box-border border border-transparent z-10 transition-transform duration-500 max-[872px]:w-[95%] max-[872px]:hover:border-transparent max-[872px]:hover:transform-none";
+    const hoverClasses = disableHover ? "hover:cursor-auto" : "hover:scale-[1.03] hover:border-white";
+    const widthClass = "w-1/2";
+    
+    const cardClass = `${baseClasses} ${widthClass} ${hoverClasses} ${className}`;
     const dynamicStyle = {...style, backgroundColor: isMobile && mobileBackground ? mobileBackground : style?.backgroundColor,};
     
     return (
@@ -31,7 +34,7 @@ const RectangleCard = ({ children, style, onClick, disableHover, mobileBackgroun
 
 export { RectangleCard };
 
-const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, className, onMouseEnter, onMouseLeave, layoutId, ...props }) => {
+const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, className = '', onMouseEnter, onMouseLeave, layoutId, ...props }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
     
     useEffect(() => {
@@ -40,7 +43,11 @@ const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
     
-    const cardClass = `square-card ${disableHover ? 'no-hover' : ''} ${className}`;
+    const baseClasses = "h-[280px] bg-[#333639] rounded-[24px] cursor-pointer overflow-hidden relative box-border border border-transparent z-10 transition-transform duration-500 max-[872px]:w-[95%] max-[872px]:hover:border-transparent max-[872px]:hover:transform-none";
+    const hoverClasses = disableHover ? "hover:cursor-auto" : "hover:scale-[1.03] hover:border-white";
+    const widthClass = "w-1/4";
+    
+    const cardClass = `${baseClasses} ${widthClass} ${hoverClasses} ${className}`;
     const dynamicStyle = {...style, backgroundColor: isMobile && mobileBackground ? mobileBackground : style?.backgroundColor,};
     
     return (
@@ -61,7 +68,7 @@ const SquareCard = ({ children, style, onClick, disableHover, mobileBackground, 
 export { SquareCard };
 const WelcomeCard = ({ children }) => {
     return (
-        <div className="welcome-card">
+        <div className="w-[75%] h-[280px] rounded-[24px] bg-[#3b3b40] overflow-hidden flex justify-center items-center max-[872px]:w-[95%]">
             {children}
         </div>
     );
