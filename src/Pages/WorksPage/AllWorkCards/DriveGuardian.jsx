@@ -1,10 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { RectangleCard } from '../../../components/Card/cardSizes';
-import ImageWithSkeleton from '../../../components/ImageWithSkeleton/ImageWithSkeleton';
+import ImageWithSkeleton from '../../../components/ImageWithSkeleton';
 import DriveGuardianVideo from '../../../assets/videos/Drive-Guardian.mp4';
-import './card.scss';
 import { AnimatePresence } from 'framer-motion';
-import WorkModal from '../../../components/WorkModal/WorkModal';
+import WorkModal from '../../../components/WorkModal';
 import CoverPicture from '../../../assets/images/DriveGuardian/cover_picture.png';
 import { SiPython, SiPytorch, SiOpencv, SiFlask, SiNumpy, SiPandas, SiScikitlearn } from 'react-icons/si';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
@@ -38,7 +37,7 @@ export const DriveGuardian = () => {
         <React.Fragment>
             <RectangleCard 
                 style={{ backgroundColor: '#9C918A', opacity: isExpanded ? 0 : 1, zIndex }} 
-                className="project-rectangle-card" 
+                className="group" 
                 onMouseEnter={handleMouseEnter} 
                 onMouseLeave={handleMouseLeave}
                 onClick={() => setIsExpanded(true)}
@@ -47,15 +46,15 @@ export const DriveGuardian = () => {
                 onLayoutAnimationComplete={() => setZIndex(1)}
             >
                 {!isExpanded && (
-                    <video ref={videoRef} className="project-video" muted playsInline loop>
+                    <video ref={videoRef} className="block w-[90%] h-[160px] mx-auto mt-[1%] object-contain" muted playsInline loop>
                         <source src={DriveGuardianVideo} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 )}
-                <div className="project-info">
-                    <p>— Autonomous Vehicle</p>
-                    <h1>Drive Guardian</h1>
-                    <p className="description">Click to expand</p>
+                <div className="absolute bottom-5 left-0 w-full z-10 pointer-events-none px-[10%]">
+                    <p className="text-[1.2rem] opacity-80 mb-0 uppercase tracking-wide transition-opacity duration-300 group-hover:opacity-0 text-left text-white">— Autonomous Vehicle</p>
+                    <h1 className="text-[25px] font-bold leading-tight mt-0 mb-0 text-left text-white transition-transform duration-300 group-hover:-translate-y-[25px]">Drive Guardian</h1>
+                    <p className="absolute bottom-0 left-0 w-full px-[10%] text-[14px] font-medium font-dm-sans opacity-0 transition-opacity duration-300 group-hover:opacity-100 italic text-left text-white">Click to expand</p>
                 </div>
             </RectangleCard>
             <AnimatePresence>
@@ -65,21 +64,21 @@ export const DriveGuardian = () => {
                         onClose={() => setIsExpanded(false)} 
                         bgColor="#9C918A"
                     >
-                        <ImageWithSkeleton src={CoverPicture} alt="Drive Guardian Cover" className="modal-cover-image" />
+                        <ImageWithSkeleton src={CoverPicture} alt="Drive Guardian Cover" className="w-full rounded-xl mb-10 shadow-[0_4px_20px_rgba(0,0,0,0.3)] block min-[873px]:w-[40%] min-[873px]:h-auto min-[873px]:mx-auto" />
                         
-                        <div className="work-modal-container">
+                        <div className="text-white max-w-[1000px] mx-auto">
                             {/* Header Section */}
-                            <div className="work-modal-header">
-                                <p className="work-tagline">Automatic Breaking System</p>
-                                <h1 className="work-title">Drive Guardian</h1>
+                            <div className="mb-[60px] text-center">
+                                <p className="opacity-70 uppercase text-[1.5rem] mb-[10px] tracking-[2px]">Automatic Breaking System</p>
+                                <h1 className="text-[5rem] mb-[20px] font-extrabold max-[872px]:text-[3rem]">Drive Guardian</h1>
                                 
                                 {/* Project Links */}
-                                <div className="work-project-links">
+                                <div className="flex justify-center gap-9 mb-10 max-[872px]:flex-col max-[872px]:items-center">
                                     <a 
                                         href="https://github.com/rohan-pandeyy/drive-guardian" 
                                         target="_blank" 
                                         rel="noreferrer" 
-                                        className="work-link-button github"
+                                        className="flex items-center gap-[10px] px-[30px] py-[12px] rounded-[50px] no-underline text-[1.7rem] font-bold transition-all duration-300 cursor-pointer bg-[#ffc552ce] border border-[#97742eff] text-[#0F1A48] hover:bg-[#ffcf6fff] hover:-translate-y-[2px]"
                                     >
                                         <FaGithub /> GitHub
                                     </a>
@@ -87,57 +86,57 @@ export const DriveGuardian = () => {
                                         href="https://rohan-pandeyy.github.io/drive-guardian/" 
                                         target="_blank" 
                                         rel="noreferrer" 
-                                        className="work-link-button demo"
+                                        className="flex items-center gap-[10px] px-[30px] py-[12px] rounded-[50px] no-underline text-[1.7rem] font-bold transition-all duration-300 cursor-pointer bg-[#ffffffe5] !border border-white text-[#0F1A48] hover:-translate-y-[2px] hover:shadow-[0_5px_15px_#ffc552]"
                                     >
                                         <FaExternalLinkAlt /> Live Demo
                                     </a>
                                 </div>
 
-                                <p className="work-intro">
+                                <p className="text-[1.9rem] leading-[1.6] opacity-90 max-w-[900px] mx-auto max-[872px]:text-[1.5rem]">
                                     An advanced driver safety tool that enhances road safety by leveraging machine learning for real-time hazard detection and automated braking.
                                 </p>
 
                                 {/* Tech Stack */}
-                                <div className="work-tech-stack mt-40">
-                                    <p className="work-tech-label">Powered By</p>
-                                    <div className="work-tech-icons">
-                                        <div title="Python" className="tech-icon-blue"><SiPython /></div>
-                                        <div title="OpenCV" className="tech-icon-white"><SiOpencv /></div>
-                                        <div title="PyTorch" className="tech-icon-orange"><SiPytorch /></div>
-                                        <div title="Flask" className="tech-icon-white"><SiFlask /></div>
-                                        <div title="NumPy" className="tech-icon-blue"><SiNumpy /></div>
-                                        <div title="Pandas" className="tech-icon-blue"><SiPandas /></div>
-                                        <div title="Scikit-learn" className="tech-icon-blue"><SiScikitlearn /></div>
+                                <div className="mb-10 text-center mt-10">
+                                    <p className="opacity-60 text-[1.2rem] mb-[15px] uppercase tracking-[1px]">Powered By</p>
+                                    <div className="flex justify-center gap-[30px] items-center text-[3rem]">
+                                        <div title="Python" className="text-[#1572B6]"><SiPython /></div>
+                                        <div title="OpenCV" className="text-white"><SiOpencv /></div>
+                                        <div title="PyTorch" className="text-[#E34F26]"><SiPytorch /></div>
+                                        <div title="Flask" className="text-white"><SiFlask /></div>
+                                        <div title="NumPy" className="text-[#1572B6]"><SiNumpy /></div>
+                                        <div title="Pandas" className="text-[#1572B6]"><SiPandas /></div>
+                                        <div title="Scikit-learn" className="text-[#1572B6]"><SiScikitlearn /></div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Background & Description */}
-                            <div className="work-grid-section">
+                            <div className="mb-[60px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10">
                                 <div>
-                                    <h2 className="work-section-title">Background</h2>
-                                    <p className="work-text">
+                                    <h2 className="text-[2.5rem] mb-[20px] border-b-[2px] border-white/10 pb-[10px]">Background</h2>
+                                    <p className="text-[1.7rem] leading-[1.8] opacity-85">
                                         With the increasing number of road accidents, Drive Guardian aims to enhance driver safety by providing a tool that automatically applies brakes when necessary. Our application leverages advanced machine learning algorithms, such as YOLO and lane detection, to ensure precise brake timing, reducing the risk of accidents.
                                     </p>
                                 </div>
                                 <div>
-                                    <h2 className="work-section-title">Project Description</h2>
-                                    <p className="work-text">
+                                    <h2 className="text-[2.5rem] mb-[20px] border-b-[2px] border-white/10 pb-[10px]">Project Description</h2>
+                                    <p className="text-[1.7rem] leading-[1.8] opacity-85">
                                         Our project aims to enhance the safety of drivers and passengers alike by leveraging live feeds from dashcam videos and utilizing advanced algorithms for real-time analysis of applying brakes.
                                     </p>
                                 </div>
                             </div>
 
                             {/* Key Features */}
-                            <div className="work-highlight-box">
-                                <h2 className="work-highlight-title text-center">Key Features</h2>
-                                <div className="highlight-grid">
+                            <div className="mb-20 bg-white/5 rounded-[24px] p-10">
+                                <h2 className="text-[2.8rem] mb-[30px] text-center">Key Features</h2>
+                                <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 items-center">
                                     <div>
-                                        <ul className="work-text work-feature-list">
-                                            <li className="mb-20">
+                                        <ul className="text-[1.7rem] leading-[1.8] opacity-85 list-none p-0">
+                                            <li className="mb-5">
                                                 <strong>Real-time Analysis:</strong> Sophisticated monitoring of road conditions to detect potential hazards instantly.
                                             </li>
-                                            <li className="mb-20">
+                                            <li className="mb-5">
                                                 <strong>Object Detection & Prediction:</strong> Utilizing YOLO and advanced algorithms to predict hazards and empower drivers with proactive insights.
                                             </li>
                                             <li>
@@ -145,8 +144,8 @@ export const DriveGuardian = () => {
                                             </li>
                                         </ul>
                                     </div>
-                                    <div className="work-video-container">
-                                        <video muted playsInline loop autoPlay>
+                                    <div className="rounded-[16px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+                                        <video muted playsInline loop autoPlay className="w-full block">
                                             <source src={SampleVideo} type="video/mp4" />
                                         </video>
                                     </div>
@@ -154,63 +153,63 @@ export const DriveGuardian = () => {
                             </div>
 
                             {/* ML Algorithm Section */}
-                            <div className="work-development-section">
-                                <h2 className="dev-title">ML Algorithm & Architecture</h2>
+                            <div className="mb-10">
+                                <h2 className="text-[3.5rem] mb-10 text-center">ML Algorithm & Architecture</h2>
                                 
-                                <div className="dev-subsection">
-                                    <h3 className="subsection-title">Data Preprocessing & Lane Enhancement</h3>
-                                    <p className="work-text mb-30">
+                                <div className="mb-[60px]">
+                                    <h3 className="text-[2rem] mb-5 opacity-90">Data Preprocessing & Lane Enhancement</h3>
+                                    <p className="text-[1.7rem] leading-[1.8] opacity-85 mb-8">
                                         <strong>Camera Calibration:</strong> Removes lens distortion using <code>cv2.undistort()</code>.<br/>
                                         <strong>Lane Feature Enhancement:</strong> Uses Gradient Thresholding (Sobel) and Color Thresholding to highlight lane markings.<br/>
                                         <strong>Bird's-Eye View:</strong> Transforms the perspective for easier lane curvature analysis.
                                     </p>
-                                    <div className="video-grid">
+                                    <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-9">
                                         <div>
-                                            <ImageWithSkeleton src={PreprocessingImg} alt="Preprocessing" className="work-grid-image" style={{ height: "300px" }} />
-                                            <p className="video-caption">Preprocessing Data & Extracting Features</p>
+                                            <ImageWithSkeleton src={PreprocessingImg} alt="Preprocessing" className="w-full rounded-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.2)] block object-cover" style={{ height: "300px" }} />
+                                            <p className="mt-2.5 text-[1.5rem] opacity-60 text-center">Preprocessing Data & Extracting Features</p>
                                         </div>
                                         <div>
-                                            <ImageWithSkeleton src={SobelFilterImg} alt="Sobel Filter" className="work-grid-image" style={{ height: "300px" }} />
-                                            <p className="video-caption">Sobel-Feldman Filter Application</p>
+                                            <ImageWithSkeleton src={SobelFilterImg} alt="Sobel Filter" className="w-full rounded-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.2)] block object-cover" style={{ height: "300px" }} />
+                                            <p className="mt-2.5 text-[1.5rem] opacity-60 text-center">Sobel-Feldman Filter Application</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="dev-subsection">
-                                    <h3 className="subsection-title">Object & Lane Detection</h3>
-                                    <p className="work-text mb-30">
+                                <div className="mb-[60px]">
+                                    <h3 className="text-[2rem] mb-5 opacity-90">Object & Lane Detection</h3>
+                                    <p className="text-[1.7rem] leading-[1.8] opacity-85 mb-8">
                                         Utilized <strong>YOLOv5</strong> for robust object detection and custom CV algorithms for lane tracking. The system fuses these inputs to determine safe braking distances.
                                     </p>
-                                    <div className="video-grid">
+                                    <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-9">
                                         <div>
-                                            <ImageWithSkeleton src={PolynomialsImg} alt="Polynomial Estimation" className="work-grid-image" style={{ height: "300px" }} />
-                                            <p className="video-caption">Estimating Lane Polynomials</p>
+                                            <ImageWithSkeleton src={PolynomialsImg} alt="Polynomial Estimation" className="w-full rounded-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.2)] block object-cover" style={{ height: "300px" }} />
+                                            <p className="mt-2.5 text-[1.5rem] opacity-60 text-center">Estimating Lane Polynomials</p>
                                         </div>
                                         <div>
-                                            <ImageWithSkeleton src={LaneDetectionImg} alt="Lane Detection" className="work-grid-image" style={{ height: "300px" }} />
-                                            <p className="video-caption">Final Lane & Object Detection Output</p>
+                                            <ImageWithSkeleton src={LaneDetectionImg} alt="Lane Detection" className="w-full rounded-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.2)] block object-cover" style={{ height: "300px" }} />
+                                            <p className="mt-2.5 text-[1.5rem] opacity-60 text-center">Final Lane & Object Detection Output</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Instructions & Requirements */}
-                            <div className="work-grid-section">
+                            <div className="mb-[60px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10">
                                 <div>
-                                    <h2 className="work-section-title">Instructions to Run</h2>
-                                    <div className="work-code-block">
-                                        <p className="comment"># Install Requirements</p>
-                                        <p>pip install ultralytics</p>
+                                    <h2 className="text-[2.5rem] mb-[20px] border-b-[2px] border-white/10 pb-[10px]">Instructions to Run</h2>
+                                    <div className="bg-black/30 p-9 rounded-[12px] font-mono text-[1rem]">
+                                        <p className="text-[#ffc552] mb-2.5"># Install Requirements</p>
+                                        <p className="mb-5">pip install ultralytics</p>
                                         
-                                        <p className="comment"># Run Application</p>
+                                        <p className="text-[#ffc552] mb-2.5"># Run Application</p>
                                         <p>flask run</p>
                                     </div>
                                 </div>
                                 <div>
-                                    <h2 className="work-section-title">Requirements</h2>
-                                    <div className="work-requirements-list">
+                                    <h2 className="text-[2.5rem] mb-[20px] border-b-[2px] border-white/10 pb-[10px]">Requirements</h2>
+                                    <div className="flex flex-wrap gap-2.5">
                                         {['flask', 'opencv-python', 'numpy', 'torch', 'pillow', 'pandas', 'nltk', 'scikit-learn', 'cuda', 'transformers'].map((req, index) => (
-                                            <span key={index} className="requirement-tag">
+                                            <span key={index} className="bg-white/10 px-4 py-2 rounded-[20px] text-[1.2rem]">
                                                 {req}
                                             </span>
                                         ))}

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import WorksPage from './Pages/WorksPage';
+import WorksPage from './Pages/WorksPage/WorksPage';
 import AboutPage from './Pages/AboutPage';
 import ResumePage from './Pages/ResumePage';
 import ContactPage from './Pages/ContactPage';

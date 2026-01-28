@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import './WorkModal.scss';
 
 const adjustColor = (hex, percent) => {
     let r = parseInt(hex.substring(1, 3), 16);
@@ -52,7 +51,7 @@ const WorkModal = ({ layoutId, onClose, bgColor, children }) => {
     return (
         <React.Fragment>
             <motion.div 
-                className="modal-overlay" 
+                className="fixed top-0 left-0 w-full h-full bg-black/50 backdrop-blur-[8px] z-[2999] max-[872px]:z-[800]" 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 exit={{ opacity: 0 }} 
@@ -60,20 +59,26 @@ const WorkModal = ({ layoutId, onClose, bgColor, children }) => {
             />
             <motion.div
                 layoutId={layoutId}
-                className="work-modal"
+                className="fixed top-[5vh] left-[5vw] w-[90vw] h-[90vh] rounded-[20px] z-[3000] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] max-[872px]:top-0 max-[872px]:left-0 max-[872px]:w-full max-[872px]:h-full max-[872px]:rounded-none max-[872px]:z-[900]"
                 style={{ backgroundColor: bgColor }}
                 role="dialog"
                 aria-modal="true"
                 aria-label="Work details dialog"
             >
                 <div 
-                    className="modal-content"
+                    className="custom-scrollbar relative h-full w-full overflow-y-auto"
                     style={{ '--scrollbar-color': scrollbarColor }}
                 >
-                    <button type="button" className="close-button" onClick={onClose} aria-label="Close">
+                    <style>{`
+                        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+                        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+                        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: var(--scrollbar-color); border-radius: 4px; }
+                        .custom-scrollbar::-webkit-scrollbar-thumb:hover { filter: brightness(0.9); }
+                    `}</style>
+                    <button type="button" className="sticky top-9 float-right mr-5 -mb-[60px] bg-black/20 text-white border-none rounded-full w-14 h-14 text-2xl cursor-pointer z-[1001] flex items-center justify-center transition-colors duration-300 hover:bg-black/40 max-[872px]:top-[75px] max-[872px]:mt-5" onClick={onClose} aria-label="Close">
                         &times;
                     </button>
-                    <div className="modal-body">
+                    <div className="p-10 max-[872px]:p-9 max-[872px]:pt-[120px]">
                         {children}
                     </div>
                 </div>
