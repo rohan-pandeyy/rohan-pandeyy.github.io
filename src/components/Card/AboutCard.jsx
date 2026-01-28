@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { RectangleCard } from '../cardSizes';
+import { RectangleCard } from './cardSizes';
 import { useState, useEffect } from 'react';
-import me from '../../../assets/images/me.png';
-import iamDev from '../../../assets/images/IamDev.png';
+import me from '../../assets/images/me.png';
+import iamDev from '../../assets/images/IamDev.png';
 
 const AboutCard = () => {
   const navigate = useNavigate();

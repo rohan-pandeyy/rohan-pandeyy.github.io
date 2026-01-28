@@ -1,8 +1,8 @@
-import { RectangleCard } from '../cardSizes';
+import { RectangleCard } from './cardSizes';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import trophy from '../../../assets/images/trophy.png';
-import trophyShine from '../../../assets/images/trophyShine.png';
+import trophy from '../../assets/images/trophy.png';
+import trophyShine from '../../assets/images/trophyShine.png';
 
 const AchievementsCard = () => {
     const navigate = useNavigate();

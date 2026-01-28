@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './App.scss';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import WorksPage from './Pages/WorksPage';
@@ -31,7 +30,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <Navbar />
-      <div className="container">
+      <div className="relative mx-[5vw] min-[873px]:mx-[15vw]">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/works" element={<WorksPage />} />

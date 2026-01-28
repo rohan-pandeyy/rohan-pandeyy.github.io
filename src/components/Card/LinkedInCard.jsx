@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { SquareCard } from '../cardSizes';
-import LinkedInIcon from '../../../assets/icons/LinkedInIcon.png';
-import LinkedInIconFill from '../../../assets/icons/LinkedInIconFill.png';
+import { SquareCard } from './cardSizes';
+import LinkedInIcon from '../../assets/icons/LinkedInIcon.png';
+import LinkedInIconFill from '../../assets/icons/LinkedInIconFill.png';
 
 const LinkedInCard = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);

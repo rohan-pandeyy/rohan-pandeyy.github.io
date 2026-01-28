@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { SquareCard } from '../cardSizes';
+import { SquareCard } from './cardSizes';
 import { useNavigate } from 'react-router-dom';
-import UserIcon from '../../../assets/icons/UserIcon.png';
-import UserIconFill from '../../../assets/icons/UserIconFill.png';
-import UserIconWhite from '../../../assets/icons/UserIconWhite.png';
+import UserIcon from '../../assets/icons/UserIcon.png';
+import UserIconFill from '../../assets/icons/UserIconFill.png';
+import UserIconWhite from '../../assets/icons/UserIconWhite.png';
 
 const ResumeCard = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 872);
