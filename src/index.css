@@ -1,10 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('./assets/fonts/helvetica-neu.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'La Belle Aurore';
+  src:
+    url('./assets/fonts/LaBelleAurore.woff2') format('woff2'),
+    url('./assets/fonts/LaBelleAurore.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src:
+    url('./assets/fonts/CoolveticaRg-Regular.woff2') format('woff2'),
+    url('./assets/fonts/CoolveticaRg-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer base {
+  body {
+    @apply m-0 font-helvetica antialiased bg-dark;
+  }
+
+  code {
+    font-family:
+      source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  }
+
+  input,
+  textarea {
+    @apply font-helvetica;
+  }
+
+  h1 {
+    @apply text-primary font-[800] text-[35px] font-dm-sans;
+  }
+
+  h2 {
+    @apply text-white font-bold text-[1.5vw] font-dm-sans;
+  }
+
+  p {
+    @apply text-secondary font-[500] text-[20px] font-dm-sans;
+  }
+}
+
+/* Responsive typography overrides */
+@media (max-width: 1330px) {
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 1.4vw;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1140px) {
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 1.3vw;
+  }
+  p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 872px) {
+  h1 {
+    font-size: 35px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  p {
+    font-size: 20px;
+  }
+}
+
 html {
   font-size: 62.5%;
 }
 
 body {
   margin: 0;
-  font: 300 15px/1.4 'Helvetica Neue', sans-serif;
+  font:
+    300 15px/1.4 'Helvetica Neue',
+    sans-serif;
   color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
