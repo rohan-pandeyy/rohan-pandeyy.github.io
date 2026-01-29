@@ -12,6 +12,14 @@ const ImageWithSkeleton = ({ src, alt, className, style, skeletonHeight, ...prop
         };
     }, []);
 
+    const imgRef = useRef(null);
+
+    useEffect(() => {
+        if (imgRef.current && imgRef.current.complete) {
+            handleImageLoad();
+        }
+    }, []);
+
     const handleImageLoad = () => {
         if (isMountedRef.current) {
             setIsLoaded(true);
@@ -20,7 +28,7 @@ const ImageWithSkeleton = ({ src, alt, className, style, skeletonHeight, ...prop
 
     const handleImageError = () => {
         if (isMountedRef.current) {
-            setIsLoaded(true); // Hide skeleton even if error, so we don't show eternal loading
+            setIsLoaded(true); // Hide skeleton even if error
         }
     };
 
@@ -45,6 +53,7 @@ const ImageWithSkeleton = ({ src, alt, className, style, skeletonHeight, ...prop
                 </div>
             )}
             <img 
+                ref={imgRef}
                 src={src} 
                 alt={alt} 
                 onLoad={handleImageLoad}
