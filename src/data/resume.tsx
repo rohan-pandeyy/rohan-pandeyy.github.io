@@ -13,16 +13,16 @@ import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 
 export const DATA = {
-  name: "Dillion Verma",
-  initials: "DV",
-  url: "https://dillion.io",
-  location: "San Francisco, CA",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  name: "Rohan Pandey",
+  initials: "RP",
+  url: "https://rohan-pandeyy.github.io",
+  location: "Mumbai, India",
+  locationLink: "https://www.google.com/maps/place/Mumbai",
   description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.",
+    "AI Intern at HERE, GSoC '26 contributor at AOSSIE. I build in public.",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
-  avatarUrl: "/me.png",
+    "I'm a computer science student at [Bennett University](/#education) (B.Tech, class of 2027) working on applied AI. I'm currently an AI Intern at HERE Technologies and a [Google Summer of Code '26](/#work) contributor at AOSSIE, where I work on PictoPy, a privacy-first gallery manager for desktop. Previously, I [compressed LeNet-5 in C++ for FPGA inference](/#work) as a Machine Learning Intern at KeenSemi, and I served as Head of Tech and then Vice Chairperson of the Data Science Society at Bennett. I build in public.",
+  avatarUrl: "/me.jpg",
   skills: [
     { name: "React", icon: ReactLight },
     { name: "Next.js", icon: NextjsIconDark },
