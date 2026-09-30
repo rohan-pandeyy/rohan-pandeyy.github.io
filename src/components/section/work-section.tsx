@@ -11,7 +11,15 @@ import { DATA } from "@/data/resume";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-function LogoImage({ src, alt }: { src: string; alt: string }) {
+function LogoImage({
+  src,
+  alt,
+  dark,
+}: {
+  src: string;
+  alt: string;
+  dark?: boolean;
+}) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {
@@ -24,7 +32,10 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
+      className={cn(
+        "size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none",
+        dark && "bg-black"
+      )}
       onError={() => setImageError(true)}
     />
   );
@@ -42,7 +53,11 @@ export default function WorkSection() {
           <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
             <div className="flex items-center gap-x-3 justify-between w-full text-left">
               <div className="flex items-center gap-x-3 flex-1 min-w-0">
-                <LogoImage src={work.logoUrl} alt={work.company} />
+                <LogoImage
+                  src={work.logoUrl}
+                  alt={work.company}
+                  dark={work.logoBg === "dark"}
+                />
                 <div className="flex-1 min-w-0 gap-0.5 flex flex-col">
                   <div className="font-semibold leading-none flex items-center gap-2">
                     {work.company}
@@ -65,19 +80,45 @@ export default function WorkSection() {
                     </span>
                   </div>
                   <div className="font-sans text-sm text-muted-foreground">
-                    {work.title}
+                    {work.roles.length === 1
+                      ? work.roles[0].title
+                      : work.roles.map((r) => r.title).join(" · ")}
                   </div>
                 </div>
               </div>
               <div className="flex items-center gap-1 text-xs tabular-nums text-muted-foreground text-right flex-none">
                 <span>
-                  {work.start} - {work.end ?? "Present"}
+                  {work.roles[work.roles.length - 1].start} -{" "}
+                  {work.roles[0].end ?? "Present"}
                 </span>
               </div>
             </div>
           </AccordionTrigger>
           <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
-            {work.description}
+            <div className="flex flex-col gap-3">
+              {work.roles.map((role) => (
+                <div key={role.title} className="flex flex-col gap-1">
+                  {work.roles.length > 1 && (
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-medium text-foreground">
+                        {role.title}
+                      </span>
+                      <span className="text-xs tabular-nums">
+                        {role.start} -{" "}
+                        {role.end ?? "Present"}
+                      </span>
+                    </div>
+                  )}
+                  {role.points.length > 0 && (
+                    <ul className="list-disc pl-4 flex flex-col gap-1">
+                      {role.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
           </AccordionContent>
         </AccordionItem>
       ))}
