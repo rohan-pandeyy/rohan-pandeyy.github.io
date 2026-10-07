@@ -1,16 +1,38 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
-import { ReactLight } from "@/components/ui/svgs/reactLight";
-import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
-import { Typescript } from "@/components/ui/svgs/typescript";
-import { Nodejs } from "@/components/ui/svgs/nodejs";
-import { Python } from "@/components/ui/svgs/python";
-import { Golang } from "@/components/ui/svgs/golang";
-import { Postgresql } from "@/components/ui/svgs/postgresql";
-import { Docker } from "@/components/ui/svgs/docker";
-import { Kubernetes } from "@/components/ui/svgs/kubernetes";
-import { Java } from "@/components/ui/svgs/java";
-import { Csharp } from "@/components/ui/svgs/csharp";
+import {
+  BotIcon,
+  BrainIcon,
+  CloudIcon,
+  HomeIcon,
+  NotebookIcon,
+  SparklesIcon,
+} from "lucide-react";
+import {
+  SiCplusplus,
+  SiExpress,
+  SiFastapi,
+  SiGit,
+  SiGithubactions,
+  SiGooglecloud,
+  SiGooglecolab,
+  SiHuggingface,
+  SiJavascript,
+  SiKeras,
+  SiMongodb,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiNumpy,
+  SiOnnx,
+  SiPandas,
+  SiPostgresql,
+  SiPython,
+  SiPytorch,
+  SiReact,
+  SiScikitlearn,
+  SiTensorflow,
+  SiTypescript,
+} from "react-icons/si";
 
 export const DATA = {
   name: "Rohan Pandey",
@@ -24,17 +46,34 @@ export const DATA = {
     "I'm a computer science student at [Bennett University](/#education) (B.Tech, class of 2027) working on applied AI. I'm currently an AI Intern at HERE Technologies and a [Google Summer of Code '26](/#work) contributor at AOSSIE, where I work on PictoPy, a privacy-first gallery manager for desktop. Previously, I [compressed LeNet-5 in C++ for FPGA inference](/#work) as a Machine Learning Intern at KeenSemi, and I served as Head of Tech and then Vice Chairperson of the Data Science Society at Bennett. I build in public.",
   avatarUrl: "/me.jpg",
   skills: [
-    { name: "React", icon: ReactLight },
-    { name: "Next.js", icon: NextjsIconDark },
-    { name: "Typescript", icon: Typescript },
-    { name: "Node.js", icon: Nodejs },
-    { name: "Python", icon: Python },
-    { name: "Go", icon: Golang },
-    { name: "Postgres", icon: Postgresql },
-    { name: "Docker", icon: Docker },
-    { name: "Kubernetes", icon: Kubernetes },
-    { name: "Java", icon: Java },
-    { name: "C++", icon: Csharp },
+    { name: "Agentic AI Development", icon: BotIcon },
+    { name: "Deep Learning", icon: BrainIcon },
+    { name: "Large Language Models", icon: SparklesIcon },
+    { name: "Python", icon: SiPython },
+    { name: "C++", icon: SiCplusplus },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "JavaScript", icon: SiJavascript },
+    { name: "PyTorch", icon: SiPytorch },
+    { name: "TensorFlow", icon: SiTensorflow },
+    { name: "Keras", icon: SiKeras },
+    { name: "Scikit-learn", icon: SiScikitlearn },
+    { name: "NumPy", icon: SiNumpy },
+    { name: "Pandas", icon: SiPandas },
+    { name: "ONNX", icon: SiOnnx },
+    { name: "Hugging Face", icon: SiHuggingface },
+    { name: "Google Colab", icon: SiGooglecolab },
+    { name: "FastAPI", icon: SiFastapi },
+    { name: "React", icon: SiReact },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "Node.js", icon: SiNodedotjs },
+    { name: "Express.js", icon: SiExpress },
+    { name: "MongoDB", icon: SiMongodb },
+    { name: "MySQL", icon: SiMysql },
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "AWS", icon: CloudIcon },
+    { name: "Google Cloud", icon: SiGooglecloud },
+    { name: "GitHub Actions", icon: SiGithubactions },
+    { name: "Git", icon: SiGit },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
