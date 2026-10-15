@@ -215,6 +215,39 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "PictoPy",
+      href: "https://github.com/AOSSIE-Org/PictoPy",
+      dates: "July 2025 - Present",
+      active: true,
+      description:
+        "A fully offline, privacy-first desktop image gallery by AOSSIE. It groups faces across your library, tags photos with detected objects, and supports semantic search, all with on-device AI models. As a contributor and GSoC 2026 participant, I worked on ML pipelines, CI/CD, face clustering and Visual Semantic Intelligence.",
+      technologies: [
+        "Rust",
+        "Python",
+        "React",
+        "TypeScript",
+        "Tauri",
+        "FastAPI",
+        "SQLite",
+        "ONNX Runtime",
+        "OpenCV",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://pictopy.aossie.org/en",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/AOSSIE-Org/PictoPy",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "",
+    },
+    {
       title: "Drive Guardian",
       href: "https://github.com/rohan-pandeyy/drive-guardian",
       dates: "April 2024",
