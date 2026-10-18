@@ -19,15 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = Number.MAX_SAFE_INTEGER;
 const BLUR_FADE_DELAY = 0.04;
 
-export default async function BlogPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ page?: string }>;
-}) {
-  const { page: pageParam } = await searchParams;
+export default function BlogPage() {
+  // Static export (GitHub Pages) cannot read ?page= at build time,
+  // so every post is rendered on a single page.
 
   const posts = allPosts;
   const sortedPosts = [...posts].sort((a, b) => {
@@ -38,7 +35,7 @@ export default async function BlogPage({
   });
 
   const totalPages = Math.ceil(sortedPosts.length / PAGE_SIZE);
-  const currentPage = normalizePage(pageParam, totalPages);
+  const currentPage = normalizePage(undefined, totalPages);
   const { items: paginatedPosts, pagination } = paginate(sortedPosts, {
     page: currentPage,
     pageSize: PAGE_SIZE,
