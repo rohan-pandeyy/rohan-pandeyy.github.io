@@ -3,8 +3,9 @@
 import { ImageResponse } from "next/og";
 import { allPosts } from "content-collections";
 import { DATA } from "@/data/resume";
+import { getOgAvatar, getOgFonts } from "@/lib/og-assets";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 export const alt = "Blog Post";
 export const size = {
@@ -12,29 +13,6 @@ export const size = {
     height: 630,
 };
 export const contentType = "image/png";
-
-const getFontData = async () => {
-    try {
-        const [cabinetGrotesk, clashDisplay] = await Promise.all([
-            fetch(
-                new URL(
-                    "../../../../public/fonts/CabinetGrotesk-Medium.ttf",
-                    import.meta.url
-                )
-            ).then((res) => res.arrayBuffer()),
-            fetch(
-                new URL(
-                    "../../../../public/fonts/ClashDisplay-Semibold.ttf",
-                    import.meta.url
-                )
-            ).then((res) => res.arrayBuffer()),
-        ]);
-        return { cabinetGrotesk, clashDisplay };
-    } catch (error) {
-        console.error("Failed to load fonts:", error);
-        return null;
-    }
-};
 
 const styles = {
     outerWrapper: {
@@ -121,18 +99,22 @@ const styles = {
     },
 } as const;
 
+export async function generateStaticParams() {
+    return allPosts.map((post) => ({
+        slug: post._meta.path.replace(/\.mdx$/, ""),
+    }));
+}
+
 export default async function Image({
     params,
 }: {
     params: Promise<{ slug: string }>;
 }) {
     try {
-        const fontData = await getFontData();
+        const fontData = await getOgFonts();
         const { slug } = await params;
         const post = allPosts.find((p) => p._meta.path.replace(/\.mdx$/, "") === slug);
-        const imageUrl = DATA.avatarUrl
-            ? new URL(DATA.avatarUrl, DATA.url).toString()
-            : undefined;
+        const imageUrl = await getOgAvatar();
 
         if (!post) {
             return new ImageResponse(
