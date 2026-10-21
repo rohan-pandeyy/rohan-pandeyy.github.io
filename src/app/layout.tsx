@@ -27,12 +27,25 @@ export const metadata: Metadata = {
     template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
+  applicationName: `${DATA.name} | Portfolio`,
+  authors: [{ name: DATA.name, url: DATA.url }],
+  creator: DATA.name,
+  keywords: [
+    DATA.name,
+    "portfolio",
+    "AI",
+    "machine learning",
+    "open source",
+    "GSoC",
+    "AOSSIE",
+    "PictoPy",
+  ],
   openGraph: {
     title: `${DATA.name}`,
     description: DATA.description,
     url: DATA.url,
     siteName: `${DATA.name}`,
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
   robots: {
@@ -48,11 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: `${DATA.name}`,
+    description: DATA.description,
     card: "summary_large_image",
-  },
-  verification: {
-    google: "",
-    yandex: "",
   },
 };
 
