@@ -141,6 +141,18 @@ export default function Page() {
           <SkillsList />
         </div>
       </section>
+      {/* Positions of Responsibility (disabled for now; data lives in DATA.positions)
+      <section id="positions">
+        <div className="flex min-h-0 flex-col gap-y-6">
+          <BlurFade delay={BLUR_FADE_DELAY * 10}>
+            <h2 className="text-xl font-bold">Positions of Responsibility</h2>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+            <WorkSection items={DATA.positions} />
+          </BlurFade>
+        </div>
+      </section>
+      */}
       <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
           <ProjectsSection />

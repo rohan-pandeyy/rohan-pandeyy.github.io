@@ -185,6 +185,33 @@ export const DATA = {
       ],
     },
   ],
+  positions: [
+    {
+      company: "Data Science Society BU",
+      href: "https://dss-bu.vercel.app",
+      location: "Bennett University",
+      logoUrl: "/logos/dss.svg",
+      logoBg: "dark" as string | undefined,
+      roles: [
+        {
+          title: "Vice Chairperson",
+          start: "September 2025",
+          end: "August 2026" as string | undefined,
+          points: [
+            "Hosted hackathons, talk sessions and competitions on AI training",
+            "Ran career guidance sessions on data science as a career path",
+            "Hosted a Machine Learning workshop teaching 200+ students about CNNs and Computer Vision",
+          ],
+        },
+        {
+          title: "Head of Tech",
+          start: "September 2024",
+          end: "August 2025" as string | undefined,
+          points: [] as string[],
+        },
+      ],
+    },
+  ],
   education: [
     {
       school: "Bennett University",
