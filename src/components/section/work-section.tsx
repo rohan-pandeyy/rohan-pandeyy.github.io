@@ -10,6 +10,7 @@ import {
 import { DATA } from "@/data/resume";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PresentText } from "@/components/present-text";
 
 function LogoImage({
   src,
@@ -89,7 +90,7 @@ export default function WorkSection() {
               <div className="flex items-center gap-1 text-xs tabular-nums text-muted-foreground text-right flex-none">
                 <span>
                   {work.roles[work.roles.length - 1].start} -{" "}
-                  {work.roles[0].end ?? "Present"}
+                  <PresentText>{work.roles[0].end ?? "Present"}</PresentText>
                 </span>
               </div>
             </div>
@@ -105,7 +106,7 @@ export default function WorkSection() {
                       </span>
                       <span className="text-xs tabular-nums">
                         {role.start} -{" "}
-                        {role.end ?? "Present"}
+                        <PresentText>{role.end ?? "Present"}</PresentText>
                       </span>
                     </div>
                   )}
