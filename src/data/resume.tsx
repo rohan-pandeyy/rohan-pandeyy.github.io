@@ -110,6 +110,18 @@ export const DATA = {
     },
   },
 
+  // GitHub organizations I contribute to, most active first. The first three show
+  // by default under the heatmap; the rest appear behind "More".
+  contributedTo: [
+    { org: "AOSSIE-Org", logo: "/logos/orgs/AOSSIE-Org.png" },
+    { org: "meshery", logo: "/logos/orgs/meshery.png" },
+    { org: "sugarlabs", logo: "/logos/orgs/sugarlabs.png" },
+    { org: "activist-org", logo: "/logos/orgs/activist-org.png" },
+    { org: "ohcnetwork", logo: "/logos/orgs/ohcnetwork.png" },
+    { org: "thedesignnetwork", logo: "/logos/orgs/thedesignnetwork.jpg" },
+    { org: "dss-bu", logo: "/logos/orgs/dss-bu.png" },
+  ],
+
   work: [
     {
       company: "HERE Technologies",

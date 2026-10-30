@@ -8,6 +8,7 @@ import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
 import { SkillsList } from "@/components/skill-chip";
+import ContributedTo from "@/components/section/contributed-to";
 import GithubHeatmap from "@/components/section/github-heatmap";
 import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
@@ -165,7 +166,10 @@ export default function Page() {
             <h2 className="text-xl font-bold">GitHub Activity</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <GithubHeatmap username="rohan-pandeyy" />
+            <div className="flex flex-col gap-5">
+              <GithubHeatmap username="rohan-pandeyy" />
+              <ContributedTo />
+            </div>
           </BlurFade>
         </div>
       </section>
