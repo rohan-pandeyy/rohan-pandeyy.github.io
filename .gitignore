@@ -28,3 +28,7 @@ npm-debug.log*
 
 # generated CV PDF (npm run cv:pdf)
 /public/Rohan_Pandey_CV.pdf
+
+# local-only files
+/Profile.pdf
+/tsconfig.tsbuildinfo
