@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Rohan Pandey: Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio at **https://rohan-pandeyy.github.io**, built on the
+[Magic UI portfolio template](https://magicui.design/docs/templates/portfolio)
+(Next.js, Tailwind CSS, shadcn/ui, Magic UI and Motion) and exported as a static
+site for GitHub Pages.
 
-## Available Scripts
+The previous Create React App version lives in [`_legacy/`](./_legacy) for
+reference and is excluded from the TypeScript build.
 
-In the project directory, you can run:
+## Stack
 
-### `npm start`
+- Next.js 16 (App Router, static export), React 19, TypeScript
+- Tailwind CSS 4, shadcn/ui, Magic UI components, Motion
+- MDX blog via `content-collections`
+- EmailJS for the contact form
+- `react-icons` for skill and brand icons
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+npm run dev
+```
 
-### `npm test`
+Open http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Generate the CV PDF, then build the static site into `out/` |
+| `npm run cv:pdf` | Regenerate `public/Rohan_Pandey_CV.pdf` from `src/data/cv.md` |
+| `npm run lint` | Run ESLint |
+| `npm run deploy` | Build and publish `out/` to the `gh-pages` branch |
 
-### `npm run build`
+## Where things live
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Path | Content |
+| --- | --- |
+| `src/data/resume.tsx` | Name, summary, work, education, skills, projects, socials, orgs |
+| `src/data/cv.md` | The CV shown on `/resume` and rendered to PDF |
+| `content/*.mdx` | Blog posts |
+| `public/logos/` | Company, school and organization logos |
+| `src/assets/fonts/` | Fonts used only when rendering Open Graph images |
+| `src/components/section/` | Page sections (work, projects, contact, GitHub activity) |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contact form
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The form sends mail through [EmailJS](https://www.emailjs.com/), so no server is
+needed. Copy `.env.example` to `.env.local` and fill in your service, template
+and public key:
 
-### `npm run eject`
+```bash
+cp .env.example .env.local
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The public key ends up in the client bundle by design; restrict the allowed
+domains in the EmailJS dashboard.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## CV PDF
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`npm run build` generates the CV PDF using a locally installed Chrome or Edge in
+headless mode (set `CHROME_PATH` to point at a specific browser). If no browser is
+found the step is skipped with a warning and the existing file, if any, is used.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Deploying
 
-## Learn More
+```bash
+npm run deploy
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This builds the site and pushes `out/` to the `gh-pages` branch. If you build on
+a network that intercepts TLS, `next/font/google` needs the system certificates;
+this is already enabled via `experimental.turbopackUseSystemTlsCerts` in
+`next.config.mjs`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Credits and license
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Based on [dillionverma/portfolio](https://github.com/dillionverma/portfolio),
+licensed under MIT (see [LICENSE](./LICENSE)).
