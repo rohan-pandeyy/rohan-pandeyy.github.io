@@ -14,7 +14,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "predeploy": "npm run build && node -e \"require('fs').writeFileSync('out/.nojekyll','')\"",
-    "deploy": "gh-pages -d out -t true"
+    "deploy": "gh-pages -d out -t"
   },
   "dependencies": {
     "@content-collections/mdx": "^0.2.2",
