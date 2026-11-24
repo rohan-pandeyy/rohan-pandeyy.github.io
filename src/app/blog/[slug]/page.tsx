@@ -1,144 +1,149 @@
-import { allPosts } from "content-collections";
-import { formatDate } from "@/lib/utils";
+import { PostCta } from "@/components/blog/post-cta";
+import { PostCard, PostMeta, TagList } from "@/components/blog/post-card";
+import { ReadingProgress } from "@/components/blog/reading-progress";
+import { TableOfContents } from "@/components/blog/table-of-contents";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { getPostBySlug, getRelatedPosts, getSlug } from "@/lib/posts";
+import { allPosts } from "content-collections";
 import { MDXContent } from "@content-collections/mdx/react";
-import { mdxComponents } from "@/mdx-components";
+import { ChevronLeft } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { notFound } from "next/navigation";
+import { mdxComponents } from "@/mdx-components";
 
-function getSortedPosts() {
-  return [...allPosts].sort((a, b) => {
-    if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
-      return -1;
-    }
-    return 1;
-  });
-}
+type Params = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post._meta.path.replace(/\.mdx$/, ""),
-  }));
+  return allPosts.map((post) => ({ slug: getSlug(post) }));
 }
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{
-    slug: string;
-  }>;
-}): Promise<Metadata | undefined> {
+}: Params): Promise<Metadata | undefined> {
   const { slug } = await params;
-  const post = allPosts.find((p) => p._meta.path.replace(/\.mdx$/, "") === slug);
+  const post = getPostBySlug(slug);
+  if (!post) return undefined;
 
-  if (!post) {
-    return undefined;
-  }
-
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post;
+  const { title, summary: description, publishedAt, updatedAt, image } = post;
+  const url = `${DATA.url}/blog/${slug}/`;
+  const keywords = [...(post.tags ?? []), ...(post.keywords ?? [])];
+  const author = post.author ?? DATA.name;
 
   return {
     title,
     description,
+    keywords,
+    authors: [{ name: author, url: DATA.url }],
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
       type: "article",
-      publishedTime,
-      url: `${DATA.url}/blog/${slug}`,
-      ...(image && {
-        images: [
-          {
-            url: `${DATA.url}${image}`,
-          },
-        ],
-      }),
+      url,
+      siteName: DATA.name,
+      locale: "en_IN",
+      publishedTime: publishedAt,
+      modifiedTime: updatedAt ?? publishedAt,
+      authors: [author],
+      tags: keywords,
+      ...(image && { images: [{ url: `${DATA.url}${image}` }] }),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(image && {
-        images: [`${DATA.url}${image}`],
-      }),
+      ...(image && { images: [`${DATA.url}${image}`] }),
     },
   };
 }
 
-export default async function Blog({
-  params,
-}: {
-  params: Promise<{
-    slug: string;
-  }>;
-}) {
+export default async function BlogPost({ params }: Params) {
   const { slug } = await params;
-  const sortedPosts = getSortedPosts();
-  const currentIndex = sortedPosts.findIndex(
-    (p) => p._meta.path.replace(/\.mdx$/, "") === slug
-  );
-  const post = sortedPosts[currentIndex];
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
 
-  if (!post) {
-    notFound();
-  }
+  const related = getRelatedPosts(post);
+  const url = `${DATA.url}/blog/${slug}/`;
+  const author = post.author ?? DATA.name;
 
-  const previousPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
-  const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
-
-  const getSlug = (post: (typeof sortedPosts)[0]) =>
-    post._meta.path.replace(/\.mdx$/, "");
-
-  const jsonLdContent = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
-    description: post.summary,
-    image: post.image
-      ? `${DATA.url}${post.image}`
-      : `${DATA.url}/blog/${slug}/opengraph-image`,
-    url: `${DATA.url}/blog/${slug}`,
-    author: {
-      "@type": "Person",
-      name: DATA.name,
+  const jsonLd = JSON.stringify([
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.summary,
+      datePublished: post.publishedAt,
+      dateModified: post.updatedAt ?? post.publishedAt,
+      image: post.image
+        ? `${DATA.url}${post.image}`
+        : `${DATA.url}/blog/${slug}/opengraph-image`,
+      url,
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      inLanguage: "en",
+      keywords: [...(post.tags ?? []), ...(post.keywords ?? [])].join(", "),
+      wordCount: post.wordCount,
+      timeRequired: `PT${post.readingTime}M`,
+      author: { "@type": "Person", name: author, url: DATA.url },
+      publisher: { "@type": "Person", name: DATA.name, url: DATA.url },
     },
-  }).replace(/</g, "\\u003c");
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: DATA.url },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${DATA.url}/blog/` },
+        { "@type": "ListItem", position: 3, name: post.title, item: url },
+      ],
+    },
+  ]).replace(/</g, "\\u003c");
 
   return (
     <section id="blog">
       <script
         type="application/ld+json"
         suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: jsonLdContent,
-        }}
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
       />
-      <div className="flex justify-start gap-4 items-center">
-        <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-lg px-2 py-1 inline-flex items-center gap-1 mb-6 group" aria-label="Back to Blog">
-          <ChevronLeft className="size-3 group-hover:-translate-x-px transition-transform" />
+      <ReadingProgress targetId="post-body" />
+
+      <nav aria-label="Breadcrumb" className="mb-6">
+        <Link
+          href="/blog"
+          className="group inline-flex items-center gap-1 rounded-lg border border-border px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <ChevronLeft
+            className="size-3 transition-transform group-hover:-translate-x-px"
+            aria-hidden
+          />
           Back to Blog
         </Link>
-      </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="title font-semibold text-3xl md:text-4xl tracking-tighter leading-tight">
+      </nav>
+
+      <header className="flex flex-col gap-4">
+        <TagList tags={post.tags} />
+        <h1 className="text-3xl font-semibold leading-tight tracking-tighter text-balance md:text-4xl">
           {post.title}
         </h1>
-        <p className="text-sm text-muted-foreground">
-          {formatDate(post.publishedAt)}
+        <p className="text-base leading-relaxed text-muted-foreground text-pretty">
+          {post.summary}
         </p>
-      </div>
+        <div className="flex items-center gap-3 pt-1">
+          <Avatar className="size-9 border">
+            <AvatarImage alt={author} src={DATA.avatarUrl} />
+            <AvatarFallback>{DATA.initials}</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col gap-0.5">
+            <span className="text-sm font-medium leading-none">{author}</span>
+            <PostMeta post={post} />
+          </div>
+        </div>
+      </header>
+
       <div className="my-6 flex w-full items-center">
         <div
-          className="flex-1 h-px bg-border"
+          className="h-px flex-1 bg-border"
           style={{
             maskImage:
               "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)",
@@ -147,47 +152,45 @@ export default async function Blog({
           }}
         />
       </div>
-      <article className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+
+      <TableOfContents headings={post.headings} />
+
+      <article
+        id="post-body"
+        className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert"
+      >
         <MDXContent code={post.mdx} components={mdxComponents} />
       </article>
 
-      <nav className="mt-12 pt-8 max-w-2xl">
-        <div className="flex flex-col sm:flex-row justify-between gap-4">
-          {previousPost ? (
-            <Link
-              href={`/blog/${getSlug(previousPost)}`}
-              className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors"
-            >
-              <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                <ChevronLeft className="size-3" />
-                Previous
-              </span>
-              <span className="text-sm font-medium group-hover:text-foreground transition-colors whitespace-normal wrap-break-word">
-                {previousPost.title}
-              </span>
-            </Link>
-          ) : (
-            <div className="hidden sm:block flex-1" />
-          )}
+      <PostCta />
 
-          {nextPost ? (
+      <aside aria-labelledby="related-heading" className="mt-12">
+        <h2
+          id="related-heading"
+          className="mb-4 text-lg font-semibold tracking-tight"
+        >
+          Keep reading
+        </h2>
+        {related.length > 0 ? (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {related.map((p) => (
+              <PostCard key={getSlug(p)} post={p} />
+            ))}
+          </div>
+        ) : (
+          <p className="rounded-xl border border-dashed border-border p-5 text-sm text-muted-foreground">
+            This is the first post here, so there is nothing related yet. More write-ups on
+            AI systems and open source are on the way. In the meantime, see the{" "}
             <Link
-              href={`/blog/${getSlug(nextPost)}`}
-              className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors text-right"
+              href="/#projects"
+              className="text-foreground underline underline-offset-4"
             >
-              <span className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
-                Next
-                <ChevronRight className="size-3" />
-              </span>
-              <span className="text-sm font-medium group-hover:text-foreground transition-colors whitespace-normal wrap-break-word">
-                {nextPost.title}
-              </span>
+              projects I have built
             </Link>
-          ) : (
-            <div className="hidden sm:block flex-1" />
-          )}
-        </div>
-      </nav>
+            .
+          </p>
+        )}
+      </aside>
     </section>
   );
 }
