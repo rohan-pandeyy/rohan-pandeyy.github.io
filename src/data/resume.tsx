@@ -5,7 +5,6 @@ import {
   CloudIcon,
   FileTextIcon,
   HomeIcon,
-  NotebookIcon,
   SparklesIcon,
 } from "lucide-react";
 import {
@@ -78,7 +77,6 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
     { href: "/resume", icon: FileTextIcon, label: "Resume" },
   ],
   contact: {
@@ -135,8 +133,9 @@ export const DATA = {
           start: "July 2026",
           end: undefined,
           points: [
-            "Expanded and optimized an agentic AI workflow for business operations by developing a new automation module and implementing prompt caching, reducing LLM workflow costs by 39% (from $33 to $20 per run)",
-            "Automated a multi-source map-content freshness evaluation pipeline to benchmark HERE's map data against licensed third-party and open-source sources, including OpenStreetMap",
+            "Built an internal GraphRAG platform unifying tickets, escalations and Confluence knowledge in Neo4j, achieving 92.9% answer accuracy with 0.7% false positives on a 660-question eval",
+            "Added claim-level answer verification and optimized entity resolution, cutting its latency by 61% to reach a 16s median response time",
+            "Optimized an agentic AI workflow with prompt caching and a new automation module, reducing LLM costs by 39% ($33 to $20 per run)",
           ],
         },
       ],
@@ -153,9 +152,9 @@ export const DATA = {
           start: "May 2026",
           end: "November 2026",
           points: [
-            "Selected as a contributor for GSoC 2026 under AOSSIE (top ~4.88% of 23K+ applications) to expand PictoPy, an on-device AI-powered desktop image gallery",
-            "Implemented proposed work focused on Visual Semantic Intelligence, smart Memories, video handling, and secure sharing",
-            "Implemented Quality Gate checks and an Adaptive Density-Aware Face Clustering pipeline from recent research papers, enhancing face detection and clustering by 4x",
+            "Selected for GSoC 2026 under AOSSIE (top ~4.88% of 23K+ applications) and delivered my proposed work across 28+ merged PRs to PictoPy, an on-device AI desktop gallery",
+            "Built semantic search and Smart Memories on SigLIP2 ONNX embeddings, reaching 83-98% top-5 accuracy across a 395-label vocabulary, backed by 1,200+ tests",
+            "Raised stored faces by 43% through improved detection and constrained clustering, and cut CI build times by up to 4.4x (10m 38s to 3m 35s)",
           ],
         },
       ],
