@@ -3,6 +3,7 @@ import { compileMDX } from "@content-collections/mdx";
 import remarkGfm from "remark-gfm";
 import { z } from "zod";
 import { remarkCodeMeta } from "./src/lib/remark-code-meta";
+import { extractHeadings, readingStats } from "./src/lib/slugify";
 
 const posts = defineCollection({
     name: "posts",
@@ -15,6 +16,10 @@ const posts = defineCollection({
         author: z.string().optional(),
         summary: z.string(),
         image: z.string().optional(),
+        // Topic labels shown on cards and used to find related posts.
+        tags: z.array(z.string()).optional(),
+        // Extra SEO keywords (tags are always included as well).
+        keywords: z.array(z.string()).optional(),
         content: z.string(),
     }),
     transform: async (document, context) => {
@@ -22,8 +27,10 @@ const posts = defineCollection({
             remarkPlugins: [remarkGfm, remarkCodeMeta],
         });
         return {
-        ...document,
+            ...document,
             mdx,
+            headings: extractHeadings(document.content),
+            ...readingStats(document.content),
         };
     },
 });
@@ -31,4 +38,3 @@ const posts = defineCollection({
 export default defineConfig({
     collections: [posts],
 });
-
