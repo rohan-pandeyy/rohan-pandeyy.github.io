@@ -146,6 +146,24 @@ export const DATA = {
       location: "Remote",
       logoUrl: "/logos/gsoc.svg",
       logoBg: undefined,
+      // Place these files in public/documents/gsoc/ (served at /documents/gsoc/...)
+      documents: [
+        {
+          title: "Completion certificate",
+          href: "/documents/gsoc/completion_certificate_2026_contributor.pdf",
+          wide: true,
+        },
+        {
+          title: "Acceptance letter",
+          href: "/documents/gsoc/acceptance_letter_2026_Rohan-Pandey.pdf",
+          wide: false,
+        },
+        {
+          title: "Verification letter",
+          href: "/documents/gsoc/verification_letter_2026_Rohan-Pandey.pdf",
+          wide: false,
+        },
+      ],
       roles: [
         {
           title: "GSoC 2026 Contributor @ AOSSIE",

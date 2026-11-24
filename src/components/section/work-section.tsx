@@ -42,7 +42,51 @@ function LogoImage({
   );
 }
 
-type WorkItems = (typeof DATA)["work"] | (typeof DATA)["positions"];
+type WorkDocument = { title: string; href: string; wide?: boolean };
+
+// PDF preview tiles; each opens the full document in a new tab.
+function DocumentTiles({ documents }: { documents?: WorkDocument[] }) {
+  if (!documents?.length) return null;
+  return (
+    <div
+      className="grid h-36 gap-3 pt-1 sm:h-52"
+      style={{
+        gridTemplateColumns: documents
+          .map((d) => (d.wide ? "1.8fr" : "1fr"))
+          .join(" "),
+      }}
+    >
+      {documents.map((doc) => (
+        <a
+          key={doc.href}
+          href={doc.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${doc.title} (PDF) in a new tab`}
+          title={doc.title}
+          className="group/doc relative block overflow-hidden rounded-lg border bg-muted/40 transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <object
+            data={`${doc.href}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`}
+            type="application/pdf"
+            aria-hidden="true"
+            tabIndex={-1}
+            className="pointer-events-none size-full"
+          >
+            <span className="flex size-full items-center justify-center p-2 text-center text-xs break-all">
+              {doc.href.split("/").pop()}
+            </span>
+          </object>
+          <span className="absolute inset-x-0 bottom-0 bg-background/80 px-2 py-1 text-[10px] font-medium text-foreground backdrop-blur-sm sm:text-xs">
+            {doc.title}
+          </span>
+        </a>
+      ))}
+    </div>
+  );
+}
+
+type WorkItems =(typeof DATA)["work"] | (typeof DATA)["positions"];
 
 export default function WorkSection({
   items = DATA.work,
@@ -125,6 +169,11 @@ export default function WorkSection({
                   )}
                 </div>
               ))}
+              <DocumentTiles
+                documents={
+                  (work as { documents?: WorkDocument[] }).documents
+                }
+              />
             </div>
           </AccordionContent>
         </AccordionItem>
