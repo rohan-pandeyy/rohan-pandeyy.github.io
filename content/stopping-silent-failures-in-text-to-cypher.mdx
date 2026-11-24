@@ -1,0 +1,183 @@
+---
+title: "Stopping Silent Failures in Text-to-Cypher"
+publishedAt: "2026-11-24"
+author: "Rohan Pandey"
+summary: "Zero rows looks like a true answer. How I built a read-only, citation-backed graph Q&A assistant that validates queries, verifies claims and shows its work."
+tags: ["AI Engineering", "Text-to-Cypher", "Neo4j", "LLM Evaluation", "Case Study"]
+keywords: ["text-to-Cypher", "Neo4j LLM assistant", "graph question answering", "LLM answer verification", "hallucination detection", "LangGraph", "FastAPI server-sent events", "AWS Bedrock", "LLM evaluation"]
+---
+
+Over the last couple of months I have been building an internal chat assistant that lets product and support analysts ask plain-English questions about ticket data stored in a Neo4j graph, and get answers that cite their sources, including Confluence pages.
+
+The interesting part was not getting an LLM to write a graph query. That works within an afternoon. The hard part was everything that happens when the query is *almost* right.
+
+<Callout variant="tldr" title="The short version">
+
+- **Silent failure is the real enemy.** A query that returns "0 rows" looks like a true answer. Treat "I checked and it is absent" as a first-class result, not a default.
+- **Validate before you run, verify before you answer.** Every query passes a chain of deterministic gates, and every claim in the answer is checked against the evidence it cites.
+- **Streaming and verification pull in opposite directions.** Structure the output so a machine can check what a human reads.
+- **Measure the environment, not just the code.** A corporate proxy and a one-byte regex bug each cost me days.
+- **Report noise bands.** On a 140-question eval, one flaky question moves the score by about 0.7 points.
+
+</Callout>
+
+I'm writing this up for engineers who are building LLM features on top of databases, and for anyone who wants an honest look at what "verified answers" costs in practice. Product names and data in this post are generalised on purpose. Nothing here includes real tickets or customer names.
+
+## The problem: "0 rows" is not an answer
+
+The assistant sits on a property graph of tickets, people, products and the relationships between them. Analysts ask things like "which customers raised the most escalations last quarter?" and expect a number they can put in a slide.
+
+A text-to-Cypher system fails in a particularly nasty way. When the model gets a filter slightly wrong, the database does not complain. It returns an empty result, and the model dutifully writes a confident sentence about it.
+
+Here are the failures that showed up in the first weeks:
+
+- **Case and separators.** An exact match on a lowercase customer name returned 0 rows. A case-insensitive match returned 6.
+- **Awkward real-world values.** 45 of 133 customers had names beginning with `#`. 9 of 17 feedback sources were opaque IDs rather than words.
+- **Wrong directions, invented properties.** The model reversed relationship directions and referenced properties that do not exist.
+- **Helpful repair loops that lie.** An early repair loop "fixed" a failing date filter by quietly substituting a different date. A question whose honest answer was *not found* came back as a different day's tickets.
+
+None of these throw an error. All of them look fine in a demo.
+
+## How the system is put together
+
+Before the interesting problems, a quick tour. The goal of the architecture is that no single model call is trusted on its own.
+
+```text title="Request path"
+question
+  → ingest → route → resolve_terms → plan
+  → dispatch
+      write query → gates → read-only run → judge
+                              └ recovery ladder (when empty)
+  → synthesize → verify → finalize
+```
+
+An offline **catalog build** introspects the live graph with about 1,800 profiling queries (three to five minutes) and writes a versioned *semantic catalog*: labels, properties, relationship directions, stored values, indexes, glossary terms and business terms. Refreshes fail closed, so a broken refresh keeps the previous version.
+
+At request time:
+
+1. **Route** classifies the question as graph, documentation, general or needs-clarification, using context from earlier turns.
+2. **Resolve terms** maps the user's words to values that actually exist, using exact keys, fuzzy matching, the glossary and semantic search in parallel.
+3. **Plan** splits the question into sub-questions and can pick a ready-made query template.
+4. **Dispatch** has a model write the query, then pushes it through the gates: a lexer, a variable-length-path rewrite, an inline-literal ban, a schema check against the catalog, a gate that refuses unverified string comparisons, `EXPLAIN`, and finally a read-only run with a row limit, a byte cap and a transaction timeout. A second model call judges whether the rows actually answer the question.
+5. **Synthesize** streams the answer with evidence tags, and **verify** checks each claim before the answer is final.
+
+| Layer | Choice | Why |
+|---|---|---|
+| Backend | Python 3.12, FastAPI, Pydantic | Typed contracts, SSE streaming, OpenAPI |
+| Workflow | LangGraph behind a custom runner | Bounded, checkpointed, deterministic nodes |
+| Graph | Neo4j, server-side read-only access | Last line of defence against writes |
+| Models | AWS Bedrock, chosen per role | Picked by measured accuracy, cost, latency |
+| Search | Vector and full-text indexes, rapidfuzz | Meaning-based and fuzzy value lookup |
+| App store | SQLAlchemy, Alembic | Conversations, traces, feedback |
+| Frontend | React 19, TypeScript, Vite | Streaming chat, citations, inspector |
+
+The assistant never writes. It can only read, and refused writes are treated as terminal.
+
+## Problem 1: the silent "no data" failure
+
+This was the heart of the project, and I got it wrong several times.
+
+**What I tried, and why it was not enough:**
+
+- *Fuzzy matching on every string.* Too noisy, so I added a similarity threshold of 0.85 and tuned separator and containment rules.
+- *Full-text and vector search.* Useful, but a similarity of 0.62 to 0.71 is not a clear match. I now treat semantic hits as anchors to investigate, not answers.
+- *An LLM repair loop fed with `EXPLAIN` output.* It fixed syntax, but it could also silently swap in a wrong value.
+- *Letting the model decide a value is absent.* It produced confident, false "not found" answers.
+
+**What worked is boring and deterministic.** A resolver and a *recovery ladder* produce candidate values. A `Resolved_Value` gate then refuses any string comparison that cannot be grounded in a stored value or a tool result. Repairs may substitute only a value that is equal up to case and separators, never an edit-distance neighbour. And "not found" is only allowed after absence has been verified. Every ladder step lands in the trace.
+
+On the questions shared between two evaluation rounds, false positives fell from 5.4% and 7.3% to 2.2% and 1.4% after these changes.
+
+## Problem 2: streaming versus verifying
+
+Users want the answer to start appearing quickly. I also wanted every factual claim checked against evidence before it counts as final. A claim can only be checked once its sentence exists, so "stream first" and "verify first" cannot both hold for the same text.
+
+I rejected two simple options. Streaming unverified prose and fixing it later means someone may read a wrong figure that gets corrected afterwards. Buffering the whole answer is correct but slow.
+
+The design that stuck is a **tagged, streamed synthesis**. The model writes evidence tags as it goes: `[E#]` for a graph evidence entry and `[C:pageid]` for a Confluence page. A JSON *facts trailer* carries the machine-checkable values and is withheld from the stream. Then a deterministic verifier compares each claim against the evidence ledger. Claims that fail are marked `[UNVERIFIED]` or dropped, and a final `answer_verified` event replaces the streamed draft. Faithfulness measured 93.8% in the latest evaluation round.
+
+<Callout variant="warning" title="An honest trade-off">
+
+The verifier checks what it can parse, not meaning. And on networks that buffer streaming responses, the streaming benefit disappears entirely. My corporate TLS-inspecting proxy held back the model provider's stream and released it in one burst, so time to first token equalled total latency. I could not fix that in the application, and a small probe script proved it.
+
+</Callout>
+
+## Problem 3: 16 to 24 seconds of term resolution
+
+Early on, `resolve_terms` took 16 to 24 seconds per turn. It made 72 graph reads for six terms, including noise words like "included" and "average". Simple questions took 25 to 40 seconds.
+
+Each graph round trip costs roughly 0.7 seconds, so the *number* of round trips mattered far more than how clever each query was. The fixes were deliberately unglamorous:
+
+- a stop-word list for noise terms,
+- a per-turn term cache,
+- exact-key lookups in a single round trip, including separator variants, instead of several scan queries,
+- starting resolution while the router is still running.
+
+Resolution dropped from 7.2 seconds to 2.8 seconds on the benchmark question set, and one representative question went from 41.7 seconds to 25.5 seconds. The remaining time is mostly the synthesizer (about 11 seconds) and the writer plus judge (about 10 seconds), and the changes I tried there did not move answers in any way the evaluation could distinguish.
+
+## Problem 4: a one-byte bug
+
+This one is small, but it taught me the most.
+
+The claim checker has a pattern meant to match words like "total" and "in all". It never matched. I had written it as `\b` in a patch, but a shell here-document turned the escape into a real backspace character (`0x08`) inside a normal, non-raw Python string. The pattern matched only words wrapped in backspace bytes.
+
+The fix was one line:
+
+```python title="claims.py"
+_TOTAL_SAID = re.compile(r"\b(total|in all|altogether|combined|overall)\b", re.I)
+```
+
+What I care about is the process:
+
+- Each failing test was committed first as `xfail(strict=True)`, so every commit stayed green and the bug had a regression test before it had a fix.
+- My first measurement was thrown away, because the same shell-quoting problem had silently left the backspaces in place. The patch script now asserts the patched file contains no `0x08` byte.
+- A new test scans every git-tracked Python file for control characters, so this class of bug cannot return unnoticed.
+
+The measured effect was honest and small: two accepted calls changed out of 30 in the affected tests, and the recorded checker baseline moved from 204 wrong sentences and 139 controls to 207 and 140, with recall still 1.0 and no controls flagged. The story is the guard, not the fix.
+
+## Keeping it maintainable
+
+The first design had nine coupling problems. For example, the orchestrator imported a concrete model client, there were two composition roots, and two packages imported each other. I have been migrating to a modular monolith: feature slices (catalog, query, templates, feedback, autocomplete, assistant) that each expose a small public interface.
+
+The architecture is enforced rather than hoped for, with 31 import-linter contracts, a drift test for the generated OpenAPI document, and a metadata snapshot test. The frontend's API types are generated from the backend's OpenAPI output and never edited by hand.
+
+## What it measures
+
+<StatGrid>
+  <Stat value="92.9%" label="Answer correctness" note="140-question set" />
+  <Stat value="0.7%" label="False positives" note="False negatives 7.4%" />
+  <Stat value="16.1 s" label="p50 latency" note="p95 29.0 s" />
+  <Stat value="18 ms" label="Autocomplete p50" note="p95 31.5 ms, 50k entries" />
+</StatGrid>
+
+A few details that matter more than the headline numbers:
+
+- On the 117 questions shared across rounds, correctness was 99.1% in the first full round, then 93.6% and 91.4% in the verification round.
+- The test suite has about 780 test functions across 117 backend test files, including 40 property-based tests, plus 29 frontend test files.
+- The autocomplete slice has no model access at all, which is enforced by an import-linter contract, and had no schema or sensitive-value leaks in its evaluation.
+
+<Callout variant="note" title="Read these numbers carefully">
+
+They come from my own evaluation harness and hand-checked reference answers, they were taken from the project's documentation rather than re-measured for this post, and they are not independently audited. Run-to-run noise is about two questions in 140, so differences of a point or two are not evidence of anything. I have not yet measured production usage, production latency, feedback rates or analyst time saved.
+
+</Callout>
+
+## Lessons I would keep
+
+1. **Silent failure is the real enemy.** A system that returns zero rows as a plausible answer is far more dangerous than one that errors. Design "I checked and it is absent" as a first-class result.
+2. **Streaming and verification pull in opposite directions.** Structure the output so the machine can check what the human reads. Do not pretend the two are independent.
+3. **Migrate the reads when you migrate the writes.** A vote moved to a new table while the admission check kept reading the old one. Search for every reader of a table when you change where its data is written.
+4. **Shell quoting can corrupt a regex silently.** Guard patches with assertions about the bytes, not only the tests.
+5. **Measure the network, not just the code.** A proxy buffered the stream, and a proxy certificate silently broke embeddings and produced void eval runs. Log environment probes with every evaluation.
+6. **Trust but verify your own eval.** A reference-first suite caught wrong references, and a 20-question suite can move five points on one flaky question. Report noise bands with every number.
+
+## What is next
+
+- **Latency.** Shorter synthesis, or a smaller model for the judge, are the next candidates.
+- **Evaluation rigour.** Repeat each comparison three times before trusting it, finish the baseline and reference answers for the second graph, and add an independent second grader.
+- **Resolver gaps.** Plural and label matching, and mapping phrases like "support cases" onto the right node type.
+- **Analytical questions.** They remain budget-bound. A larger budget did not help, so the next step is to structure the work into steps rather than one bigger query.
+- **Security and operations.** Authentication is off in this prototype and needs a provider before any wider rollout.
+- **Architecture.** The remaining large modules (claim verification, the agent loop and the recovery ladder) are specified for the next refactor phases.
+
+If you are building something similar, I would love to compare notes.
