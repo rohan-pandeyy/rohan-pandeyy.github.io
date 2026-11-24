@@ -46,7 +46,7 @@ const html = `<!doctype html>
   p { margin: 2pt 0; }
   ul { margin: 2pt 0 4pt; padding-left: 16pt; }
   li { margin: 1pt 0; }
-  a { color: #0645ad; text-decoration: none; }
+  a { color: #0645ad; text-decoration: underline; }
   .present { background: #e4e4e7; border-radius: 999px; padding: 0 5pt; }
   h2, h3 { break-after: avoid; }
   li, p { break-inside: avoid; }
