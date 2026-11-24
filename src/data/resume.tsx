@@ -171,7 +171,7 @@ export const DATA = {
           start: "July 2025",
           end: undefined,
           points: [
-            "Contributed 10,000+ lines of code across 15+ merged PRs to PictoPy, optimizing ML pipelines and CI/CD workflows and improving both frontend and backend systems",
+            "Contributed 60,000+ lines of code across 40+ merged PRs to PictoPy, optimizing ML pipelines and CI/CD workflows and improving both frontend and backend systems",
           ],
         },
       ],
