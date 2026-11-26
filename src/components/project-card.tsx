@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
@@ -22,6 +22,100 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
       alt={alt}
       className="w-full h-48 object-cover"
       onError={() => setImageError(true)}
+    />
+  );
+}
+
+// --- Project preview video -------------------------------------------------
+// Desktop (hover + fine pointer): plays while hovered, resets on leave.
+// Touch devices: plays while the card is the most visible one on screen.
+
+const PLAY_THRESHOLD = 0.6;
+const visibility = new Map<HTMLVideoElement, number>();
+
+function stop(video: HTMLVideoElement) {
+  video.pause();
+  video.currentTime = 0;
+}
+
+function play(video: HTMLVideoElement) {
+  video.play().catch(() => {
+    /* autoplay blocked or interrupted; keep the first frame */
+  });
+}
+
+// Only the most visible video (above the threshold) plays.
+function syncActiveVideo() {
+  let active: HTMLVideoElement | null = null;
+  let best = PLAY_THRESHOLD;
+  visibility.forEach((ratio, video) => {
+    if (ratio >= best) {
+      best = ratio;
+      active = video;
+    }
+  });
+  visibility.forEach((_, video) => {
+    if (video === active) {
+      if (video.paused) play(video);
+    } else if (!video.paused || video.currentTime > 0) {
+      stop(video);
+    }
+  });
+}
+
+function ProjectVideo({ src, title }: { src: string; title: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduceMotion.matches) return;
+
+    if (canHover.matches) {
+      const card = video.closest("[data-project-card]") ?? video;
+      const onEnter = () => play(video);
+      const onLeave = () => stop(video);
+      card.addEventListener("mouseenter", onEnter);
+      card.addEventListener("mouseleave", onLeave);
+      return () => {
+        card.removeEventListener("mouseenter", onEnter);
+        card.removeEventListener("mouseleave", onLeave);
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visibility.set(video, entry.isIntersecting ? entry.intersectionRatio : 0);
+        syncActiveVideo();
+      },
+      { threshold: [0, 0.25, 0.5, 0.6, 0.75, 1] }
+    );
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+      visibility.delete(video);
+      stop(video);
+    };
+  }, []);
+
+  if (failed) return <div className="w-full h-48 bg-muted" />;
+
+  return (
+    <video
+      ref={ref}
+      // #t=0.001 makes browsers (notably iOS Safari) paint the first frame
+      src={`${src}#t=0.001`}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      disablePictureInPicture
+      aria-label={`${title} preview`}
+      className="w-full h-48 object-cover"
+      onError={() => setFailed(true)}
     />
   );
 }
@@ -57,6 +151,7 @@ export function ProjectCard({
 }: Props) {
   return (
     <div
+      data-project-card
       className={cn(
         "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
         className
@@ -70,14 +165,7 @@ export function ProjectCard({
           className="block"
         >
           {video ? (
-            <video
-              src={video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-48 object-cover"
-            />
+            <ProjectVideo src={video} title={title} />
           ) : image ? (
             <ProjectImage src={image} alt={title} />
           ) : (
