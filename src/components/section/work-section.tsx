@@ -48,14 +48,7 @@ type WorkDocument = { title: string; href: string; wide?: boolean };
 function DocumentTiles({ documents }: { documents?: WorkDocument[] }) {
   if (!documents?.length) return null;
   return (
-    <div
-      className="grid h-36 gap-3 pt-1 sm:h-52"
-      style={{
-        gridTemplateColumns: documents
-          .map((d) => (d.wide ? "1.8fr" : "1fr"))
-          .join(" "),
-      }}
-    >
+    <div className="flex max-w-full snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pt-1 pb-2 [scrollbar-width:thin] sm:snap-none sm:overflow-visible sm:pb-0">
       {documents.map((doc) => (
         <a
           key={doc.href}
@@ -64,7 +57,10 @@ function DocumentTiles({ documents }: { documents?: WorkDocument[] }) {
           rel="noopener noreferrer"
           aria-label={`Open ${doc.title} (PDF) in a new tab`}
           title={doc.title}
-          className="group/doc relative block overflow-hidden rounded-lg border bg-muted/40 transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
+          className={cn(
+            "group/doc relative block h-44 flex-none snap-start overflow-hidden rounded-lg border bg-muted/40 transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring sm:h-52 sm:w-auto",
+            doc.wide ? "w-64 sm:flex-[1.8]" : "w-36 sm:flex-1"
+          )}
         >
           <object
             data={`${doc.href}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`}
