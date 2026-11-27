@@ -292,6 +292,9 @@ export const DATA = {
       ],
       image: "",
       video: "/videos/projects/pictopy.mp4",
+      // name shown over the blurred first frame; pick what reads against it
+      titleColor: "#ffffff",
+      titleShadow: "rgb(0 0 0 / 0.7)",
     },
     {
       title: "Drive Guardian",
@@ -324,6 +327,8 @@ export const DATA = {
       ],
       image: "",
       video: "/videos/projects/drive-guardian.mp4",
+      titleColor: "#1e2a4a",
+      titleShadow: "rgb(255 255 255 / 0.85)",
     },
     {
       title: "Arogya for Maternal Health",

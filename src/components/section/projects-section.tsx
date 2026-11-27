@@ -47,6 +47,8 @@ export default function ProjectsSection() {
                                 tags={project.technologies}
                                 image={project.image}
                                 video={project.video}
+                                titleColor={"titleColor" in project ? project.titleColor : undefined}
+                                titleShadow={"titleShadow" in project ? project.titleShadow : undefined}
                                 links={project.links}
                             />
                         </BlurFade>

@@ -63,7 +63,19 @@ function syncActiveVideo() {
   });
 }
 
-function ProjectVideo({ src, title }: { src: string; title: string }) {
+// Until the video plays, the first frame is blurred behind the project name.
+function ProjectVideo({
+  src,
+  title,
+  titleColor = "#ffffff",
+  titleShadow = "rgb(0 0 0 / 0.6)",
+}: {
+  src: string;
+  title: string;
+  titleColor?: string;
+  titleShadow?: string;
+}) {
+  const [playing, setPlaying] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
   const [failed, setFailed] = useState(false);
 
@@ -104,19 +116,44 @@ function ProjectVideo({ src, title }: { src: string; title: string }) {
   if (failed) return <div className="w-full h-48 bg-muted" />;
 
   return (
-    <video
-      ref={ref}
-      // #t=0.001 makes browsers (notably iOS Safari) paint the first frame
-      src={`${src}#t=0.001`}
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      disablePictureInPicture
-      aria-label={`${title} preview`}
-      className="w-full h-48 object-cover"
-      onError={() => setFailed(true)}
-    />
+    <div className="relative h-48 w-full overflow-hidden">
+      <video
+        ref={ref}
+        // #t=0.001 makes browsers (notably iOS Safari) paint the first frame
+        src={`${src}#t=0.001`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        disablePictureInPicture
+        aria-label={`${title} preview`}
+        className={cn(
+          "size-full object-cover transition-[filter,scale] duration-500 ease-out",
+          // scaled up while blurred so the soft edges stay out of view
+          playing ? "blur-none scale-100" : "blur-[6px] scale-110"
+        )}
+        onPlaying={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onError={() => setFailed(true)}
+      />
+      <div
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center transition-opacity duration-500 ease-out",
+          playing ? "opacity-0" : "opacity-100"
+        )}
+      >
+        <span
+          className="text-3xl font-bold tracking-tight text-balance"
+          style={{
+            color: titleColor,
+            textShadow: `0 1px 14px ${titleShadow}`,
+          }}
+        >
+          {title}
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -129,6 +166,8 @@ interface Props {
   link?: string;
   image?: string;
   video?: string;
+  titleColor?: string;
+  titleShadow?: string;
   links?: readonly {
     icon: React.ReactNode;
     type: string;
@@ -146,6 +185,8 @@ export function ProjectCard({
   link,
   image,
   video,
+  titleColor,
+  titleShadow,
   links,
   className,
 }: Props) {
@@ -165,7 +206,12 @@ export function ProjectCard({
           className="block"
         >
           {video ? (
-            <ProjectVideo src={video} title={title} />
+            <ProjectVideo
+              src={video}
+              title={title}
+              titleColor={titleColor}
+              titleShadow={titleShadow}
+            />
           ) : image ? (
             <ProjectImage src={image} alt={title} />
           ) : (
