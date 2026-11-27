@@ -291,7 +291,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "",
+      video: "/videos/projects/pictopy.mp4",
     },
     {
       title: "Drive Guardian",
